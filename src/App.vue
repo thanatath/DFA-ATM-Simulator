@@ -300,9 +300,6 @@ export default {
       }
     }
   },
-mounted() {
-  alert('This Dev Site') // alert where you are !
-},
 }
 </script>
 
