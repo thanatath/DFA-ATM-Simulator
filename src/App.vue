@@ -6,7 +6,6 @@
 
         <b-col sm="6" class="atm p-4">
           <h1>ATM : Automatic Teller Machine</h1>
-          <p>Test branch dev</p>
           <b-row class="justify-content-md-center">
 
             <b-col cols="11" class="bodyATM">
