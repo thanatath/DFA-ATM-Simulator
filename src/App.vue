@@ -2,11 +2,10 @@
   <div id="app">
     <Navbar :reset="this.reset" />
     <b-container fluid>
-      <b-row class="text-center">
+      <b-row class="text-center pt-5">
 
         <b-col sm="6" class="atm p-4">
           <h1>ATM : Automatic Teller Machine</h1>
-          <p>ทดสอบ songvut branch</p>
           <b-row class="justify-content-md-center">
 
             <b-col cols="11" class="bodyATM">
