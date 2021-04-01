@@ -299,7 +299,10 @@ export default {
         this.input = this.input.concat('0')
       }
     }
-  }
+  },
+mounted() {
+  alert('This Dev Site')
+},
 }
 </script>
 
