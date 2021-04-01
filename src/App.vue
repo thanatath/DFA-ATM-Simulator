@@ -300,7 +300,7 @@ export default {
         this.input = this.input.concat('0')
       }
     }
-  }
+  },
 }
 </script>
 
