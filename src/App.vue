@@ -3,28 +3,56 @@
     <Navbar :reset="this.reset" />
     <b-container fluid>
       <b-row class="text-center">
-
         <b-col sm="6" class="atm p-4">
           <h1>ATM : Automatic Teller Machine</h1>
           <p>ทดสอบ songvut branch</p>
           <b-row class="justify-content-md-center">
-
             <b-col cols="11" class="bodyATM">
               <!--1st-->
               <b-row class="first p-3 justify-content-between">
-                <b-col cols=2 align="center" align-self="center">
+                <b-col cols="2" align="center" align-self="center">
                   <div class="mirror" id="mirrorLeft"></div>
-                  <b-tooltip target="mirrorLeft" triggers="hover" variant="primary" >กระจกระวังหลัง</b-tooltip>
+                  <b-tooltip
+                    target="mirrorLeft"
+                    triggers="hover"
+                    variant="primary"
+                    >กระจกระวังหลัง</b-tooltip
+                  >
                 </b-col>
-                
-                <b-col cols=1 align="center" align-self="center">
+
+                <b-col cols="1" align="center" align-self="center">
                   <div class="camera" id="camera"></div>
-                  <b-tooltip target="camera" triggers="hover" variant="primary" >กล้องวงจรปิด</b-tooltip>
+                  <b-tooltip target="camera" triggers="hover" variant="primary"
+                    >กล้องวงจรปิด</b-tooltip
+                  >
                 </b-col>
-                
-                <b-col cols=2 align="center" align-self="center">
+                <vue-web-cam
+                  ref="webcam"
+                  :device-id="deviceId"
+                  width="100%"
+                  @started="onStarted"
+                  @stopped="onStopped"
+                  @error="onError"
+                  @cameras="onCameras"
+                  @camera-change="onCameraChange"
+                />
+                <select v-model="camera">
+                  <option>-- Select Device --</option>
+                  <option
+                    v-for="device in devices"
+                    :key="device.deviceId"
+                    :value="device.deviceId"
+                    >{{ device.label }}</option
+                  >
+                </select>
+                <b-col cols="2" align="center" align-self="center">
                   <div class="mirror" id="mirrorRight"></div>
-                  <b-tooltip target="mirrorRight" triggers="hover" variant="primary" >กระจกระวังหลัง</b-tooltip>
+                  <b-tooltip
+                    target="mirrorRight"
+                    triggers="hover"
+                    variant="primary"
+                    >กระจกระวังหลัง</b-tooltip
+                  >
                 </b-col>
               </b-row>
 
@@ -35,15 +63,16 @@
                 <!--Monitor-->
                 <b-col cols="8" class="monitor text-left">
                   <p class="p-1">ธนาคารทรงวุฒิไทย</p>
-                  <h2 class="text-center pt-5">{{title}}</h2>
-                  <h5 class="text-center pb-3">{{subTitle}}</h5>
+                  <h2 class="text-center pt-5">{{ title }}</h2>
+                  <h5 class="text-center pb-3">{{ subTitle }}</h5>
 
                   <b-row align-h="center">
                     <b-col cols="7">
-                      <b-form-input 
-                        disabled v-model="input"  
-                        v-if="showInput" 
-                        id="input" 
+                      <b-form-input
+                        disabled
+                        v-model="input"
+                        v-if="showInput"
+                        id="input"
                         class="text-center"
                         size="lg"
                       >
@@ -51,60 +80,111 @@
                     </b-col>
                   </b-row>
                 </b-col>
-                
+
                 <b-col cols="2" class="rightButton" align-self="end">
-                  <b-button v-on:click="edit" size="lg" variant="warning" block>แก้ไข</b-button>
-                  <b-button v-on:click="accept" size="lg" variant="success" block class="my-4">ตกลง</b-button>
-                  <b-button v-on:click="reset" size="lg" variant="danger" block>ยกเลิก</b-button>
+                  <b-button v-on:click="edit" size="lg" variant="warning" block
+                    >แก้ไข</b-button
+                  >
+                  <b-button
+                    v-on:click="accept"
+                    size="lg"
+                    variant="success"
+                    block
+                    class="my-4"
+                    >ตกลง</b-button
+                  >
+                  <b-button v-on:click="reset" size="lg" variant="danger" block
+                    >ยกเลิก</b-button
+                  >
                 </b-col>
               </b-row>
 
               <!--3rd-->
               <b-row class="third py-4">
                 <b-col cols="3"></b-col>
-                
+
                 <!--Numpad-->
                 <b-col cols="6" class="px-3">
                   <b-row align-h="center" class="p-2 pt-4 numpad">
-                    <b-col v-on:click="num1" cols="4" class="pb-4"><b-button block size="lg">1</b-button></b-col>
-                    <b-col v-on:click="num2" cols="4"><b-button block size="lg">2</b-button></b-col>
-                    <b-col v-on:click="num3" cols="4"><b-button block size="lg">3</b-button></b-col>
-                  
-                    <b-col v-on:click="num4" cols="4" class="pb-4"><b-button block size="lg">4</b-button></b-col>
-                    <b-col v-on:click="num5" cols="4"><b-button block size="lg">5</b-button></b-col>
-                    <b-col v-on:click="num6" cols="4"><b-button block size="lg">6</b-button></b-col>
-                  
-                    <b-col v-on:click="num7" cols="4" class="pb-4"><b-button block size="lg">7</b-button></b-col>
-                    <b-col v-on:click="num8" cols="4"><b-button block size="lg">8</b-button></b-col>
-                    <b-col v-on:click="num9" cols="4"><b-button block size="lg">9</b-button></b-col>
-                  
-                    <b-col v-on:click="num0" cols="4" class="pb-3"><b-button block size="lg">0</b-button></b-col>
+                    <b-col v-on:click="num1" cols="4" class="pb-4"
+                      ><b-button block size="lg">1</b-button></b-col
+                    >
+                    <b-col v-on:click="num2" cols="4"
+                      ><b-button block size="lg">2</b-button></b-col
+                    >
+                    <b-col v-on:click="num3" cols="4"
+                      ><b-button block size="lg">3</b-button></b-col
+                    >
+
+                    <b-col v-on:click="num4" cols="4" class="pb-4"
+                      ><b-button block size="lg">4</b-button></b-col
+                    >
+                    <b-col v-on:click="num5" cols="4"
+                      ><b-button block size="lg">5</b-button></b-col
+                    >
+                    <b-col v-on:click="num6" cols="4"
+                      ><b-button block size="lg">6</b-button></b-col
+                    >
+
+                    <b-col v-on:click="num7" cols="4" class="pb-4"
+                      ><b-button block size="lg">7</b-button></b-col
+                    >
+                    <b-col v-on:click="num8" cols="4"
+                      ><b-button block size="lg">8</b-button></b-col
+                    >
+                    <b-col v-on:click="num9" cols="4"
+                      ><b-button block size="lg">9</b-button></b-col
+                    >
+
+                    <b-col v-on:click="num0" cols="4" class="pb-3"
+                      ><b-button block size="lg">0</b-button></b-col
+                    >
                   </b-row>
                 </b-col>
-                
+
                 <!--Card-->
                 <b-col cols="3" align="center">
                   <div class="cardSlot" id="cardSlot"></div>
-                  <div class="atmCard pt-5 shadow-sm" id="card" v-if="showCard" v-on:click="card">
+                  <div
+                    class="atmCard pt-5 shadow-sm"
+                    id="card"
+                    v-if="showCard"
+                    v-on:click="card"
+                  >
                     <p>ธนาคารทรงวุฒิไทย</p>
-                    <p><small>5587 2221 8877 6685</small> </p>
+                    <p><small>5587 2221 8877 6685</small></p>
                     <p>VISA</p>
                   </div>
-                  <b-tooltip target="card" triggers="hover" variant="primary">บัตร ATM</b-tooltip>
-                  <b-tooltip target="cardSlot" triggers="hover" variant="primary">ช่องใส่บัตร ATM</b-tooltip>
+                  <b-tooltip target="card" triggers="hover" variant="primary"
+                    >บัตร ATM</b-tooltip
+                  >
+                  <b-tooltip
+                    target="cardSlot"
+                    triggers="hover"
+                    variant="primary"
+                    >ช่องใส่บัตร ATM</b-tooltip
+                  >
                 </b-col>
               </b-row>
-              
+
               <!--4th-->
               <b-row class="fourth p-5" align-h="center">
                 <div class="moneySlot" id="moneySlot"></div>
-                <b-tooltip target="moneySlot" triggers="hover" variant="primary">ช่องเงินออก</b-tooltip>
+                <b-tooltip target="moneySlot" triggers="hover" variant="primary"
+                  >ช่องเงินออก</b-tooltip
+                >
 
-                <div v-on:click="money" class="money pt-5" id="money" v-if="showMoney">
-                  <h1>{{withdrawn}} บาท</h1>
+                <div
+                  v-on:click="money"
+                  class="money pt-5"
+                  id="money"
+                  v-if="showMoney"
+                >
+                  <h1>{{ withdrawn }} บาท</h1>
                 </div>
-                <b-tooltip target="money" triggers="hover" variant="primary">คลิกเพื่อรับเงิน</b-tooltip>
-
+                <b-tooltip target="money" triggers="hover" variant="primary"
+                  >คลิกเพื่อรับเงิน</b-tooltip
+                >
               </b-row>
 
               <!--5th-->
@@ -114,29 +194,29 @@
             </b-col>
           </b-row>
         </b-col>
-        
-        
+
         <b-col sm="6" class="dfa p-4">
           <h1>DFA : Deterministic Finite Automata</h1>
-          <p>{{this.state}}</p>
+          <p>{{ this.state }}</p>
         </b-col>
       </b-row>
     </b-container>
-    
+
     <Footer />
-    
   </div>
 </template>
 
 <script>
-import Navbar from './components/Navbar'
-import Footer from './components/Footer'
-
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import { WebCam } from "vue-web-cam";
 export default {
   name: 'Home',
   components: {
     Navbar,
     Footer,
+    WebCam,
+    "vue-web-cam": WebCam,
   },
   data() {
     return {
@@ -144,164 +224,208 @@ export default {
       subTitle: 'กรุณาใส่บัตรเพื่อเริ่มทำรายการ',
       input: '',
       state: 0,
-
+  img: null,
+            camera: null,
+            deviceId: null,
+            devices: [],
       withdrawn: 0,
       showInput: false,
       showMoney: false,
       showCard: true,
 
       currentState: '',
-    }
+    };
   },
   methods: {
     //Reset
     reset: function() {
-      this.title = 'ยินดีต้อนรับ'
-      this.subTitle = 'กรุณาใส่บัตรเพื่อเริ่มทำรายการ'
-      this.input = ''
-      this.state = 0
+      this.title = 'ยินดีต้อนรับ';
+      this.subTitle = 'กรุณาใส่บัตรเพื่อเริ่มทำรายการ';
+      this.input = '';
+      this.state = 0;
 
-      this.withdrawn = 0
-      this.showInput = false
-      this.showMoney = false
-      this.showCard = true
+      this.withdrawn = 0;
+      this.showInput = false;
+      this.showMoney = false;
+      this.showCard = true;
 
-      this.currentState = ''
+      this.currentState = '';
     },
 
     //Menu
-    edit: function() {
-
-    },
+    edit: function() {},
     accept: function() {
-      if(this.state === 4 && this.input === '123') {
-        this.state = 5
-        this.input = ''
-        this.title = 'กรุณาป้อนจำนวนเงินที่ต้องการถอน'
+      if (this.state === 4 && this.input === '123') {
+        this.state = 5;
+        this.input = '';
+        this.title = 'กรุณาป้อนจำนวนเงินที่ต้องการถอน';
       }
 
-      if(this.state === 9 || this.state === 8) {
-        this.state = 10
-        this.title = 'ถอนเงินสำเร็จกรุณารับบัตรคืน'
-        this.subTitle = 'ขอบคุณที่ใช้บริการ'
-        this.withdrawn = this.input
-        this.showInput = false
-        this.showCard = true
-        this.showMoney = true
+      if (this.state === 9 || this.state === 8) {
+        this.state = 10;
+        this.title = 'ถอนเงินสำเร็จกรุณารับบัตรคืน';
+        this.subTitle = 'ขอบคุณที่ใช้บริการ';
+        this.withdrawn = this.input;
+        this.showInput = false;
+        this.showCard = true;
+        this.showMoney = true;
       }
     },
-    cancel: function() {
-
-    },
+    cancel: function() {},
 
     //Card & Money
     card: function() {
-      if(this.state === 0) {
-        this.state = 1
-        this.title = 'กรุณาป้อนรหัสผ่าน'
-        this.subTitle = ''
-        this.showInput = true
-        this.showCard = false
+      if (this.state === 0) {
+        this.state = 1;
+        this.title = 'กรุณาป้อนรหัสผ่าน';
+        this.subTitle = '';
+        this.showInput = true;
+        this.showCard = false;
       }
 
-      if(this.state === 10) {
-        this.reset()
+      if (this.state === 10) {
+        this.reset();
       }
     },
     money: function() {
-      if(this.state === 10) {
-        this.showMoney = false
+      if (this.state === 10) {
+        this.showMoney = false;
       }
     },
 
     //Numpad
     num1: function() {
       //รหัสผ่าน
-      if(this.state === 1) {
-        this.state = 2
-        this.input = this.input.concat('1')
+      if (this.state === 1) {
+        this.state = 2;
+        this.input = this.input.concat('1');
       }
 
       //ถอนเงิน
-      if(this.state === 5) {
-        this.state = 6
-        this.input = this.input.concat('1')
+      if (this.state === 5) {
+        this.state = 6;
+        this.input = this.input.concat('1');
       }
     },
     num2: function() {
-      if(this.state === 2) {
-        this.state = 3
-        this.input = this.input.concat('2')
+      if (this.state === 2) {
+        this.state = 3;
+        this.input = this.input.concat('2');
       }
 
       //ถอนเงิน
-      if(this.state === 5) {
-        this.state = 6
-        this.input = this.input.concat('2')
+      if (this.state === 5) {
+        this.state = 6;
+        this.input = this.input.concat('2');
       }
     },
     num3: function() {
-      if(this.state === 3) {
-        this.state = 4
-        this.input = this.input.concat('3')
+      if (this.state === 3) {
+        this.state = 4;
+        this.input = this.input.concat('3');
       }
 
       //ถอนเงิน
-      if(this.state === 5) {
-        this.state = 6
-        this.input = this.input.concat('3')
+      if (this.state === 5) {
+        this.state = 6;
+        this.input = this.input.concat('3');
       }
     },
     num4: function() {
       //ถอนเงิน
-      if(this.state === 5) {
-        this.state = 6
-        this.input = this.input.concat('4')
+      if (this.state === 5) {
+        this.state = 6;
+        this.input = this.input.concat('4');
       }
     },
     num5: function() {
       //ถอนเงิน
-      if(this.state === 5) {
-        this.state = 6
-        this.input = this.input.concat('5')
+      if (this.state === 5) {
+        this.state = 6;
+        this.input = this.input.concat('5');
       }
     },
     num6: function() {
       //ถอนเงิน
-      if(this.state === 5) {
-        this.state = 6
-        this.input = this.input.concat('6')
+      if (this.state === 5) {
+        this.state = 6;
+        this.input = this.input.concat('6');
       }
     },
     num7: function() {
       //ถอนเงิน
-      if(this.state === 5) {
-        this.state = 6
-        this.input = this.input.concat('7')
+      if (this.state === 5) {
+        this.state = 6;
+        this.input = this.input.concat('7');
       }
     },
     num8: function() {
       //ถอนเงิน
-      if(this.state === 5) {
-        this.state = 6
-        this.input = this.input.concat('8')
+      if (this.state === 5) {
+        this.state = 6;
+        this.input = this.input.concat('8');
       }
     },
     num9: function() {
       //ถอนเงิน
-      if(this.state === 5) {
-        this.state = 6
-        this.input = this.input.concat('9')
+      if (this.state === 5) {
+        this.state = 6;
+        this.input = this.input.concat('9');
       }
     },
     num0: function() {
-      if(this.state >= 6 && this.state < 9) {
-        this.state += 1
-        this.input = this.input.concat('0')
+      if (this.state >= 6 && this.state < 9) {
+        this.state += 1;
+        this.input = this.input.concat('0');
       }
-    }
+    },
+    onCapture() {
+      this.img = this.$refs.webcam.capture();
+    },
+    onStarted(stream) {
+      console.log('On Started Event', stream);
+    },
+    onStopped(stream) {
+      console.log('On Stopped Event', stream);
+    },
+    onStop() {
+      this.$refs.webcam.stop();
+    },
+    onStart() {
+      this.$refs.webcam.start();
+    },
+    onError(error) {
+      console.log('On Error Event', error);
+    },
+    onCameras(cameras) {
+      this.devices = cameras;
+      console.log('On Cameras Event', cameras);
+    },
+    onCameraChange(deviceId) {
+      this.deviceId = deviceId;
+      this.camera = deviceId;
+      console.log('On Camera Change Event', deviceId);
+    },
   },
-}
+  computed: {
+        device: function() {
+            return this.devices.find(n => n.deviceId === this.deviceId);
+        }
+    },
+  watch: {
+        camera: function(id) {
+            this.deviceId = id;
+        },
+        devices: function() {
+            // Once we have a list select the first one
+            const [first, ...tail] = this.devices;
+            if (first) {
+                this.camera = first.deviceId;
+                this.deviceId = first.deviceId;
+            }
+        }
+    },
+};
 </script>
 
 <style>
@@ -330,8 +454,12 @@ export default {
 
 .mirror {
   border-radius: 10px;
-  background: rgb(255,255,255);
-  background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(167,167,167,1) 100%);
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(167, 167, 167, 1) 100%
+  );
   width: 5vw;
   height: 10vh;
 }
@@ -356,12 +484,13 @@ export default {
   height: 50vh;
 }
 
-.monitor h2, .monitor h5 {
+.monitor h2,
+.monitor h5 {
   color: white;
 }
 
 .menu {
-  height: 22vh
+  height: 22vh;
 }
 
 .third {
@@ -379,7 +508,7 @@ export default {
   background-color: black;
   border: 10px solid #333;
   width: 100%;
-  height: 4vh
+  height: 4vh;
 }
 
 .atmCard {
