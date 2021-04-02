@@ -19,4 +19,3 @@ npm run build
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 Site Dev : http://devatm.shibasan.net
-Site Production : http://masteratm.shibasan.net
