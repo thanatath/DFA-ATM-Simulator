@@ -11,9 +11,11 @@
               <!--1st-->
               <b-row class="first p-3 justify-content-between">
                 <b-col cols="2" align="center" align-self="center">
+                   
                   <vue-web-cam
                     ref="webcam"
                     class="mirror"
+                    v-b-tooltip.hover title="กระจกระวังหลัง" 
                     :device-id="deviceId"
                     width="100%"
                     @started="onStarted"
@@ -23,12 +25,6 @@
                     @camera-change="onCameraChange"
                   />
                   <!-- <div class="mirror" id="mirrorLeft"> </div> //add comment old mirror for use webcam --> 
-                  <b-tooltip
-                    target="mirrorLeft"
-                    triggers="hover"
-                    variant="primary"
-                    >กระจกระวังหลัง</b-tooltip
-                  >
                 </b-col>
 
                 <b-col cols="1" align="center" align-self="center">
@@ -53,6 +49,7 @@
                                     <vue-web-cam
                     ref="webcam"
                     class="mirror"
+                    v-b-tooltip.hover title="กระจกระวังหลัง" 
                     :device-id="deviceId"
                     width="100%"
                     @started="onStarted"
@@ -61,12 +58,12 @@
                     @cameras="onCameras"
                     @camera-change="onCameraChange"
                   />
-                  <b-tooltip
+                  <!-- <b-tooltip
                     target="mirrorRight"
                     triggers="hover"
                     variant="primary"
                     >กระจกระวังหลัง</b-tooltip
-                  >
+                  > -->
                 </b-col>
               </b-row>
 
