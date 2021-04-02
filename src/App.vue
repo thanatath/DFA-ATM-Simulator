@@ -11,7 +11,18 @@
               <!--1st-->
               <b-row class="first p-3 justify-content-between">
                 <b-col cols="2" align="center" align-self="center">
-                  <div class="mirror" id="mirrorLeft"></div>
+                  <vue-web-cam
+                    ref="webcam"
+                    class="mirror"
+                    :device-id="deviceId"
+                    width="100%"
+                    @started="onStarted"
+                    @stopped="onStopped"
+                    @error="onError"
+                    @cameras="onCameras"
+                    @camera-change="onCameraChange"
+                  />
+                  <!-- <div class="mirror" id="mirrorLeft"> </div> //add comment old mirror for use webcam --> 
                   <b-tooltip
                     target="mirrorLeft"
                     triggers="hover"
@@ -26,17 +37,8 @@
                     >กล้องวงจรปิด</b-tooltip
                   >
                 </b-col>
-                <vue-web-cam
-                  ref="webcam"
-                  :device-id="deviceId"
-                  width="100%"
-                  @started="onStarted"
-                  @stopped="onStopped"
-                  @error="onError"
-                  @cameras="onCameras"
-                  @camera-change="onCameraChange"
-                />
-                <select v-model="camera">
+
+                <!-- <select v-model="camera"> //Section for option to select Camera device
                   <option>-- Select Device --</option>
                   <option
                     v-for="device in devices"
@@ -44,9 +46,21 @@
                     :value="device.deviceId"
                     >{{ device.label }}</option
                   >
-                </select>
+                </select> -->
+                
                 <b-col cols="2" align="center" align-self="center">
-                  <div class="mirror" id="mirrorRight"></div>
+                  <!-- <div class="mirror" id="mirrorRight"></div>  //add comment old mirror for use webcam -->
+                                    <vue-web-cam
+                    ref="webcam"
+                    class="mirror"
+                    :device-id="deviceId"
+                    width="100%"
+                    @started="onStarted"
+                    @stopped="onStopped"
+                    @error="onError"
+                    @cameras="onCameras"
+                    @camera-change="onCameraChange"
+                  />
                   <b-tooltip
                     target="mirrorRight"
                     triggers="hover"
@@ -209,14 +223,13 @@
 <script>
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import { WebCam } from "vue-web-cam";
+import { WebCam } from 'vue-web-cam';
 export default {
   name: 'Home',
   components: {
     Navbar,
     Footer,
-    WebCam,
-    "vue-web-cam": WebCam,
+    'vue-web-cam': WebCam,
   },
   data() {
     return {
@@ -224,10 +237,10 @@ export default {
       subTitle: 'กรุณาใส่บัตรเพื่อเริ่มทำรายการ',
       input: '',
       state: 0,
-  img: null,
-            camera: null,
-            deviceId: null,
-            devices: [],
+      img: null,
+      camera: null,
+      deviceId: null,
+      devices: [],
       withdrawn: 0,
       showInput: false,
       showMoney: false,
@@ -379,6 +392,8 @@ export default {
         this.input = this.input.concat('0');
       }
     },
+
+    // start webcam method path
     onCapture() {
       this.img = this.$refs.webcam.capture();
     },
@@ -406,25 +421,28 @@ export default {
       this.camera = deviceId;
       console.log('On Camera Change Event', deviceId);
     },
+    // end webcam method path
   },
+  //computed & watch added for camera work
   computed: {
-        device: function() {
-            return this.devices.find(n => n.deviceId === this.deviceId);
-        }
+    device: function() {
+      return this.devices.find((n) => n.deviceId === this.deviceId);
     },
+  },
+  //computed & watch added for camera work
   watch: {
-        camera: function(id) {
-            this.deviceId = id;
-        },
-        devices: function() {
-            // Once we have a list select the first one
-            const [first, ...tail] = this.devices;
-            if (first) {
-                this.camera = first.deviceId;
-                this.deviceId = first.deviceId;
-            }
-        }
+    camera: function(id) {
+      this.deviceId = id;
     },
+    devices: function() {
+      // Once camera we have a list select the first one
+      const [first, ...tail] = this.devices;
+      if (first) {
+        this.camera = first.deviceId;
+        this.deviceId = first.deviceId;
+      }
+    },
+  },
 };
 </script>
 
