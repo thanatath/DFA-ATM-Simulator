@@ -101,8 +101,9 @@
 
                 <div v-on:click="money" class="money pt-5" id="money" v-if="showMoney">
                   <h1>{{withdrawn}} บาท</h1>
+                  <b-tooltip target="money" triggers="hover" variant="primary">คลิกเพื่อรับเงิน</b-tooltip>
                 </div>
-                <b-tooltip target="money" triggers="hover" variant="primary">คลิกเพื่อรับเงิน</b-tooltip>
+                
 
               </b-row>
 
@@ -117,7 +118,7 @@
         
         <b-col sm="6" class="dfa p-4">
           <h1>DFA : Deterministic Finite Automata</h1>
-          <p>{{this.state}}</p>
+          <p>currentState = {{this.state}}</p>
         </b-col>
       </b-row>
     </b-container>
@@ -170,15 +171,36 @@ export default {
 
     //Menu
     edit: function() {
-
+      
     },
     accept: function() {
+      //ใส่รหัส 123 ถูกต้อง
       if(this.state === 4 && this.input === '123') {
         this.state = 5
         this.input = ''
         this.title = 'กรุณาป้อนจำนวนเงินที่ต้องการถอน'
       }
 
+      //ใส่รหัส 1 (ไม่ถูกต้อง)
+      else if (this.state === 2 || this.state === 3 || this.state === 13) {
+        this.state = 15
+        this.input = ''
+        this.showInput = false
+        this.title = 'รหัสผ่านไม่ถูกต้อง'
+        this.subTitle = 'กดยืนยันเพื่อป้อนรหัสใหม่'
+      }
+
+      //รหัสผ่านไม่ถูกต้อง ป้อนรหัสผ่านใหม่
+      else if (this.state === 15 ) {
+        this.state = 1
+        this.title = 'กรุณาป้อนรหัสผ่าน'
+        this.subTitle = ''
+        this.showInput = true
+        this.showCard = false
+      }
+
+
+      //ถอนเงินสำเร็จ
       if(this.state === 9 || this.state === 8) {
         this.state = 10
         this.title = 'ถอนเงินสำเร็จกรุณารับบัตรคืน'
@@ -215,64 +237,144 @@ export default {
 
     //Numpad
     num1: function() {
-      //รหัสผ่าน
+      //รหัสผ่านตัวที่ 1
       if(this.state === 1) {
         this.state = 2
         this.input = this.input.concat('1')
       }
 
+      //รหัสผ่านผิด
+      else if(this.state === 13) {
+        this.state = 13
+        this.input = this.input.concat('1')
+      }
+
       //ถอนเงิน
-      if(this.state === 5) {
+      else if(this.state === 5) {
         this.state = 6
         this.input = this.input.concat('1')
       }
     },
     num2: function() {
-      if(this.state === 2) {
+      //รหัสผ่านตัวที่ 1
+      if(this.state === 1) {
+        this.state = 13
+        this.input = this.input.concat('2')
+      }
+
+      //รหัสผ่านผิด
+      else if(this.state === 13) {
+        this.state = 13
+        this.input = this.input.concat('2')
+      }
+
+      //รหัสผ่านตัวที่ 2
+      else if(this.state === 2) {
         this.state = 3
         this.input = this.input.concat('2')
       }
 
       //ถอนเงิน
-      if(this.state === 5) {
+      else if(this.state === 5) {
         this.state = 6
         this.input = this.input.concat('2')
       }
     },
     num3: function() {
-      if(this.state === 3) {
+      //รหัสผ่านตัวที่ 1
+      if(this.state === 1) {
+        this.state = 13
+        this.input = this.input.concat('3')
+      }
+
+      //รหัสผ่านผิด
+      else if(this.state === 13 || this.state === 4) {
+        this.state = 13
+        this.input = this.input.concat('3')
+      }
+
+      //รหัสผ่านตัวที่ 3
+      else if(this.state === 3) {
         this.state = 4
         this.input = this.input.concat('3')
       }
 
       //ถอนเงิน
-      if(this.state === 5) {
+      else if(this.state === 5) {
         this.state = 6
         this.input = this.input.concat('3')
       }
     },
     num4: function() {
+      //รหัสผ่านตัวที่ 1
+      if(this.state === 1) {
+        this.state = 13
+        this.input = this.input.concat('4')
+      }
+
+      //รหัสผ่านผิด
+      else if(this.state === 13) {
+        this.state = 13
+        this.input = this.input.concat('4')
+      }
+
       //ถอนเงิน
-      if(this.state === 5) {
+      else if(this.state === 5) {
         this.state = 6
         this.input = this.input.concat('4')
       }
     },
     num5: function() {
+      //รหัสผ่านตัวที่ 1
+      if(this.state === 1) {
+        this.state = 13
+        this.input = this.input.concat('5')
+      }
+
+      //รหัสผ่านผิด
+      else if(this.state === 13) {
+        this.state = 13
+        this.input = this.input.concat('5')
+      }
+
       //ถอนเงิน
-      if(this.state === 5) {
+      else if(this.state === 5) {
         this.state = 6
         this.input = this.input.concat('5')
       }
     },
     num6: function() {
+      //รหัสผ่านตัวที่ 1
+      if(this.state === 1) {
+        this.state = 13
+        this.input = this.input.concat('6')
+      }
+
+      //รหัสผ่านผิด
+      else if(this.state === 13) {
+        this.state = 13
+        this.input = this.input.concat('6')
+      }
+
       //ถอนเงิน
-      if(this.state === 5) {
+      else if(this.state === 5) {
         this.state = 6
         this.input = this.input.concat('6')
       }
     },
     num7: function() {
+      //รหัสผ่านตัวที่ 1
+      if(this.state === 1) {
+        this.state = 13
+        this.input = this.input.concat('7')
+      }
+
+      //รหัสผ่านผิด
+      else if(this.state === 13) {
+        this.state = 13
+        this.input = this.input.concat('7')
+      }
+      
       //ถอนเงิน
       if(this.state === 5) {
         this.state = 6
@@ -280,6 +382,18 @@ export default {
       }
     },
     num8: function() {
+      //รหัสผ่านตัวที่ 1
+      if(this.state === 1) {
+        this.state = 13
+        this.input = this.input.concat('8')
+      }
+
+      //รหัสผ่านผิด
+      else if(this.state === 13) {
+        this.state = 13
+        this.input = this.input.concat('8')
+      }
+
       //ถอนเงิน
       if(this.state === 5) {
         this.state = 6
@@ -287,6 +401,18 @@ export default {
       }
     },
     num9: function() {
+      //รหัสผ่านตัวที่ 1
+      if(this.state === 1) {
+        this.state = 13
+        this.input = this.input.concat('9')
+      }
+
+      //รหัสผ่านผิด
+      else if(this.state === 13) {
+        this.state = 13
+        this.input = this.input.concat('9')
+      }
+
       //ถอนเงิน
       if(this.state === 5) {
         this.state = 6
@@ -294,6 +420,18 @@ export default {
       }
     },
     num0: function() {
+      //รหัสผ่านตัวที่ 1
+      if(this.state === 1) {
+        this.state = 13
+        this.input = this.input.concat('0')
+      }
+
+      //รหัสผ่านผิด
+      else if(this.state === 13) {
+        this.state = 13
+        this.input = this.input.concat('0')
+      }
+
       if(this.state >= 6 && this.state < 9) {
         this.state += 1
         this.input = this.input.concat('0')
@@ -311,6 +449,7 @@ export default {
   background: url('./assets/bg.png');
   background-size: contain;
   background-attachment: fixed;
+  width: 1920px;
 }
 
 .atm {
