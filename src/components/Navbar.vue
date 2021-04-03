@@ -60,7 +60,7 @@ export default {
 
 #navbar {
     font-family: 'Prompt', sans-serif;
-    width: 100%;
+        width: 100%;
     position: fixed;
     z-index: 10;
 }
