@@ -321,14 +321,14 @@ export default {
 
     //Numpad
     num1: function() {
-      //รหัสผ่านตัวที่ 1
+      //รหัสผ่านถูก (ตัวที่ 1)
       if(this.state === 1) {
         this.state = 2
         this.input = this.input.concat('1')
       }
 
       //รหัสผ่านผิด
-      else if(this.state === 13 || this.state === 2 ||  this.state === 4) {
+      else if(this.state === 13 || this.state === 2 || this.state === 3 ||  this.state === 4) {
         this.state = 13
         this.input = this.input.concat('1')
       }
@@ -340,19 +340,13 @@ export default {
       }
     },
     num2: function() {
-      //รหัสผ่านตัวที่ 1
-      if(this.state === 1) {
-        this.state = 13
-        this.input = this.input.concat('2')
-      }
-
       //รหัสผ่านผิด
-      else if(this.state === 13 || this.state === 2 || this.state === 4) {
+      if(this.state === 13 || this.state === 1 || this.state === 3 || this.state === 4) {
         this.state = 13
         this.input = this.input.concat('2')
       }
 
-      //รหัสผ่านตัวที่ 2
+      //รหัสผ่านถูก (ตัวที่ 2)
       else if(this.state === 2) {
         this.state = 3
         this.input = this.input.concat('2')
@@ -365,19 +359,13 @@ export default {
       }
     },
     num3: function() {
-      //รหัสผ่านตัวที่ 1
-      if(this.state === 1) {
-        this.state = 13
-        this.input = this.input.concat('3')
-      }
-
       //รหัสผ่านผิด
-      else if(this.state === 13 || this.state === 2 || this.state === 4) {
+      if(this.state === 13 || this.state === 1 || this.state === 2 || this.state === 4) {
         this.state = 13
         this.input = this.input.concat('3')
       }
 
-      //รหัสผ่านตัวที่ 3
+      //รหัสผ่านถูก (ตัวที่ 3)
       else if(this.state === 3) {
         this.state = 4
         this.input = this.input.concat('3')
@@ -390,14 +378,8 @@ export default {
       }
     },
     num4: function() {
-      //รหัสผ่านตัวที่ 1
-      if(this.state === 1) {
-        this.state = 13
-        this.input = this.input.concat('4')
-      }
-
       //รหัสผ่านผิด
-      else if(this.state === 13 || this.state === 2 || this.state === 4) {
+      if(this.state === 13 || this.state >= 1 && this.state <= 4) {
         this.state = 13
         this.input = this.input.concat('4')
       }
@@ -409,14 +391,8 @@ export default {
       }
     },
     num5: function() {
-      //รหัสผ่านตัวที่ 1
-      if(this.state === 1) {
-        this.state = 13
-        this.input = this.input.concat('5')
-      }
-
       //รหัสผ่านผิด
-      else if(this.state === 13 || this.state === 2 || this.state === 4) {
+      if(this.state === 13 || this.state >= 1 && this.state <= 4) {
         this.state = 13
         this.input = this.input.concat('5')
       }
@@ -428,14 +404,8 @@ export default {
       }
     },
     num6: function() {
-      //รหัสผ่านตัวที่ 1
-      if(this.state === 1) {
-        this.state = 13
-        this.input = this.input.concat('6')
-      }
-
       //รหัสผ่านผิด
-      else if(this.state === 13 || this.state === 2 || this.state === 4) {
+      if(this.state === 13 || this.state >= 1 && this.state <= 4) {
         this.state = 13
         this.input = this.input.concat('6')
       }
@@ -447,14 +417,8 @@ export default {
       }
     },
     num7: function() {
-      //รหัสผ่านตัวที่ 1
-      if(this.state === 1) {
-        this.state = 13
-        this.input = this.input.concat('7')
-      }
-
       //รหัสผ่านผิด
-      else if(this.state === 13 || this.state === 2 || this.state === 4) {
+      if(this.state === 13 || this.state >= 1 && this.state <= 4) {
         this.state = 13
         this.input = this.input.concat('7')
       }
@@ -466,14 +430,8 @@ export default {
       }
     },
     num8: function() {
-      //รหัสผ่านตัวที่ 1
-      if(this.state === 1) {
-        this.state = 13
-        this.input = this.input.concat('8')
-      }
-
       //รหัสผ่านผิด
-      else if(this.state === 13 || this.state === 2 || this.state === 4) {
+      if(this.state === 13 || this.state >= 1 && this.state <= 4) {
         this.state = 13
         this.input = this.input.concat('8')
       }
@@ -485,14 +443,8 @@ export default {
       }
     },
     num9: function() {
-      //รหัสผ่านตัวที่ 1
-      if(this.state === 1) {
-        this.state = 13
-        this.input = this.input.concat('9')
-      }
-
       //รหัสผ่านผิด
-      else if(this.state === 13 || this.state === 2 || this.state === 4) {
+      if(this.state === 13 || this.state >= 1 && this.state <= 4) {
         this.state = 13
         this.input = this.input.concat('9')
       }
@@ -504,19 +456,14 @@ export default {
       }
     },
     num0: function() {
-      //รหัสผ่านตัวที่ 1
-      if(this.state === 1) {
-        this.state = 13
-        this.input = this.input.concat('0')
-      }
-
       //รหัสผ่านผิด
-      else if(this.state === 13 || this.state === 2 || this.state === 4) {
+      if(this.state === 13 || this.state >= 1 && this.state <= 4) {
         this.state = 13
         this.input = this.input.concat('0')
       }
 
-      if(this.state >= 6 && this.state < 9) {
+      //ถอนเงิน
+      else if(this.state >= 6 && this.state < 9) {
         this.state += 1
         this.input = this.input.concat('0')
       }
