@@ -202,6 +202,7 @@
         <b-col sm="6" class="dfa p-4">
           <h1>DFA : Deterministic Finite Automata</h1>
           <p>currentState = {{this.state}}</p>
+          <img src="./assets/noState.svg" alt="dfa" />
         </b-col>
       </b-row>
     </b-container>
@@ -214,6 +215,7 @@
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import { WebCam } from 'vue-web-cam';
+
 export default {
   name: 'Home',
   components: {
