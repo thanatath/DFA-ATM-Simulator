@@ -327,14 +327,8 @@ export default {
         this.input = this.input.concat('1')
       }
 
-      //รหัสผ่านตัวที่ 2 (ผิด)
-      else if(this.state === 2) {
-        this.state = 13
-        this.input = this.input.concat('1')
-      }
-
       //รหัสผ่านผิด
-      else if(this.state === 13 || this.state === 4) {
+      else if(this.state === 13 || this.state === 2 ||  this.state === 4) {
         this.state = 13
         this.input = this.input.concat('1')
       }
@@ -353,7 +347,7 @@ export default {
       }
 
       //รหัสผ่านผิด
-      else if(this.state === 13 || this.state === 4) {
+      else if(this.state === 13 || this.state === 2 || this.state === 4) {
         this.state = 13
         this.input = this.input.concat('2')
       }
@@ -378,7 +372,7 @@ export default {
       }
 
       //รหัสผ่านผิด
-      else if(this.state === 13 || this.state === 4) {
+      else if(this.state === 13 || this.state === 2 || this.state === 4) {
         this.state = 13
         this.input = this.input.concat('3')
       }
@@ -403,7 +397,7 @@ export default {
       }
 
       //รหัสผ่านผิด
-      else if(this.state === 13 || this.state === 4) {
+      else if(this.state === 13 || this.state === 2 || this.state === 4) {
         this.state = 13
         this.input = this.input.concat('4')
       }
@@ -422,7 +416,7 @@ export default {
       }
 
       //รหัสผ่านผิด
-      else if(this.state === 13 || this.state === 4) {
+      else if(this.state === 13 || this.state === 2 || this.state === 4) {
         this.state = 13
         this.input = this.input.concat('5')
       }
@@ -441,7 +435,7 @@ export default {
       }
 
       //รหัสผ่านผิด
-      else if(this.state === 13 || this.state === 4) {
+      else if(this.state === 13 || this.state === 2 || this.state === 4) {
         this.state = 13
         this.input = this.input.concat('6')
       }
@@ -460,7 +454,7 @@ export default {
       }
 
       //รหัสผ่านผิด
-      else if(this.state === 13 || this.state === 4) {
+      else if(this.state === 13 || this.state === 2 || this.state === 4) {
         this.state = 13
         this.input = this.input.concat('7')
       }
@@ -479,7 +473,7 @@ export default {
       }
 
       //รหัสผ่านผิด
-      else if(this.state === 13 || this.state === 4) {
+      else if(this.state === 13 || this.state === 2 || this.state === 4) {
         this.state = 13
         this.input = this.input.concat('8')
       }
@@ -498,7 +492,7 @@ export default {
       }
 
       //รหัสผ่านผิด
-      else if(this.state === 13 || this.state === 4) {
+      else if(this.state === 13 || this.state === 2 || this.state === 4) {
         this.state = 13
         this.input = this.input.concat('9')
       }
@@ -517,7 +511,7 @@ export default {
       }
 
       //รหัสผ่านผิด
-      else if(this.state === 13 || this.state === 4) {
+      else if(this.state === 13 || this.state === 2 || this.state === 4) {
         this.state = 13
         this.input = this.input.concat('0')
       }
