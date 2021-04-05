@@ -25,7 +25,7 @@
             style="font-family: 'Prompt', sans-serif;"
           >
             <ol>
-              <li></li>
+              <li>เกี่ยวกับเว็บไซต์</li>
             </ol>
           </b-modal>
 
