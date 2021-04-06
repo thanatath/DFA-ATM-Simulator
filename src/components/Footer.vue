@@ -1,7 +1,7 @@
 <template>
     <div id="footer" class="p-2">
         <p>DFA - ATM</p>
-        <p><small>เว็บไซต์นี้จัดทำขึ้นเพื่อศึกสานตอกประวัติศาสตร์</small></p>
+        <p><small>เว็บไซต์นี้จัดทำขึ้นเป็นส่วนหนึ่งของวิชา Theory of Computation</small></p>
         <hr>
         <p><small>Copyright © 2021 DFA-ATM. All rights reserved.</small></p>
     </div>
