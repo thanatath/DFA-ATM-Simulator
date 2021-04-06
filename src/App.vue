@@ -259,7 +259,22 @@ export default {
 
     //Menu
     edit: function() {
-      
+      //แก้ไขรหัสผ่าน
+      if(this.state >= 1 && this.state <= 4 || this.state === 13) {
+        this.state = 1;
+        this.title = 'กรุณาป้อนรหัสผ่าน';
+        this.subTitle = '';
+        this.showInput = true;
+        this.showCard = false;
+        this.input = ''
+      }
+
+      //แก้ไขจำนวนเงิน
+      else if(this.state >= 5 && this.state <= 9 || this.state >= 16 && this.state <= 18) {
+        this.state = 5
+        this.input = ''
+        this.title = 'กรุณาป้อนจำนวนเงินที่ต้องการถอน'
+      }
     },
     accept: function() {
       //ใส่รหัส 123 ถูกต้อง
@@ -329,7 +344,7 @@ export default {
         this.showCard = false;
       }
 
-      if (this.state === 10) {
+      else if (this.state === 10) {
         this.reset();
       }
     },
@@ -465,7 +480,7 @@ export default {
       }
 
       //จำนวนเงินไม่ถูกต้อง
-      else if(this.state === 16 || this.state === 6 || this.state === 7 || this.state === 8) {
+      else if(this.state === 6 || this.state === 7 || this.state === 8) {
         this.state = 16
         this.input = this.input.concat('4')
       }
@@ -496,7 +511,7 @@ export default {
       }
 
       //จำนวนเงินไม่ถูกต้อง
-      else if(this.state === 16 || this.state === 6 || this.state === 7 || this.state === 8) {
+      else if(this.state === 6 || this.state === 7 || this.state === 8) {
         this.state = 16
         this.input = this.input.concat('5')
       }
@@ -527,7 +542,7 @@ export default {
       }
 
       //จำนวนเงินไม่ถูกต้อง
-      else if(this.state === 16 || this.state === 6 || this.state === 7 || this.state === 8) {
+      else if(this.state === 6 || this.state === 7 || this.state === 8) {
         this.state = 16
         this.input = this.input.concat('6')
       }
@@ -558,7 +573,7 @@ export default {
       }
 
       //จำนวนเงินไม่ถูกต้อง
-      else if(this.state === 16 || this.state === 6 || this.state === 7 || this.state === 8) {
+      else if(this.state === 6 || this.state === 7 || this.state === 8) {
         this.state = 16
         this.input = this.input.concat('7')
       }
@@ -589,7 +604,7 @@ export default {
       }
 
       //จำนวนเงินไม่ถูกต้อง
-      else if(this.state === 16 || this.state === 6 || this.state === 7 || this.state === 8) {
+      else if(this.state === 6 || this.state === 7 || this.state === 8) {
         this.state = 16
         this.input = this.input.concat('8')
       }
@@ -620,7 +635,7 @@ export default {
       }
 
       //จำนวนเงินไม่ถูกต้อง
-      else if(this.state === 16 || this.state === 6 || this.state === 7 || this.state === 8) {
+      else if(this.state === 6 || this.state === 7 || this.state === 8) {
         this.state = 16
         this.input = this.input.concat('9')
       }
