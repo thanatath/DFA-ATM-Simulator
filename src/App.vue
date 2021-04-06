@@ -289,7 +289,7 @@ export default {
 
 
       //ถอนเงินสำเร็จ
-      else if(this.state === 9 || this.state === 8) {
+      else if(this.state === 8 || this.state === 9) {
         this.state = 10
         this.title = 'ถอนเงินสำเร็จกรุณารับบัตรคืน'
         this.subTitle = 'ขอบคุณที่ใช้บริการ'
@@ -300,7 +300,7 @@ export default {
       }
 
       //ใส่จำนวนเงินไม่ถูกต้อง
-      else if(this.state === 16 || this.state === 17) {
+      else if(this.state === 6 || this.state === 7 || this.state === 16 || this.state === 17) {
         this.state = 19
         this.title = 'จำนวนเงินไม่ถูกต้อง'
         this.subTitle = 'กดยืนยันเพื่อป้อนจำนวนเงินใหม่'
