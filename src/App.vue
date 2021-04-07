@@ -27,12 +27,14 @@
                   <!-- <div class="mirror" id="mirrorLeft"> </div> //add comment old mirror for use webcam --> 
                 </b-col>
 
-                <b-col cols="1" align="center" align-self="center">
+                <!-- <b-col cols="1" align="center" align-self="center">
                   <div class="camera" id="camera"></div>
                   <b-tooltip target="camera" triggers="hover" variant="primary"
                     >กล้องวงจรปิด</b-tooltip
                   >
-                </b-col>
+                </b-col> -->
+                
+                
 
                 <!-- <select v-model="camera"> //Section for option to select Camera device
                   <option>-- Select Device --</option>
