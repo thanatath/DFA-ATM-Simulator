@@ -1,6 +1,8 @@
 <template>
   <div id="app">
+    
     <Navbar :reset="this.reset" />
+    <v-parallax height="2000" src="https://firebasestorage.googleapis.com/v0/b/imgatm.appspot.com/o/BG.png?alt=media&token=6e884c2f-0c2f-49b3-bad6-5707db51dbe5">
     <b-container fluid>
       <b-row class="text-center pt-5">
 
@@ -27,12 +29,13 @@
                   <!-- <div class="mirror" id="mirrorLeft"> </div> //add comment old mirror for use webcam --> 
                 </b-col>
 
-                <b-col cols="1" align="center" align-self="center">
+                <!-- <b-col cols="1" align="center" align-self="center">
                   <div class="camera" id="camera"></div>
                   <b-tooltip target="camera" triggers="hover" variant="primary"
                     >กล้องวงจรปิด</b-tooltip
                   >
-                </b-col>
+                </b-col> -->
+                 
 
                 <!-- <select v-model="camera"> //Section for option to select Camera device
                   <option>-- Select Device --</option>
@@ -204,10 +207,12 @@
           <p>currentState = {{this.state}}</p>
           <img src="./assets/noState.svg" alt="dfa" />
         </b-col>
+        
       </b-row>
     </b-container>
-
+</v-parallax>
     <Footer />
+    
   </div>
 </template>
 
@@ -738,6 +743,7 @@ export default {
 
 #app {
   font-family: 'Prompt', sans-serif;
+  /* background-color: aquamarine; */
   background: url('./assets/bg.png');
   background-size: contain;
   background-attachment: fixed;
