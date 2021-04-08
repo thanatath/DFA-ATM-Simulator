@@ -7,7 +7,7 @@
       <b-row class="text-center pt-5">
 
         <b-col sm="6" class="atm p-4">
-          <h1>ATM : Automatic Teller Machine</h1>
+          <h1 style="color:white;">ATM : Automatic Teller Machine</h1>
           <b-row class="justify-content-md-center">
             <b-col cols="11" class="bodyATM">
               <!--1st-->
