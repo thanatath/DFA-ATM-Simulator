@@ -26,6 +26,9 @@
           >
             <ol>
               <li>เสียบบัตร ATM</li>
+              <li>กรอกรหัสผ่าน '123' จากนั้นกดตกลง</li>
+              <li>กรอกจำนวนเงินที่ต้องการถอน จากนั้นกดตกลง</li>
+              <li>รับเงิน</li>
             </ol>
           </b-modal>
 
@@ -77,7 +80,7 @@ export default {
   position: fixed;
   z-index: 10;
 }
-li{
-  padding: 10px;
+ol{
+  padding: 15px;
 }
 </style>
