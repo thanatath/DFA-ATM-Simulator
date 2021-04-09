@@ -25,7 +25,10 @@
             style="font-family: 'Prompt', sans-serif;"
           >
             <ol>
-              <li>เกี่ยวกับเว็บไซต์</li>
+              <li>เสียบบัตรATM</li>
+              <li>กรอกรหัสผ่าน'123' จากนั้นกดตกลง</li>
+              <li>กรอกจำนวนเงินที่ต้องการถอน จากนั้นกดตกลง</li>
+              <li>รับเงิน</li>
             </ol>
           </b-modal>
 
@@ -76,5 +79,8 @@ export default {
   width: 100%;
   position: fixed;
   z-index: 10;
+}
+ol{
+  padding-left: 15px;
 }
 </style>
