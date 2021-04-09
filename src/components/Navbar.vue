@@ -17,7 +17,7 @@
         <b-navbar-nav>
           <b-nav-item href="/">หน้าแรก</b-nav-item>
 
-          <b-nav-item v-b-modal.about>เกี่ยวกับเว็บไซต์</b-nav-item>
+          <b-nav-item v-b-modal.about>คำแนะนำการใช้งาน</b-nav-item>
           <b-modal
             id="about"
             centered
