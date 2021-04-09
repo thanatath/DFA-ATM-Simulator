@@ -25,7 +25,7 @@
             style="font-family: 'Prompt', sans-serif;"
           >
             <ol>
-              <li>เกี่ยวกับเว็บไซต์</li>
+              <li>เสียบบัตร ATM</li>
             </ol>
           </b-modal>
 
@@ -76,5 +76,8 @@ export default {
   width: 100%;
   position: fixed;
   z-index: 10;
+}
+li{
+  padding: 10px;
 }
 </style>
