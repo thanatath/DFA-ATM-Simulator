@@ -21,7 +21,7 @@
           <b-modal
             id="about"
             centered
-            title="เกี่ยวกับเว็บไซต์"
+            title="คำแนะนำการใช้งาน"
             style="font-family: 'Prompt', sans-serif;"
           >
             <ol>
