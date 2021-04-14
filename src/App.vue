@@ -275,7 +275,7 @@ export default {
       }
 
       //แก้ไขจำนวนเงิน
-      else if(this.state >= 5 && this.state <= 9 || this.state >= 16 && this.state <= 18) {
+      else if(this.state >= 5 && this.state <= 12 || this.state === 32) {
         this.state = 5
         this.input = ''
         this.title = 'กรุณาป้อนจำนวนเงินที่ต้องการถอน'
