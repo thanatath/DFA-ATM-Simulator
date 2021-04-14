@@ -107,7 +107,7 @@
                     class="my-4"
                     >ตกลง</b-button
                   >
-                  <b-button v-on:click="reset" size="lg" variant="danger" block
+                  <b-button v-on:click="cancel" size="lg" variant="danger" block
                     >ยกเลิก</b-button
                   >
                 </b-col>
