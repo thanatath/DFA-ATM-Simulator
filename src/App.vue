@@ -1,11 +1,13 @@
 <template>
   <div id="app">
+    
     <Navbar :reset="this.reset" />
+    <v-parallax height="2000" src="https://firebasestorage.googleapis.com/v0/b/imgatm.appspot.com/o/BG.png?alt=media&token=6e884c2f-0c2f-49b3-bad6-5707db51dbe5">
     <b-container fluid>
       <b-row class="text-center pt-5">
 
         <b-col sm="6" class="atm p-4">
-          <h1>ATM : Automatic Teller Machine</h1>
+          <h1 style="color:white;">ATM : Automatic Teller Machine</h1>
           <b-row class="justify-content-md-center">
             <b-col cols="11" class="bodyATM">
               <!--1st-->
@@ -27,12 +29,13 @@
                   <!-- <div class="mirror" id="mirrorLeft"> </div> //add comment old mirror for use webcam --> 
                 </b-col>
 
-                <b-col cols="1" align="center" align-self="center">
+                <!-- <b-col cols="1" align="center" align-self="center">
                   <div class="camera" id="camera"></div>
                   <b-tooltip target="camera" triggers="hover" variant="primary"
                     >กล้องวงจรปิด</b-tooltip
                   >
-                </b-col>
+                </b-col> -->
+                 
 
                 <!-- <select v-model="camera"> //Section for option to select Camera device
                   <option>-- Select Device --</option>
@@ -104,7 +107,7 @@
                     class="my-4"
                     >ตกลง</b-button
                   >
-                  <b-button v-on:click="reset" size="lg" variant="danger" block
+                  <b-button v-on:click="cancel" size="lg" variant="danger" block
                     >ยกเลิก</b-button
                   >
                 </b-col>
@@ -204,10 +207,12 @@
           <p>currentState = {{this.state}}</p>
           <img src="./assets/noState.svg" alt="dfa" />
         </b-col>
+        
       </b-row>
     </b-container>
-
+</v-parallax>
     <Footer />
+    
   </div>
 </template>
 
@@ -260,7 +265,7 @@ export default {
     //Menu
     edit: function() {
       //แก้ไขรหัสผ่าน
-      if(this.state >= 1 && this.state <= 4 || this.state === 13) {
+      if(this.state >= 1 && this.state <= 4 || this.state === 30) {
         this.state = 1;
         this.title = 'กรุณาป้อนรหัสผ่าน';
         this.subTitle = '';
@@ -270,7 +275,7 @@ export default {
       }
 
       //แก้ไขจำนวนเงิน
-      else if(this.state >= 5 && this.state <= 9 || this.state >= 16 && this.state <= 18) {
+      else if(this.state >= 5 && this.state <= 12 || this.state === 32) {
         this.state = 5
         this.input = ''
         this.title = 'กรุณาป้อนจำนวนเงินที่ต้องการถอน'
@@ -285,8 +290,8 @@ export default {
       }
 
       //ใส่รหัสไม่ถูกต้อง
-      else if (this.state === 2 || this.state === 3 || this.state === 13) {
-        this.state = 15
+      else if (this.state === 2 || this.state === 3 || this.state === 30) {
+        this.state = 31
         this.input = ''
         this.showInput = false
         this.title = 'รหัสผ่านไม่ถูกต้อง'
@@ -294,7 +299,7 @@ export default {
       }
 
       //รหัสผ่านไม่ถูกต้อง ป้อนรหัสผ่านใหม่
-      else if (this.state === 15 ) {
+      else if (this.state === 31 ) {
         this.state = 1
         this.title = 'กรุณาป้อนรหัสผ่าน'
         this.subTitle = ''
@@ -304,8 +309,8 @@ export default {
 
 
       //ถอนเงินสำเร็จ
-      else if(this.state === 8 || this.state === 9) {
-        this.state = 10
+      else if(this.state === 8 || this.state === 9 || this.state === 12) {
+        this.state = 14
         this.title = 'ถอนเงินสำเร็จกรุณารับบัตรคืน'
         this.subTitle = 'ขอบคุณที่ใช้บริการ'
         this.withdrawn = this.input
@@ -315,8 +320,8 @@ export default {
       }
 
       //ใส่จำนวนเงินไม่ถูกต้อง
-      else if(this.state === 6 || this.state === 7 || this.state === 16 || this.state === 17 || this.state === 18 ) {
-        this.state = 19
+      else if(this.state === 5 || this.state === 6 || this.state === 7 || this.state === 10 || this.state === 11 || this.state === 32 ) {
+        this.state = 33
         this.title = 'จำนวนเงินไม่ถูกต้อง'
         this.subTitle = 'กดยืนยันเพื่อป้อนจำนวนเงินใหม่'
         this.showInput = false
@@ -324,7 +329,7 @@ export default {
       }
 
       //จำนวนเงินไม่ถูกต้อง ป้อนจำนวนเงินใหม่
-      else if(this.state === 19) {
+      else if(this.state === 33) {
         this.state = 5
         this.input = ''
         this.title = 'กรุณาป้อนจำนวนเงินที่ต้องการถอน'
@@ -332,7 +337,17 @@ export default {
         this.showInput = true
       }
     },
-    cancel: function() {},
+    cancel: function() {
+      if(this.state >= 1 && this.state <= 9) {
+        this.state = 33
+        this.title = 'กรุณารับบัตรคืน'
+        this.subTitle = 'ขอบคุณที่ใช้บริการ'
+        this.showInput = false
+        this.input = ''
+        this.showMoney = false
+        this.showCard = true
+      }
+    },
 
     //Card & Money
     card: function() {
@@ -344,12 +359,12 @@ export default {
         this.showCard = false;
       }
 
-      else if (this.state === 10) {
+      else if (this.state === 14 || this.state === 33) {
         this.reset();
       }
     },
     money: function() {
-      if (this.state === 10) {
+      if (this.state === 14) {
         this.showMoney = false;
       }
     },
@@ -363,8 +378,8 @@ export default {
       }
 
       //รหัสผ่านผิด
-      else if(this.state === 13 || this.state === 2 || this.state === 3 ||  this.state === 4) {
-        this.state = 13
+      else if(this.state === 30 || this.state === 2 || this.state === 3 ||  this.state === 4) {
+        this.state = 30
         this.input = this.input.concat('1')
       }
 
@@ -374,28 +389,22 @@ export default {
         this.input = this.input.concat('1')
       }
 
-      //จำนวนเงินไม่ถูกต้อง
-      else if(this.state === 6 || this.state === 7 || this.state === 8) {
-        this.state = 16
-        this.input = this.input.concat('1')
-      }
-      
-      //จำนวนเงินไม่ถูกต้อง (หลักที่3)
-      else if(this.state === 16) {
-        this.state = 17
+      //ตัวที่ 2 xx
+      else if(this.state === 6) {
+        this.state = 10
         this.input = this.input.concat('1')
       }
 
-      //จำนวนเงินไม่ถูกต้อง (หลักสุดท้าย)
-      else if(this.state === 17) {
-        this.state = 18
+      //จำนวนเงินไม่ถูกต้อง
+      else if(this.state === 7 || this.state === 8 || this.state === 9 || this.state === 10 || this.state === 11 || this.state === 12 || this.state === 32) {
+        this.state = 32
         this.input = this.input.concat('1')
       }
     },
     num2: function() {
       //รหัสผ่านผิด
-      if(this.state === 13 || this.state === 1 || this.state === 3 || this.state === 4) {
-        this.state = 13
+      if(this.state === 30 || this.state === 1 || this.state === 3 || this.state === 4) {
+        this.state = 30
         this.input = this.input.concat('2')
       }
 
@@ -411,28 +420,22 @@ export default {
         this.input = this.input.concat('2')
       }
 
+      //ตัวที่ 2 xx
+      else if(this.state === 6) {
+        this.state = 10
+        this.input = this.input.concat('2')
+      }
+
       //จำนวนเงินไม่ถูกต้อง
-      else if(this.state === 6 || this.state === 7 || this.state === 8) {
-        this.state = 16
-        this.input = this.input.concat('2')
-      }
-
-      //จำนวนเงินไม่ถูกต้อง (หลักที่3)
-      else if(this.state === 16) {
-        this.state = 17
-        this.input = this.input.concat('2')
-      }
-
-      //จำนวนเงินไม่ถูกต้อง (หลักสุดท้าย)
-      else if(this.state === 17) {
-        this.state = 18
+      else if(this.state === 7 || this.state === 8 || this.state === 9 || this.state === 10 || this.state === 12 || this.state === 32) {
+        this.state = 32
         this.input = this.input.concat('2')
       }
     },
     num3: function() {
       //รหัสผ่านผิด
-      if(this.state === 13 || this.state === 1 || this.state === 2 || this.state === 4) {
-        this.state = 13
+      if(this.state === 30 || this.state === 1 || this.state === 2 || this.state === 4) {
+        this.state = 30
         this.input = this.input.concat('3')
       }
 
@@ -448,28 +451,22 @@ export default {
         this.input = this.input.concat('3')
       }
 
+      //ตัวที่ 2 xx
+      else if(this.state === 6) {
+        this.state = 10
+        this.input = this.input.concat('3')
+      }
+
       //จำนวนเงินไม่ถูกต้อง
-      else if(this.state === 6 || this.state === 7 || this.state === 8) {
-        this.state = 16
-        this.input = this.input.concat('3')
-      }
-
-      //จำนวนเงินไม่ถูกต้อง (หลักที่3)
-      else if(this.state === 16) {
-        this.state = 17
-        this.input = this.input.concat('3')
-      }
-
-      //จำนวนเงินไม่ถูกต้อง (หลักสุดท้าย)
-      else if(this.state === 17) {
-        this.state = 18
+      else if(this.state === 7 || this.state === 8 || this.state === 9 || this.state === 10 || this.state === 11 || this.state === 12 || this.state === 32) {
+        this.state = 32
         this.input = this.input.concat('3')
       }
     },
     num4: function() {
       //รหัสผ่านผิด
-      if(this.state === 13 || this.state >= 1 && this.state <= 4) {
-        this.state = 13
+      if(this.state === 30 || this.state >= 1 && this.state <= 4) {
+        this.state = 30
         this.input = this.input.concat('4')
       }
 
@@ -479,28 +476,22 @@ export default {
         this.input = this.input.concat('4')
       }
 
+      //ตัวที่ 2 xx
+      else if(this.state === 6) {
+        this.state = 10
+        this.input = this.input.concat('4')
+      }
+
       //จำนวนเงินไม่ถูกต้อง
-      else if(this.state === 6 || this.state === 7 || this.state === 8) {
-        this.state = 16
-        this.input = this.input.concat('4')
-      }
-
-      //จำนวนเงินไม่ถูกต้อง (หลักที่3)
-      else if(this.state === 16) {
-        this.state = 17
-        this.input = this.input.concat('4')
-      }
-
-      //จำนวนเงินไม่ถูกต้อง (หลักสุดท้าย)
-      else if(this.state === 17) {
-        this.state = 18
+      else if(this.state === 7 || this.state === 8 || this.state === 9 || this.state === 10 || this.state === 11 || this.state === 12 || this.state === 32) {
+        this.state = 32
         this.input = this.input.concat('4')
       }
     },
     num5: function() {
       //รหัสผ่านผิด
-      if(this.state === 13 || this.state >= 1 && this.state <= 4) {
-        this.state = 13
+      if(this.state === 30 || this.state >= 1 && this.state <= 4) {
+        this.state = 30
         this.input = this.input.concat('5')
       }
 
@@ -510,28 +501,22 @@ export default {
         this.input = this.input.concat('5')
       }
 
+      //ตัวที่ 2 xx
+      else if(this.state === 6) {
+        this.state = 10
+        this.input = this.input.concat('5')
+      }
+
       //จำนวนเงินไม่ถูกต้อง
-      else if(this.state === 6 || this.state === 7 || this.state === 8) {
-        this.state = 16
-        this.input = this.input.concat('5')
-      }
-
-      //จำนวนเงินไม่ถูกต้อง (หลักที่3)
-      else if(this.state === 16) {
-        this.state = 17
-        this.input = this.input.concat('5')
-      }
-
-      //จำนวนเงินไม่ถูกต้อง (หลักสุดท้าย)
-      else if(this.state === 17) {
-        this.state = 18
+      else if(this.state === 7 || this.state === 8 || this.state === 9 || this.state === 10 || this.state === 11 || this.state === 12 || this.state === 32) {
+        this.state = 32
         this.input = this.input.concat('5')
       }
     },
     num6: function() {
       //รหัสผ่านผิด
-      if(this.state === 13 || this.state >= 1 && this.state <= 4) {
-        this.state = 13
+      if(this.state === 30 || this.state >= 1 && this.state <= 4) {
+        this.state = 30
         this.input = this.input.concat('6')
       }
 
@@ -541,28 +526,22 @@ export default {
         this.input = this.input.concat('6')
       }
 
+      //ตัวที่ 2 xx
+      else if(this.state === 6) {
+        this.state = 10
+        this.input = this.input.concat('6')
+      }
+
       //จำนวนเงินไม่ถูกต้อง
-      else if(this.state === 6 || this.state === 7 || this.state === 8) {
-        this.state = 16
+      else if(this.state === 7 || this.state === 8 || this.state === 9 || this.state === 10 || this.state === 11 || this.state === 12 || this.state === 32) {
+        this.state = 32
         this.input = this.input.concat('6')
-      }
-
-      //จำนวนเงินไม่ถูกต้อง (หลักที่3)
-      else if(this.state === 16) {
-        this.state = 17
-        this.input = this.input.concat('6')
-      }
-
-      //จำนวนเงินไม่ถูกต้อง (หลักสุดท้าย)
-      else if(this.state === 17) {
-        this.state = 18
-        this.input = this.input.concat('7')
       }
     },
     num7: function() {
       //รหัสผ่านผิด
-      if(this.state === 13 || this.state >= 1 && this.state <= 4) {
-        this.state = 13
+      if(this.state === 30 || this.state >= 1 && this.state <= 4) {
+        this.state = 30
         this.input = this.input.concat('7')
       }
       
@@ -572,28 +551,22 @@ export default {
         this.input = this.input.concat('7');
       }
 
+      //ตัวที่ 2 xx
+      else if(this.state === 6) {
+        this.state = 10
+        this.input = this.input.concat('7')
+      }
+
       //จำนวนเงินไม่ถูกต้อง
-      else if(this.state === 6 || this.state === 7 || this.state === 8) {
-        this.state = 16
-        this.input = this.input.concat('7')
-      }
-
-      //จำนวนเงินไม่ถูกต้อง (หลักที่3)
-      else if(this.state === 16) {
-        this.state = 17
-        this.input = this.input.concat('7')
-      }
-
-      //จำนวนเงินไม่ถูกต้อง (หลักสุดท้าย)
-      else if(this.state === 17) {
-        this.state = 18
+      else if(this.state === 7 || this.state === 8 || this.state === 9 || this.state === 10 || this.state === 11 || this.state === 12 || this.state === 32) {
+        this.state = 32
         this.input = this.input.concat('7')
       }
     },
     num8: function() {
       //รหัสผ่านผิด
-      if(this.state === 13 || this.state >= 1 && this.state <= 4) {
-        this.state = 13
+      if(this.state === 30 || this.state >= 1 && this.state <= 4) {
+        this.state = 30
         this.input = this.input.concat('8')
       }
 
@@ -603,28 +576,22 @@ export default {
         this.input = this.input.concat('8');
       }
 
+      //ตัวที่ 2 xx
+      else if(this.state === 6) {
+        this.state = 10
+        this.input = this.input.concat('8')
+      }
+
       //จำนวนเงินไม่ถูกต้อง
-      else if(this.state === 6 || this.state === 7 || this.state === 8) {
-        this.state = 16
-        this.input = this.input.concat('8')
-      }
-
-      //จำนวนเงินไม่ถูกต้อง (หลักที่3)
-      else if(this.state === 16) {
-        this.state = 17
-        this.input = this.input.concat('8')
-      }
-
-      //จำนวนเงินไม่ถูกต้อง (หลักสุดท้าย)
-      else if(this.state === 17) {
-        this.state = 18
+      else if(this.state === 7 || this.state === 8 || this.state === 9 || this.state === 10 || this.state === 11 || this.state === 12 || this.state === 32) {
+        this.state = 32
         this.input = this.input.concat('8')
       }
     },
     num9: function() {
       //รหัสผ่านผิด
-      if(this.state === 13 || this.state >= 1 && this.state <= 4) {
-        this.state = 13
+      if(this.state === 30 || this.state >= 1 && this.state <= 4) {
+        this.state = 30
         this.input = this.input.concat('9')
       }
 
@@ -634,28 +601,22 @@ export default {
         this.input = this.input.concat('9');
       }
 
+      //ตัวที่ 2 xx
+      else if(this.state === 6) {
+        this.state = 10
+        this.input = this.input.concat('9')
+      }
+
       //จำนวนเงินไม่ถูกต้อง
-      else if(this.state === 6 || this.state === 7 || this.state === 8) {
-        this.state = 16
-        this.input = this.input.concat('9')
-      }
-
-      //จำนวนเงินไม่ถูกต้อง (หลักที่3)
-      else if(this.state === 16) {
-        this.state = 17
-        this.input = this.input.concat('9')
-      }
-
-      //จำนวนเงินไม่ถูกต้อง (หลักสุดท้าย)
-      else if(this.state === 17) {
-        this.state = 18
+      else if(this.state === 7 || this.state === 8 || this.state === 9 || this.state === 10 || this.state === 11 || this.state === 12 || this.state === 32) {
+        this.state = 32
         this.input = this.input.concat('9')
       }
     },
     num0: function() {
       //รหัสผ่านผิด
-      if(this.state === 13 || this.state >= 1 && this.state <= 4) {
-        this.state = 13
+      if(this.state === 30 || this.state >= 1 && this.state <= 4) {
+        this.state = 30
         this.input = this.input.concat('0')
       }
 
@@ -665,17 +626,21 @@ export default {
         this.input = this.input.concat('0')
       }
 
-      //จำนวนเงินเกิน 3 หลัก
-
-      //จำนวนเงินไม่ถูกต้อง (0 หลักที่ 3 // หลังเลข 1-9 เช่น 220)
-      else if(this.state === 16) {
-        this.state = 17
+      //จำนวนเงินไม่ถูกต้อง
+      else if(this.state === 9  || this.state === 12 || this.state === 32) {
+        this.state = 32
         this.input = this.input.concat('0')
       }
-      
-      //จำนวนเงินถูกต้อง (0 หลักที่ 4 // หลังเลข 1-9 เช่น 2200)
-      else if(this.state === 17) {
-        this.state = 9
+
+      //ตัวที่ 3 xx0
+      else if(this.state === 10) {
+        this.state = 11
+        this.input = this.input.concat('0')
+      }
+
+      //ตัวที่ 4 xx00
+      else if(this.state === 11) {
+        this.state = 12
         this.input = this.input.concat('0')
       }
     },
@@ -738,6 +703,7 @@ export default {
 
 #app {
   font-family: 'Prompt', sans-serif;
+  /* background-color: aquamarine; */
   background: url('./assets/bg.png');
   background-size: contain;
   background-attachment: fixed;
