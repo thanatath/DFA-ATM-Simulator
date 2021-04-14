@@ -359,7 +359,7 @@ export default {
         this.showCard = false;
       }
 
-      else if (this.state === 14) {
+      else if (this.state === 14 || this.state === 33) {
         this.reset();
       }
     },
