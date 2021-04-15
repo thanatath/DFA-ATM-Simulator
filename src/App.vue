@@ -202,12 +202,33 @@
           </b-row>
         </b-col>
 
-        <b-col sm="6" class="dfa p-4">
+        <!-- <b-col sm="6" class="dfa p-4">
           <h1>DFA : Deterministic Finite Automata</h1>
           <p>currentState = {{this.state}}</p>
           <img src="./assets/noState.svg" alt="dfa" />
+        </b-col> -->
+        <b-col>
+          <br><br><br><br>
+          <v-card :loading="loading" max-width="800" img="https://firebasestorage.googleapis.com/v0/b/imgatm.appspot.com/o/bgDFA.png?alt=media&token=b0e26ea9-59b7-4263-ace8-187fd228ed21" >
+            <v-img height="1600">
+              <v-row>
+                  <v-col>
+                    <v-btn block color="#000000" height="90px">
+                      <v-row>
+                        <v-col>
+                          <h5>DFA : Deterministic Finite Automata</h5>
+                          <v-btn color="#FF3D00" height="30px"
+                            ><h5>currentState = {{ this.state }}</h5>
+                          </v-btn>
+                        </v-col>
+                      </v-row>
+                    </v-btn>
+                  </v-col>
+                </v-row>
+            </v-img>
+          </v-card>
+
         </b-col>
-        
       </b-row>
     </b-container>
 </v-parallax>
@@ -833,5 +854,8 @@ export default {
 .dfa {
   background-color: rgba(0, 0, 0, 0.9);
   color: white;
+}
+h5{
+  color: aliceblue;
 }
 </style>
