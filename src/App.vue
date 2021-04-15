@@ -229,11 +229,7 @@
           <b-col>
             <!-- ส่วนนป้าย -->
             <br /><br /><br /><br />
-            <v-card
-              :loading="loading"
-              max-width="800"
-              img="https://firebasestorage.googleapis.com/v0/b/imgatm.appspot.com/o/bgDFA.png?alt=media&token=b0e26ea9-59b7-4263-ace8-187fd228ed21"
-            >
+            <v-card :loading="loading" max-width="800" img="https://firebasestorage.googleapis.com/v0/b/imgatm.appspot.com/o/bgDFA.png?alt=media&token=dcd3d77b-7ecb-40ba-90bd-3794814ad6ad">
               <v-img height="1600">
                 <v-row>
                   <v-col>
@@ -259,15 +255,12 @@
                       <v-col> </v-col>
 
                       <v-col>
-                        รอรับบัตร <br />
+                        <br />
                         <v-btn fab>
                           <v-btn fab v-show="this.state == 1" color="#F44336">
                           </v-btn
                         ></v-btn>
                         <br />
-                        <img src="./assets/Arrow.png" width="30" height="30" />
-                        <br />
-                        In Crad
                       </v-col>
                       <v-col> </v-col>
                       <v-col> </v-col>
@@ -276,20 +269,19 @@
                     <v-row>
                       <v-col> </v-col>
                       <v-col>
-                        ป้อนรหัสตัวที่1 <br />
+                        <br />
                         <v-btn fab>
                           <v-btn fab v-show="this.state == 2" color="#F44336">
                           </v-btn
                         ></v-btn>
                         <br />
-                        <img src="./assets/Arrow.png" width="30" height="30" />
                       </v-col>
                       <v-col>
-                        ยืนตัวตนไม่ถูกต้อง <br />
+                        <br />
                         <v-btn fab>
                           <v-btn
                             fab
-                            v-show="this.state == 15"
+                            v-show="this.state == 31"
                             color="#F44336"
                           ></v-btn
                         ></v-btn>
@@ -300,40 +292,42 @@
                     <v-row>
                       <v-col> </v-col>
                       <v-col>
-                        ป้อนรหัสตัวที่2 <br />
+                        <br />
                         <v-btn fab
                           ><v-btn fab v-show="this.state == 3" color="#F44336">
                           </v-btn
                         ></v-btn>
                         <br />
-                        <img src="./assets/Arrow.png" width="30" height="30" />
                       </v-col>
                       <v-col>
-                        รหัสผ่านไม่ถูกต้อง<br />
+                        <br />
                         <v-btn fab
-                          ><v-btn fab v-show="this.state == 13" color="#F44336">
+                          ><v-btn fab v-show="this.state == 30" color="#F44336">
                           </v-btn
                         ></v-btn>
                       </v-col>
                       <v-col>
-                        คืนบัตร
                         <v-btn fab></v-btn>
                       </v-col>
                     </v-row>
 
                     <v-row>
                       <v-col>
-                        คืนบัตร
-                        <v-btn fab></v-btn>
+                        <v-btn fab
+                          ><v-btn
+                            fab
+                            v-show="this.state == 33"
+                            color="#43A047"
+                          ></v-btn
+                        ></v-btn>
                       </v-col>
                       <v-col>
-                        ป้อนรหัสตัวที่3 <br />
+                        <br />
                         <v-btn fab
                           ><v-btn fab v-show="this.state == 4" color="#F44336">
                           </v-btn
                         ></v-btn>
                         <br />
-                        <img src="./assets/Arrow.png" width="30" height="30" />
                       </v-col>
                       <v-col> </v-col>
                       <v-col> </v-col>
@@ -342,7 +336,7 @@
                     <v-row>
                       <v-col> </v-col>
                       <v-col>
-                        รหัสถูกต้อง <br />
+                        <br />
                         <v-btn fab
                           ><v-btn
                             fab
@@ -351,7 +345,6 @@
                           ></v-btn
                         ></v-btn>
                         <br />
-                        <img src="./assets/Arrow.png" width="30" height="30" />
                       </v-col>
                       <v-col> </v-col>
                       <v-col> </v-col>
@@ -360,7 +353,7 @@
                     <v-row>
                       <v-col> </v-col>
                       <v-col>
-                        ป้อนจำนวณเงินตัวที่1 <br />
+                        <br />
                         <v-btn fab
                           ><v-btn
                             fab
@@ -369,10 +362,9 @@
                           ></v-btn
                         ></v-btn>
                         <br />
-                        <img src="./assets/Arrow.png" width="30" height="30" />
                       </v-col>
                       <v-col>
-                        ถอนเงินไม่สำเร็จ <br />
+                        <br />
                         <v-btn fab
                           ><v-btn
                             fab
@@ -387,7 +379,7 @@
                     <v-row>
                       <v-col> </v-col>
                       <v-col>
-                        ป้อนจำนวณเงินตัวที่2 <br />
+                        <br />
                         <v-btn fab
                           ><v-btn
                             fab
@@ -396,11 +388,9 @@
                           ></v-btn
                         ></v-btn>
                         <br />
-                        <img src="./assets/Arrow.png" width="30" height="30" />
                       </v-col>
                       <v-col> </v-col>
                       <v-col>
-                        คืนบัตร
                         <v-btn fab></v-btn>
                       </v-col>
                     </v-row>
@@ -408,7 +398,7 @@
                     <v-row>
                       <v-col> </v-col>
                       <v-col>
-                        ป้อนจำนวณเงินตัวที่3 <br />
+                        <br />
                         <v-btn fab
                           ><v-btn
                             fab
@@ -417,10 +407,8 @@
                           ></v-btn
                         ></v-btn>
                         <br />
-                        <img src="./assets/Arrow.png" width="30" height="30" />
                       </v-col>
                       <v-col>
-                        จำนวณเงินตัวที่2ไม่ถูกต้อง <br />
                         <v-btn fab>
                           <v-btn
                             fab
@@ -434,11 +422,10 @@
 
                     <v-row>
                       <v-col>
-                        คืนบัตร
                         <v-btn fab></v-btn>
                       </v-col>
                       <v-col>
-                        ป้อนจำนวณเงินตัวที่4 <br />
+                        <br />
                         <v-btn fab>
                           <v-btn
                             fab
@@ -447,17 +434,14 @@
                           ></v-btn
                         ></v-btn>
                         <br />
-                        <img src="./assets/Arrow.png" width="30" height="30" />
                       </v-col>
                       <v-col>
-                        จำนวณเงินตัวที่3ไม่ถูกต้อง <br />
+                        <br>
                         <v-btn fab
-                          ><v-btn
-                            fab
-                            v-show="this.state == 17"
-                            color="#F44336"
+                          ><v-btn fab v-show="this.state == 17" color="#F44336"
+                            ></v-btn
                           ></v-btn
-                        ></v-btn>
+                        >
                       </v-col>
                       <v-col> </v-col>
                     </v-row>
@@ -465,18 +449,22 @@
                     <v-row>
                       <v-col> </v-col>
                       <v-col>
-                        ป้อนจำนวณเงินตัวที่5
-                        <v-btn fab></v-btn>
                         <br />
-                        <img src="./assets/Arrow.png" width="30" height="30" />
+                        <v-btn fab
+                          ><v-btn
+                            fab
+                            v-show="this.state == 32"
+                            color="#F44336"
+                          ></v-btn
+                        ></v-btn>
                       </v-col>
                       <v-col> </v-col>
                       <v-col>
-                        เงินออกคืนบัตร <br />
+                        <br />
                         <v-btn fab>
                           <v-btn
                             fab
-                            v-show="this.state == 10"
+                            v-show="this.state == 14"
                             color="#43A047"
                           ></v-btn
                         ></v-btn>
@@ -486,7 +474,7 @@
                     <v-row>
                       <v-col> </v-col>
                       <v-col>
-                        จำนวณเงินเกินกำหนด
+                        <br>
                         <v-btn fab></v-btn>
                       </v-col>
                       <v-col> </v-col>
