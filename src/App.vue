@@ -94,9 +94,16 @@
                         </b-form-input>
                       </b-col>
                     </b-row>
-                    <div>
-                      <p>แก้ไข</p>
-                      <p>ตกลง</p>
+
+                    <div class="text-right" 
+                      style="position: absolute; 
+                      right: 0; bottom: 0;
+                      color: whitesmoke;
+                      padding-right: 10px;"
+                      v-show="showMenuInMonitor"
+                    >
+                      <p>แก้ไข</p><br>
+                      <p>ยืนยัน</p><br>
                       <p>ยกเลิก</p>
                     </div>
                   </b-col>
@@ -115,7 +122,7 @@
                       variant="success"
                       block
                       class="my-4"
-                      >ตกลง</b-button
+                      >ยืนยัน</b-button
                     >
                     <b-button
                       v-on:click="cancel"
@@ -209,7 +216,7 @@
                     v-on:click="money"
                     class="money pt-5"
                     id="money"
-                    v-if="showMoney"
+                    v-if="!showMoney"
                   >
                     <h1>{{ withdrawn }} บาท</h1>
                     <b-tooltip target="money" triggers="hover" variant="primary"
@@ -522,6 +529,7 @@ export default {
       devices: [],
       withdrawn: 0,
       showInput: false,
+      showMenuInMonitor: false,
       showMoney: false,
       showCard: true,
 
@@ -538,6 +546,7 @@ export default {
 
       this.withdrawn = 0;
       this.showInput = false;
+      this.showMenuInMonitor = false;
       this.showMoney = false;
       this.showCard = true;
 
@@ -552,6 +561,7 @@ export default {
         this.title = "กรุณาป้อนรหัสผ่าน";
         this.subTitle = "";
         this.showInput = true;
+        this.showMenuInMonitor = true;
         this.showCard = false;
         this.input = "";
       }
@@ -596,6 +606,7 @@ export default {
         this.subTitle = "ขอบคุณที่ใช้บริการ";
         this.withdrawn = this.input;
         this.showInput = false;
+        this.showMenuInMonitor = false;
         this.showCard = true;
         this.showMoney = true;
       }
@@ -631,6 +642,7 @@ export default {
         this.title = "กรุณารับบัตรคืน";
         this.subTitle = "ขอบคุณที่ใช้บริการ";
         this.showInput = false;
+        this.showMenuInMonitor = false;
         this.input = "";
         this.showMoney = false;
         this.showCard = true;
@@ -644,6 +656,7 @@ export default {
         this.title = "กรุณาป้อนรหัสผ่าน";
         this.subTitle = "";
         this.showInput = true;
+        this.showMenuInMonitor = true;
         this.showCard = false;
       } 
       
@@ -1136,8 +1149,8 @@ export default {
   color: white;
 }
 
-.menu {
-  height: 100px;
+.menuInmonitor {
+  text-align: right;
 }
 
 .third {
@@ -1190,7 +1203,7 @@ export default {
   background-color: white;
   border: 5px solid rgb(254, 254, 254);
   width: 60%;
-  height: 50px;
+  height: 150px;
   top: -20px;
   position: relative;
 }
