@@ -1,43 +1,43 @@
 <template>
   <div id="app">
-    
     <Navbar :reset="this.reset" />
-    <v-parallax height="2000" src="https://firebasestorage.googleapis.com/v0/b/imgatm.appspot.com/o/BG.png?alt=media&token=6e884c2f-0c2f-49b3-bad6-5707db51dbe5">
-    <b-container fluid>
-      <b-row class="text-center pt-5">
+    <v-parallax
+      height="2000"
+      src="https://firebasestorage.googleapis.com/v0/b/imgatm.appspot.com/o/BG.png?alt=media&token=6e884c2f-0c2f-49b3-bad6-5707db51dbe5"
+    >
+      <b-container fluid>
+        <b-row class="text-center pt-5">
+          <b-col sm="6" class="atm p-4">
+            <h1 style="color: white">ATM : Automatic Teller Machine</h1>
+            <b-row class="justify-content-md-center">
+              <b-col cols="11" class="bodyATM">
+                <!--1st-->
+                <b-row class="first p-3 justify-content-between">
+                  <b-col cols="2" align="center" align-self="center">
+                    <vue-web-cam
+                      ref="webcam"
+                      class="mirror"
+                      v-b-tooltip.hover
+                      title="กระจกระวังหลัง"
+                      :device-id="deviceId"
+                      width="100%"
+                      @started="onStarted"
+                      @stopped="onStopped"
+                      @error="onError"
+                      @cameras="onCameras"
+                      @camera-change="onCameraChange"
+                    />
+                    <!-- <div class="mirror" id="mirrorLeft"> </div> //add comment old mirror for use webcam -->
+                  </b-col>
 
-        <b-col sm="6" class="atm p-4">
-          <h1 style="color:white;">ATM : Automatic Teller Machine</h1>
-          <b-row class="justify-content-md-center">
-            <b-col cols="11" class="bodyATM">
-              <!--1st-->
-              <b-row class="first p-3 justify-content-between">
-                <b-col cols="2" align="center" align-self="center">
-                   
-                  <vue-web-cam
-                    ref="webcam"
-                    class="mirror"
-                    v-b-tooltip.hover title="กระจกระวังหลัง" 
-                    :device-id="deviceId"
-                    width="100%"
-                    @started="onStarted"
-                    @stopped="onStopped"
-                    @error="onError"
-                    @cameras="onCameras"
-                    @camera-change="onCameraChange"
-                  />
-                  <!-- <div class="mirror" id="mirrorLeft"> </div> //add comment old mirror for use webcam --> 
-                </b-col>
-
-                <!-- <b-col cols="1" align="center" align-self="center">
+                  <!-- <b-col cols="1" align="center" align-self="center">
                   <div class="camera" id="camera"></div>
                   <b-tooltip target="camera" triggers="hover" variant="primary"
                     >กล้องวงจรปิด</b-tooltip
                   >
                 </b-col> -->
-                 
 
-                <!-- <select v-model="camera"> //Section for option to select Camera device
+                  <!-- <select v-model="camera"> //Section for option to select Camera device
                   <option>-- Select Device --</option>
                   <option
                     v-for="device in devices"
@@ -46,193 +46,470 @@
                     >{{ device.label }}</option
                   >
                 </select> -->
-                
-                <b-col cols="2" align="center" align-self="center">
-                  <!-- <div class="mirror" id="mirrorRight"></div>  //add comment old mirror for use webcam -->
-                                    <vue-web-cam
-                    ref="webcam"
-                    class="mirror"
-                    v-b-tooltip.hover title="กระจกระวังหลัง" 
-                    :device-id="deviceId"
-                    width="100%"
-                    @started="onStarted"
-                    @stopped="onStopped"
-                    @error="onError"
-                    @cameras="onCameras"
-                    @camera-change="onCameraChange"
-                  />
-                  <!-- <b-tooltip
+
+                  <b-col cols="2" align="center" align-self="center">
+                    <!-- <div class="mirror" id="mirrorRight"></div>  //add comment old mirror for use webcam -->
+                    <vue-web-cam
+                      ref="webcam"
+                      class="mirror"
+                      v-b-tooltip.hover
+                      title="กระจกระวังหลัง"
+                      :device-id="deviceId"
+                      width="100%"
+                      @started="onStarted"
+                      @stopped="onStopped"
+                      @error="onError"
+                      @cameras="onCameras"
+                      @camera-change="onCameraChange"
+                    />
+                    <!-- <b-tooltip
                     target="mirrorRight"
                     triggers="hover"
                     variant="primary"
                     >กระจกระวังหลัง</b-tooltip
                   > -->
-                </b-col>
-              </b-row>
+                  </b-col>
+                </b-row>
 
-              <!--2nd-->
-              <b-row class="second py-4">
-                <b-col cols="2"></b-col>
+                <!--2nd-->
+                <b-row class="second py-4">
+                  <b-col cols="2"></b-col>
 
-                <!--Monitor-->
-                <b-col cols="8" class="monitor text-left">
-                  <p class="p-1">ธนาคารทรงวุฒิไทย</p>
-                  <h2 class="text-center pt-5">{{ title }}</h2>
-                  <h5 class="text-center pb-3">{{ subTitle }}</h5>
+                  <!--Monitor-->
+                  <b-col cols="8" class="monitor text-left">
+                    <p class="p-1">ธนาคารทรงวุฒิไทย</p>
+                    <h2 class="text-center pt-5">{{ title }}</h2>
+                    <h5 class="text-center pb-3">{{ subTitle }}</h5>
 
-                  <b-row align-h="center">
-                    <b-col cols="7">
-                      <b-form-input
-                        disabled
-                        v-model="input"
-                        v-if="showInput"
-                        id="input"
-                        class="text-center"
-                        size="lg"
+                    <b-row align-h="center">
+                      <b-col cols="7">
+                        <b-form-input
+                          disabled
+                          v-model="input"
+                          v-if="showInput"
+                          id="input"
+                          class="text-center"
+                          size="lg"
+                        >
+                        </b-form-input>
+                      </b-col>
+                    </b-row>
+                  </b-col>
+
+                  <b-col cols="2" class="rightButton" align-self="end">
+                    <b-button
+                      v-on:click="edit"
+                      size="lg"
+                      variant="warning"
+                      block
+                      >แก้ไข</b-button
+                    >
+                    <b-button
+                      v-on:click="accept"
+                      size="lg"
+                      variant="success"
+                      block
+                      class="my-4"
+                      >ตกลง</b-button
+                    >
+                    <b-button
+                      v-on:click="cancel"
+                      size="lg"
+                      variant="danger"
+                      block
+                      >ยกเลิก</b-button
+                    >
+                  </b-col>
+                </b-row>
+
+                <!--3rd-->
+                <b-row class="third py-4">
+                  <b-col cols="3"></b-col>
+
+                  <!--Numpad-->
+                  <b-col cols="6" class="px-3">
+                    <b-row align-h="center" class="p-2 pt-4 numpad">
+                      <b-col v-on:click="num1" cols="4" class="pb-4"
+                        ><b-button block size="lg">1</b-button></b-col
                       >
-                      </b-form-input>
-                    </b-col>
-                  </b-row>
-                </b-col>
+                      <b-col v-on:click="num2" cols="4"
+                        ><b-button block size="lg">2</b-button></b-col
+                      >
+                      <b-col v-on:click="num3" cols="4"
+                        ><b-button block size="lg">3</b-button></b-col
+                      >
 
-                <b-col cols="2" class="rightButton" align-self="end">
-                  <b-button v-on:click="edit" size="lg" variant="warning" block
-                    >แก้ไข</b-button
-                  >
-                  <b-button
-                    v-on:click="accept"
-                    size="lg"
-                    variant="success"
-                    block
-                    class="my-4"
-                    >ตกลง</b-button
-                  >
-                  <b-button v-on:click="cancel" size="lg" variant="danger" block
-                    >ยกเลิก</b-button
-                  >
-                </b-col>
-              </b-row>
+                      <b-col v-on:click="num4" cols="4" class="pb-4"
+                        ><b-button block size="lg">4</b-button></b-col
+                      >
+                      <b-col v-on:click="num5" cols="4"
+                        ><b-button block size="lg">5</b-button></b-col
+                      >
+                      <b-col v-on:click="num6" cols="4"
+                        ><b-button block size="lg">6</b-button></b-col
+                      >
 
-              <!--3rd-->
-              <b-row class="third py-4">
-                <b-col cols="3"></b-col>
+                      <b-col v-on:click="num7" cols="4" class="pb-4"
+                        ><b-button block size="lg">7</b-button></b-col
+                      >
+                      <b-col v-on:click="num8" cols="4"
+                        ><b-button block size="lg">8</b-button></b-col
+                      >
+                      <b-col v-on:click="num9" cols="4"
+                        ><b-button block size="lg">9</b-button></b-col
+                      >
 
-                <!--Numpad-->
-                <b-col cols="6" class="px-3">
-                  <b-row align-h="center" class="p-2 pt-4 numpad">
-                    <b-col v-on:click="num1" cols="4" class="pb-4"
-                      ><b-button block size="lg">1</b-button></b-col
-                    >
-                    <b-col v-on:click="num2" cols="4"
-                      ><b-button block size="lg">2</b-button></b-col
-                    >
-                    <b-col v-on:click="num3" cols="4"
-                      ><b-button block size="lg">3</b-button></b-col
-                    >
+                      <b-col v-on:click="num0" cols="4" class="pb-3"
+                        ><b-button block size="lg">0</b-button></b-col
+                      >
+                    </b-row>
+                  </b-col>
 
-                    <b-col v-on:click="num4" cols="4" class="pb-4"
-                      ><b-button block size="lg">4</b-button></b-col
+                  <!--Card-->
+                  <b-col cols="3" align="center">
+                    <div class="cardSlot" id="cardSlot"></div>
+                    <div
+                      class="atmCard pt-5 shadow-sm"
+                      id="card"
+                      v-if="showCard"
+                      v-on:click="card"
                     >
-                    <b-col v-on:click="num5" cols="4"
-                      ><b-button block size="lg">5</b-button></b-col
+                      <p>ธนาคารทรงวุฒิไทย</p>
+                      <p><small>5587 2221 8877 6685</small></p>
+                      <p>VISA</p>
+                    </div>
+                    <b-tooltip target="card" triggers="hover" variant="primary"
+                      >บัตร ATM</b-tooltip
                     >
-                    <b-col v-on:click="num6" cols="4"
-                      ><b-button block size="lg">6</b-button></b-col
+                    <b-tooltip
+                      target="cardSlot"
+                      triggers="hover"
+                      variant="primary"
+                      >ช่องใส่บัตร ATM</b-tooltip
                     >
+                  </b-col>
+                </b-row>
 
-                    <b-col v-on:click="num7" cols="4" class="pb-4"
-                      ><b-button block size="lg">7</b-button></b-col
-                    >
-                    <b-col v-on:click="num8" cols="4"
-                      ><b-button block size="lg">8</b-button></b-col
-                    >
-                    <b-col v-on:click="num9" cols="4"
-                      ><b-button block size="lg">9</b-button></b-col
-                    >
-
-                    <b-col v-on:click="num0" cols="4" class="pb-3"
-                      ><b-button block size="lg">0</b-button></b-col
-                    >
-                  </b-row>
-                </b-col>
-
-                <!--Card-->
-                <b-col cols="3" align="center">
-                  <div class="cardSlot" id="cardSlot"></div>
-                  <div
-                    class="atmCard pt-5 shadow-sm"
-                    id="card"
-                    v-if="showCard"
-                    v-on:click="card"
-                  >
-                    <p>ธนาคารทรงวุฒิไทย</p>
-                    <p><small>5587 2221 8877 6685</small></p>
-                    <p>VISA</p>
-                  </div>
-                  <b-tooltip target="card" triggers="hover" variant="primary"
-                    >บัตร ATM</b-tooltip
-                  >
+                <!--4th-->
+                <b-row class="fourth p-5" align-h="center">
+                  <div class="moneySlot" id="moneySlot"></div>
                   <b-tooltip
-                    target="cardSlot"
+                    target="moneySlot"
                     triggers="hover"
                     variant="primary"
-                    >ช่องใส่บัตร ATM</b-tooltip
+                    >ช่องเงินออก</b-tooltip
                   >
-                </b-col>
-              </b-row>
 
-              <!--4th-->
-              <b-row class="fourth p-5" align-h="center">
-                <div class="moneySlot" id="moneySlot"></div>
-                <b-tooltip target="moneySlot" triggers="hover" variant="primary">ช่องเงินออก</b-tooltip>
+                  <div
+                    v-on:click="money"
+                    class="money pt-5"
+                    id="money"
+                    v-if="showMoney"
+                  >
+                    <h1>{{ withdrawn }} บาท</h1>
+                    <b-tooltip target="money" triggers="hover" variant="primary"
+                      >คลิกเพื่อรับเงิน</b-tooltip
+                    >
+                  </div>
+                </b-row>
 
-                <div v-on:click="money" class="money pt-5" id="money" v-if="showMoney">
-                  <h1>{{withdrawn}} บาท</h1>
-                  <b-tooltip target="money" triggers="hover" variant="primary">คลิกเพื่อรับเงิน</b-tooltip>
-                </div>
-                
+                <!--5th-->
+                <b-row class="fifth pr-3" align-v="end" align-h="end">
+                  <h1>ธนาคารทรงวุฒิไทย</h1>
+                </b-row>
+              </b-col>
+            </b-row>
+          </b-col>
 
-              </b-row>
-
-              <!--5th-->
-              <b-row class="fifth pr-3" align-v="end" align-h="end">
-                <h1>ธนาคารทรงวุฒิไทย</h1>
-              </b-row>
-            </b-col>
-          </b-row>
-        </b-col>
-
-        <b-col sm="6" class="dfa p-4">
+          <!-- <b-col sm="6" class="dfa p-4">
           <h1>DFA : Deterministic Finite Automata</h1>
           <p>currentState = {{this.state}}</p>
           <img src="./assets/noState.svg" alt="dfa" />
-        </b-col>
-        
-      </b-row>
-    </b-container>
-</v-parallax>
+        </b-col> -->
+          <b-col>
+            <!-- ส่วนนป้าย -->
+            <br /><br /><br /><br />
+            <v-card :loading="loading" max-width="800" img="https://firebasestorage.googleapis.com/v0/b/imgatm.appspot.com/o/bgDFA.png?alt=media&token=e662d835-43e4-460b-a656-4e9396e1708f" color="#B0BEC5">
+              <v-img height="1600" >
+                <v-row>
+                  <v-col>
+                    <v-btn block color="#000000" height="90px">
+                      <v-row>
+                        <v-col>
+                          <h5>DFA : Deterministic Finite Automata</h5>
+                          <v-btn color="#FF3D00" height="30px"
+                            ><h5>currentState = {{ this.state }}</h5>
+                          </v-btn>
+                        </v-col>
+                      </v-row>
+                    </v-btn>
+                  </v-col>
+                </v-row>
+                <!-- ส่วนนป้าย -->
+
+                <v-row>
+                  <v-col>
+                    <!-- ลอง -->
+
+                    <v-row>
+                      <v-col> </v-col>
+
+                      <v-col>
+                        <br />
+                        <v-btn fab>
+                          <v-btn fab v-show="this.state == 1" color="#F44336">
+                          </v-btn
+                        ></v-btn>
+                        <br />
+                      </v-col>
+                      <v-col> </v-col>
+                      <v-col> </v-col>
+                    </v-row>
+
+                    <v-row>
+                      <v-col> </v-col>
+                      <v-col>
+                        <br />
+                        <v-btn fab>
+                          <v-btn fab v-show="this.state == 2" color="#F44336">
+                          </v-btn
+                        ></v-btn>
+                        <br />
+                      </v-col>
+                      <v-col>
+                        <br />
+                        <v-btn fab>
+                          <v-btn
+                            fab
+                            v-show="this.state == 31"
+                            color="#F44336"
+                          ></v-btn
+                        ></v-btn>
+                      </v-col>
+                      <v-col> </v-col>
+                    </v-row>
+
+                    <v-row>
+                      <v-col> </v-col>
+                      <v-col>
+                        <br />
+                        <v-btn fab
+                          ><v-btn fab v-show="this.state == 3" color="#F44336">
+                          </v-btn
+                        ></v-btn>
+                        <br />
+                      </v-col>
+                      <v-col>
+                        <br />
+                        <v-btn fab
+                          ><v-btn fab v-show="this.state == 30" color="#F44336">
+                          </v-btn
+                        ></v-btn>
+                      </v-col>
+                      <v-col>
+                        <v-btn fab></v-btn>
+                      </v-col>
+                    </v-row>
+
+                    <v-row>
+                      <v-col>
+                        <v-btn fab
+                          ><v-btn
+                            fab
+                            v-show="this.state == 33"
+                            color="#43A047"
+                          ></v-btn
+                        ></v-btn>
+                      </v-col>
+                      <v-col>
+                        <br />
+                        <v-btn fab
+                          ><v-btn fab v-show="this.state == 4" color="#F44336">
+                          </v-btn
+                        ></v-btn>
+                        <br />
+                      </v-col>
+                      <v-col> </v-col>
+                      <v-col> </v-col>
+                    </v-row>
+
+                    <v-row>
+                      <v-col> </v-col>
+                      <v-col>
+                        <br />
+                        <v-btn fab
+                          ><v-btn
+                            fab
+                            v-show="this.state == 5"
+                            color="#F44336"
+                          ></v-btn
+                        ></v-btn>
+                        <br />
+                      </v-col>
+                      <v-col> </v-col>
+                      <v-col> </v-col>
+                    </v-row>
+
+                    <v-row>
+                      <v-col> </v-col>
+                      <v-col>
+                        <br />
+                        <v-btn fab
+                          ><v-btn
+                            fab
+                            v-show="this.state == 6"
+                            color="#F44336"
+                          ></v-btn
+                        ></v-btn>
+                        <br />
+                      </v-col>
+                      <v-col>
+                        <br />
+                        <v-btn fab
+                          ><v-btn
+                            fab
+                            v-show="this.state == 19"
+                            color="#F44336"
+                          ></v-btn
+                        ></v-btn>
+                      </v-col>
+                      <v-col> </v-col>
+                    </v-row>
+
+                    <v-row>
+                      <v-col> </v-col>
+                      <v-col>
+                        <br />
+                        <v-btn fab
+                          ><v-btn
+                            fab
+                            v-show="this.state == 7"
+                            color="#F44336"
+                          ></v-btn
+                        ></v-btn>
+                        <br />
+                      </v-col>
+                      <v-col> </v-col>
+                      <v-col>
+                        <v-btn fab></v-btn>
+                      </v-col>
+                    </v-row>
+
+                    <v-row>
+                      <v-col> </v-col>
+                      <v-col>
+                        <br />
+                        <v-btn fab
+                          ><v-btn
+                            fab
+                            v-show="this.state == 8"
+                            color="#F44336"
+                          ></v-btn
+                        ></v-btn>
+                        <br />
+                      </v-col>
+                      <v-col>
+                        <v-btn fab>
+                          <v-btn
+                            fab
+                            v-show="this.state == 16"
+                            color="#F44336"
+                          ></v-btn
+                        ></v-btn>
+                      </v-col>
+                      <v-col> </v-col>
+                    </v-row>
+
+                    <v-row>
+                      <v-col>
+                        <v-btn fab></v-btn>
+                      </v-col>
+                      <v-col>
+                        <br />
+                        <v-btn fab>
+                          <v-btn
+                            fab
+                            v-show="this.state == 9"
+                            color="#F44336"
+                          ></v-btn
+                        ></v-btn>
+                        <br />
+                      </v-col>
+                      <v-col>
+                        <br>
+                        <v-btn fab
+                          ><v-btn fab v-show="this.state == 17" color="#F44336"
+                            ></v-btn
+                          ></v-btn
+                        >
+                      </v-col>
+                      <v-col> </v-col>
+                    </v-row>
+
+                    <v-row>
+                      <v-col> </v-col>
+                      <v-col>
+                        <br />
+                        <v-btn fab
+                          ><v-btn
+                            fab
+                            v-show="this.state == 32"
+                            color="#F44336"
+                          ></v-btn
+                        ></v-btn>
+                      </v-col>
+                      <v-col> </v-col>
+                      <v-col>
+                        <br />
+                        <v-btn fab>
+                          <v-btn
+                            fab
+                            v-show="this.state == 14"
+                            color="#43A047"
+                          ></v-btn
+                        ></v-btn>
+                      </v-col>
+                    </v-row>
+
+                    <v-row>
+                      <v-col> </v-col>
+                      <v-col>
+                        <br>
+                        <v-btn fab></v-btn>
+                      </v-col>
+                      <v-col> </v-col>
+                      <v-col> </v-col>
+                    </v-row>
+                    <!-- ลอง -->
+                  </v-col>
+                </v-row>
+              </v-img>
+            </v-card>
+          </b-col>
+        </b-row>
+      </b-container>
+    </v-parallax>
     <Footer />
-    
   </div>
 </template>
 
 <script>
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import { WebCam } from 'vue-web-cam';
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import { WebCam } from "vue-web-cam";
 
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
     Navbar,
     Footer,
-    'vue-web-cam': WebCam,
+    "vue-web-cam": WebCam,
   },
   data() {
     return {
-      title: 'ยินดีต้อนรับ',
-      subTitle: 'กรุณาใส่บัตรเพื่อเริ่มทำรายการ',
-      input: '',
+      title: "ยินดีต้อนรับ",
+      subTitle: "กรุณาใส่บัตรเพื่อเริ่มทำรายการ",
+      input: "",
       state: 0,
       img: null,
       camera: null,
@@ -243,15 +520,15 @@ export default {
       showMoney: false,
       showCard: true,
 
-      currentState: '',
+      currentState: "",
     };
   },
   methods: {
     //Reset
-    reset: function() {
-      this.title = 'ยินดีต้อนรับ';
-      this.subTitle = 'กรุณาใส่บัตรเพื่อเริ่มทำรายการ';
-      this.input = '';
+    reset: function () {
+      this.title = "ยินดีต้อนรับ";
+      this.subTitle = "กรุณาใส่บัตรเพื่อเริ่มทำรายการ";
+      this.input = "";
       this.state = 0;
 
       this.withdrawn = 0;
@@ -259,389 +536,479 @@ export default {
       this.showMoney = false;
       this.showCard = true;
 
-      this.currentState = '';
+      this.currentState = "";
     },
 
     //Menu
-    edit: function() {
+    edit: function () {
       //แก้ไขรหัสผ่าน
-      if(this.state >= 1 && this.state <= 4 || this.state === 30) {
+      if ((this.state >= 1 && this.state <= 4) || this.state === 30) {
         this.state = 1;
-        this.title = 'กรุณาป้อนรหัสผ่าน';
-        this.subTitle = '';
+        this.title = "กรุณาป้อนรหัสผ่าน";
+        this.subTitle = "";
         this.showInput = true;
         this.showCard = false;
-        this.input = ''
+        this.input = "";
       }
 
       //แก้ไขจำนวนเงิน
-      else if(this.state >= 5 && this.state <= 12 || this.state === 32) {
-        this.state = 5
-        this.input = ''
-        this.title = 'กรุณาป้อนจำนวนเงินที่ต้องการถอน'
+      else if ((this.state >= 5 && this.state <= 12) || this.state === 32) {
+        this.state = 5;
+        this.input = "";
+        this.title = "กรุณาป้อนจำนวนเงินที่ต้องการถอน";
       }
     },
-    accept: function() {
+    accept: function () {
       //ใส่รหัส 123 ถูกต้อง
-      if(this.state === 4 && this.input === '123') {
-        this.state = 5
-        this.input = ''
-        this.title = 'กรุณาป้อนจำนวนเงินที่ต้องการถอน'
+      if (this.state === 4 && this.input === "123") {
+        this.state = 5;
+        this.input = "";
+        this.title = "กรุณาป้อนจำนวนเงินที่ต้องการถอน";
       }
 
       //ใส่รหัสไม่ถูกต้อง
       else if (this.state === 2 || this.state === 3 || this.state === 30) {
-        this.state = 31
-        this.input = ''
-        this.showInput = false
-        this.title = 'รหัสผ่านไม่ถูกต้อง'
-        this.subTitle = 'กดยืนยันเพื่อป้อนรหัสใหม่'
+        this.state = 31;
+        this.input = "";
+        this.showInput = false;
+        this.title = "รหัสผ่านไม่ถูกต้อง";
+        this.subTitle = "กดยืนยันเพื่อป้อนรหัสใหม่";
       }
 
       //รหัสผ่านไม่ถูกต้อง ป้อนรหัสผ่านใหม่
-      else if (this.state === 31 ) {
-        this.state = 1
-        this.title = 'กรุณาป้อนรหัสผ่าน'
-        this.subTitle = ''
-        this.showInput = true
-        this.showCard = false
-      }
-
-
-      //ถอนเงินสำเร็จ
-      else if(this.state === 8 || this.state === 9 || this.state === 12) {
-        this.state = 14
-        this.title = 'ถอนเงินสำเร็จกรุณารับบัตรคืน'
-        this.subTitle = 'ขอบคุณที่ใช้บริการ'
-        this.withdrawn = this.input
-        this.showInput = false
-        this.showCard = true
-        this.showMoney = true
-      }
-
-      //ใส่จำนวนเงินไม่ถูกต้อง
-      else if(this.state === 5 || this.state === 6 || this.state === 7 || this.state === 10 || this.state === 11 || this.state === 32 ) {
-        this.state = 33
-        this.title = 'จำนวนเงินไม่ถูกต้อง'
-        this.subTitle = 'กดยืนยันเพื่อป้อนจำนวนเงินใหม่'
-        this.showInput = false
-        this.input = ''
-      }
-
-      //จำนวนเงินไม่ถูกต้อง ป้อนจำนวนเงินใหม่
-      else if(this.state === 33) {
-        this.state = 5
-        this.input = ''
-        this.title = 'กรุณาป้อนจำนวนเงินที่ต้องการถอน'
-        this.subTitle = ''
-        this.showInput = true
-      }
-    },
-    cancel: function() {
-      if(this.state >= 1 && this.state <= 9) {
-        this.state = 33
-        this.title = 'กรุณารับบัตรคืน'
-        this.subTitle = 'ขอบคุณที่ใช้บริการ'
-        this.showInput = false
-        this.input = ''
-        this.showMoney = false
-        this.showCard = true
-      }
-    },
-
-    //Card & Money
-    card: function() {
-      if (this.state === 0) {
+      else if (this.state === 31) {
         this.state = 1;
-        this.title = 'กรุณาป้อนรหัสผ่าน';
-        this.subTitle = '';
+        this.title = "กรุณาป้อนรหัสผ่าน";
+        this.subTitle = "";
         this.showInput = true;
         this.showCard = false;
       }
 
-      else if (this.state === 14 || this.state === 33) {
+      //ถอนเงินสำเร็จ
+      else if (this.state === 8 || this.state === 9 || this.state === 12) {
+        this.state = 14;
+        this.title = "ถอนเงินสำเร็จกรุณารับบัตรคืน";
+        this.subTitle = "ขอบคุณที่ใช้บริการ";
+        this.withdrawn = this.input;
+        this.showInput = false;
+        this.showCard = true;
+        this.showMoney = true;
+      }
+
+      //ใส่จำนวนเงินไม่ถูกต้อง
+      else if (
+        this.state === 5 ||
+        this.state === 6 ||
+        this.state === 7 ||
+        this.state === 10 ||
+        this.state === 11 ||
+        this.state === 32
+      ) {
+        this.state = 33;
+        this.title = "จำนวนเงินไม่ถูกต้อง";
+        this.subTitle = "กดยืนยันเพื่อป้อนจำนวนเงินใหม่";
+        this.showInput = false;
+        this.input = "";
+      }
+
+      //จำนวนเงินไม่ถูกต้อง ป้อนจำนวนเงินใหม่
+      else if (this.state === 33) {
+        this.state = 5;
+        this.input = "";
+        this.title = "กรุณาป้อนจำนวนเงินที่ต้องการถอน";
+        this.subTitle = "";
+        this.showInput = true;
+      }
+    },
+    cancel: function () {
+      if (this.state >= 1 && this.state <= 9) {
+        this.state = 33;
+        this.title = "กรุณารับบัตรคืน";
+        this.subTitle = "ขอบคุณที่ใช้บริการ";
+        this.showInput = false;
+        this.input = "";
+        this.showMoney = false;
+        this.showCard = true;
+      }
+    },
+
+    //Card & Money
+    card: function () {
+      if (this.state === 0) {
+        this.state = 1;
+        this.title = "กรุณาป้อนรหัสผ่าน";
+        this.subTitle = "";
+        this.showInput = true;
+        this.showCard = false;
+      } else if (this.state === 14 || this.state === 33) {
         this.reset();
       }
     },
-    money: function() {
+    money: function () {
       if (this.state === 14) {
         this.showMoney = false;
       }
     },
 
     //Numpad
-    num1: function() {
+    num1: function () {
       //รหัสผ่านถูก (ตัวที่ 1)
-      if(this.state === 1) {
-        this.state = 2
-        this.input = this.input.concat('1')
+      if (this.state === 1) {
+        this.state = 2;
+        this.input = this.input.concat("1");
       }
 
       //รหัสผ่านผิด
-      else if(this.state === 30 || this.state === 2 || this.state === 3 ||  this.state === 4) {
-        this.state = 30
-        this.input = this.input.concat('1')
+      else if (
+        this.state === 30 ||
+        this.state === 2 ||
+        this.state === 3 ||
+        this.state === 4
+      ) {
+        this.state = 30;
+        this.input = this.input.concat("1");
       }
 
       //ถอนเงิน
-      else if(this.state === 5) {
-        this.state = 6
-        this.input = this.input.concat('1')
+      else if (this.state === 5) {
+        this.state = 6;
+        this.input = this.input.concat("1");
       }
 
       //ตัวที่ 2 xx
-      else if(this.state === 6) {
-        this.state = 10
-        this.input = this.input.concat('1')
+      else if (this.state === 6) {
+        this.state = 10;
+        this.input = this.input.concat("1");
       }
 
       //จำนวนเงินไม่ถูกต้อง
-      else if(this.state === 7 || this.state === 8 || this.state === 9 || this.state === 10 || this.state === 11 || this.state === 12 || this.state === 32) {
-        this.state = 32
-        this.input = this.input.concat('1')
+      else if (
+        this.state === 7 ||
+        this.state === 8 ||
+        this.state === 9 ||
+        this.state === 10 ||
+        this.state === 11 ||
+        this.state === 12 ||
+        this.state === 32
+      ) {
+        this.state = 32;
+        this.input = this.input.concat("1");
       }
     },
-    num2: function() {
+    num2: function () {
       //รหัสผ่านผิด
-      if(this.state === 30 || this.state === 1 || this.state === 3 || this.state === 4) {
-        this.state = 30
-        this.input = this.input.concat('2')
+      if (
+        this.state === 30 ||
+        this.state === 1 ||
+        this.state === 3 ||
+        this.state === 4
+      ) {
+        this.state = 30;
+        this.input = this.input.concat("2");
       }
 
       //รหัสผ่านถูก (ตัวที่ 2)
-      else if(this.state === 2) {
-        this.state = 3
-        this.input = this.input.concat('2')
+      else if (this.state === 2) {
+        this.state = 3;
+        this.input = this.input.concat("2");
       }
 
       //ถอนเงิน
-      else if(this.state === 5) {
-        this.state = 6
-        this.input = this.input.concat('2')
+      else if (this.state === 5) {
+        this.state = 6;
+        this.input = this.input.concat("2");
       }
 
       //ตัวที่ 2 xx
-      else if(this.state === 6) {
-        this.state = 10
-        this.input = this.input.concat('2')
+      else if (this.state === 6) {
+        this.state = 10;
+        this.input = this.input.concat("2");
       }
 
       //จำนวนเงินไม่ถูกต้อง
-      else if(this.state === 7 || this.state === 8 || this.state === 9 || this.state === 10 || this.state === 12 || this.state === 32) {
-        this.state = 32
-        this.input = this.input.concat('2')
+      else if (
+        this.state === 7 ||
+        this.state === 8 ||
+        this.state === 9 ||
+        this.state === 10 ||
+        this.state === 12 ||
+        this.state === 32
+      ) {
+        this.state = 32;
+        this.input = this.input.concat("2");
       }
     },
-    num3: function() {
+    num3: function () {
       //รหัสผ่านผิด
-      if(this.state === 30 || this.state === 1 || this.state === 2 || this.state === 4) {
-        this.state = 30
-        this.input = this.input.concat('3')
+      if (
+        this.state === 30 ||
+        this.state === 1 ||
+        this.state === 2 ||
+        this.state === 4
+      ) {
+        this.state = 30;
+        this.input = this.input.concat("3");
       }
 
       //รหัสผ่านถูก (ตัวที่ 3)
-      else if(this.state === 3) {
-        this.state = 4
-        this.input = this.input.concat('3')
-      }
-
-      //ถอนเงิน
-      else if(this.state === 5) {
-        this.state = 6
-        this.input = this.input.concat('3')
-      }
-
-      //ตัวที่ 2 xx
-      else if(this.state === 6) {
-        this.state = 10
-        this.input = this.input.concat('3')
-      }
-
-      //จำนวนเงินไม่ถูกต้อง
-      else if(this.state === 7 || this.state === 8 || this.state === 9 || this.state === 10 || this.state === 11 || this.state === 12 || this.state === 32) {
-        this.state = 32
-        this.input = this.input.concat('3')
-      }
-    },
-    num4: function() {
-      //รหัสผ่านผิด
-      if(this.state === 30 || this.state >= 1 && this.state <= 4) {
-        this.state = 30
-        this.input = this.input.concat('4')
-      }
-
-      //ถอนเงิน
-      else if(this.state === 5) {
-        this.state = 6
-        this.input = this.input.concat('4')
-      }
-
-      //ตัวที่ 2 xx
-      else if(this.state === 6) {
-        this.state = 10
-        this.input = this.input.concat('4')
-      }
-
-      //จำนวนเงินไม่ถูกต้อง
-      else if(this.state === 7 || this.state === 8 || this.state === 9 || this.state === 10 || this.state === 11 || this.state === 12 || this.state === 32) {
-        this.state = 32
-        this.input = this.input.concat('4')
-      }
-    },
-    num5: function() {
-      //รหัสผ่านผิด
-      if(this.state === 30 || this.state >= 1 && this.state <= 4) {
-        this.state = 30
-        this.input = this.input.concat('5')
-      }
-
-      //ถอนเงิน
-      else if(this.state === 5) {
-        this.state = 6
-        this.input = this.input.concat('5')
-      }
-
-      //ตัวที่ 2 xx
-      else if(this.state === 6) {
-        this.state = 10
-        this.input = this.input.concat('5')
-      }
-
-      //จำนวนเงินไม่ถูกต้อง
-      else if(this.state === 7 || this.state === 8 || this.state === 9 || this.state === 10 || this.state === 11 || this.state === 12 || this.state === 32) {
-        this.state = 32
-        this.input = this.input.concat('5')
-      }
-    },
-    num6: function() {
-      //รหัสผ่านผิด
-      if(this.state === 30 || this.state >= 1 && this.state <= 4) {
-        this.state = 30
-        this.input = this.input.concat('6')
-      }
-
-      //ถอนเงิน
-      else if(this.state === 5) {
-        this.state = 6
-        this.input = this.input.concat('6')
-      }
-
-      //ตัวที่ 2 xx
-      else if(this.state === 6) {
-        this.state = 10
-        this.input = this.input.concat('6')
-      }
-
-      //จำนวนเงินไม่ถูกต้อง
-      else if(this.state === 7 || this.state === 8 || this.state === 9 || this.state === 10 || this.state === 11 || this.state === 12 || this.state === 32) {
-        this.state = 32
-        this.input = this.input.concat('6')
-      }
-    },
-    num7: function() {
-      //รหัสผ่านผิด
-      if(this.state === 30 || this.state >= 1 && this.state <= 4) {
-        this.state = 30
-        this.input = this.input.concat('7')
-      }
-      
-      //ถอนเงิน
-      else if (this.state === 5) {
-        this.state = 6;
-        this.input = this.input.concat('7');
-      }
-
-      //ตัวที่ 2 xx
-      else if(this.state === 6) {
-        this.state = 10
-        this.input = this.input.concat('7')
-      }
-
-      //จำนวนเงินไม่ถูกต้อง
-      else if(this.state === 7 || this.state === 8 || this.state === 9 || this.state === 10 || this.state === 11 || this.state === 12 || this.state === 32) {
-        this.state = 32
-        this.input = this.input.concat('7')
-      }
-    },
-    num8: function() {
-      //รหัสผ่านผิด
-      if(this.state === 30 || this.state >= 1 && this.state <= 4) {
-        this.state = 30
-        this.input = this.input.concat('8')
+      else if (this.state === 3) {
+        this.state = 4;
+        this.input = this.input.concat("3");
       }
 
       //ถอนเงิน
       else if (this.state === 5) {
         this.state = 6;
-        this.input = this.input.concat('8');
+        this.input = this.input.concat("3");
       }
 
       //ตัวที่ 2 xx
-      else if(this.state === 6) {
-        this.state = 10
-        this.input = this.input.concat('8')
+      else if (this.state === 6) {
+        this.state = 10;
+        this.input = this.input.concat("3");
       }
 
       //จำนวนเงินไม่ถูกต้อง
-      else if(this.state === 7 || this.state === 8 || this.state === 9 || this.state === 10 || this.state === 11 || this.state === 12 || this.state === 32) {
-        this.state = 32
-        this.input = this.input.concat('8')
+      else if (
+        this.state === 7 ||
+        this.state === 8 ||
+        this.state === 9 ||
+        this.state === 10 ||
+        this.state === 11 ||
+        this.state === 12 ||
+        this.state === 32
+      ) {
+        this.state = 32;
+        this.input = this.input.concat("3");
       }
     },
-    num9: function() {
+    num4: function () {
       //รหัสผ่านผิด
-      if(this.state === 30 || this.state >= 1 && this.state <= 4) {
-        this.state = 30
-        this.input = this.input.concat('9')
+      if (this.state === 30 || (this.state >= 1 && this.state <= 4)) {
+        this.state = 30;
+        this.input = this.input.concat("4");
       }
 
       //ถอนเงิน
       else if (this.state === 5) {
         this.state = 6;
-        this.input = this.input.concat('9');
+        this.input = this.input.concat("4");
       }
 
       //ตัวที่ 2 xx
-      else if(this.state === 6) {
-        this.state = 10
-        this.input = this.input.concat('9')
+      else if (this.state === 6) {
+        this.state = 10;
+        this.input = this.input.concat("4");
       }
 
       //จำนวนเงินไม่ถูกต้อง
-      else if(this.state === 7 || this.state === 8 || this.state === 9 || this.state === 10 || this.state === 11 || this.state === 12 || this.state === 32) {
-        this.state = 32
-        this.input = this.input.concat('9')
+      else if (
+        this.state === 7 ||
+        this.state === 8 ||
+        this.state === 9 ||
+        this.state === 10 ||
+        this.state === 11 ||
+        this.state === 12 ||
+        this.state === 32
+      ) {
+        this.state = 32;
+        this.input = this.input.concat("4");
       }
     },
-    num0: function() {
+    num5: function () {
       //รหัสผ่านผิด
-      if(this.state === 30 || this.state >= 1 && this.state <= 4) {
-        this.state = 30
-        this.input = this.input.concat('0')
+      if (this.state === 30 || (this.state >= 1 && this.state <= 4)) {
+        this.state = 30;
+        this.input = this.input.concat("5");
       }
 
       //ถอนเงิน
-      else if(this.state >= 6 && this.state < 9) {
-        this.state += 1
-        this.input = this.input.concat('0')
+      else if (this.state === 5) {
+        this.state = 6;
+        this.input = this.input.concat("5");
+      }
+
+      //ตัวที่ 2 xx
+      else if (this.state === 6) {
+        this.state = 10;
+        this.input = this.input.concat("5");
       }
 
       //จำนวนเงินไม่ถูกต้อง
-      else if(this.state === 9  || this.state === 12 || this.state === 32) {
-        this.state = 32
-        this.input = this.input.concat('0')
+      else if (
+        this.state === 7 ||
+        this.state === 8 ||
+        this.state === 9 ||
+        this.state === 10 ||
+        this.state === 11 ||
+        this.state === 12 ||
+        this.state === 32
+      ) {
+        this.state = 32;
+        this.input = this.input.concat("5");
+      }
+    },
+    num6: function () {
+      //รหัสผ่านผิด
+      if (this.state === 30 || (this.state >= 1 && this.state <= 4)) {
+        this.state = 30;
+        this.input = this.input.concat("6");
+      }
+
+      //ถอนเงิน
+      else if (this.state === 5) {
+        this.state = 6;
+        this.input = this.input.concat("6");
+      }
+
+      //ตัวที่ 2 xx
+      else if (this.state === 6) {
+        this.state = 10;
+        this.input = this.input.concat("6");
+      }
+
+      //จำนวนเงินไม่ถูกต้อง
+      else if (
+        this.state === 7 ||
+        this.state === 8 ||
+        this.state === 9 ||
+        this.state === 10 ||
+        this.state === 11 ||
+        this.state === 12 ||
+        this.state === 32
+      ) {
+        this.state = 32;
+        this.input = this.input.concat("6");
+      }
+    },
+    num7: function () {
+      //รหัสผ่านผิด
+      if (this.state === 30 || (this.state >= 1 && this.state <= 4)) {
+        this.state = 30;
+        this.input = this.input.concat("7");
+      }
+
+      //ถอนเงิน
+      else if (this.state === 5) {
+        this.state = 6;
+        this.input = this.input.concat("7");
+      }
+
+      //ตัวที่ 2 xx
+      else if (this.state === 6) {
+        this.state = 10;
+        this.input = this.input.concat("7");
+      }
+
+      //จำนวนเงินไม่ถูกต้อง
+      else if (
+        this.state === 7 ||
+        this.state === 8 ||
+        this.state === 9 ||
+        this.state === 10 ||
+        this.state === 11 ||
+        this.state === 12 ||
+        this.state === 32
+      ) {
+        this.state = 32;
+        this.input = this.input.concat("7");
+      }
+    },
+    num8: function () {
+      //รหัสผ่านผิด
+      if (this.state === 30 || (this.state >= 1 && this.state <= 4)) {
+        this.state = 30;
+        this.input = this.input.concat("8");
+      }
+
+      //ถอนเงิน
+      else if (this.state === 5) {
+        this.state = 6;
+        this.input = this.input.concat("8");
+      }
+
+      //ตัวที่ 2 xx
+      else if (this.state === 6) {
+        this.state = 10;
+        this.input = this.input.concat("8");
+      }
+
+      //จำนวนเงินไม่ถูกต้อง
+      else if (
+        this.state === 7 ||
+        this.state === 8 ||
+        this.state === 9 ||
+        this.state === 10 ||
+        this.state === 11 ||
+        this.state === 12 ||
+        this.state === 32
+      ) {
+        this.state = 32;
+        this.input = this.input.concat("8");
+      }
+    },
+    num9: function () {
+      //รหัสผ่านผิด
+      if (this.state === 30 || (this.state >= 1 && this.state <= 4)) {
+        this.state = 30;
+        this.input = this.input.concat("9");
+      }
+
+      //ถอนเงิน
+      else if (this.state === 5) {
+        this.state = 6;
+        this.input = this.input.concat("9");
+      }
+
+      //ตัวที่ 2 xx
+      else if (this.state === 6) {
+        this.state = 10;
+        this.input = this.input.concat("9");
+      }
+
+      //จำนวนเงินไม่ถูกต้อง
+      else if (
+        this.state === 7 ||
+        this.state === 8 ||
+        this.state === 9 ||
+        this.state === 10 ||
+        this.state === 11 ||
+        this.state === 12 ||
+        this.state === 32
+      ) {
+        this.state = 32;
+        this.input = this.input.concat("9");
+      }
+    },
+    num0: function () {
+      //รหัสผ่านผิด
+      if (this.state === 30 || (this.state >= 1 && this.state <= 4)) {
+        this.state = 30;
+        this.input = this.input.concat("0");
+      }
+
+      //ถอนเงิน
+      else if (this.state >= 6 && this.state < 9) {
+        this.state += 1;
+        this.input = this.input.concat("0");
+      }
+
+      //จำนวนเงินไม่ถูกต้อง
+      else if (this.state === 9 || this.state === 12 || this.state === 32) {
+        this.state = 32;
+        this.input = this.input.concat("0");
       }
 
       //ตัวที่ 3 xx0
-      else if(this.state === 10) {
-        this.state = 11
-        this.input = this.input.concat('0')
+      else if (this.state === 10) {
+        this.state = 11;
+        this.input = this.input.concat("0");
       }
 
       //ตัวที่ 4 xx00
-      else if(this.state === 11) {
-        this.state = 12
-        this.input = this.input.concat('0')
+      else if (this.state === 11) {
+        this.state = 12;
+        this.input = this.input.concat("0");
       }
     },
 
@@ -650,10 +1017,10 @@ export default {
       this.img = this.$refs.webcam.capture();
     },
     onStarted(stream) {
-      console.log('On Started Event', stream);
+      console.log("On Started Event", stream);
     },
     onStopped(stream) {
-      console.log('On Stopped Event', stream);
+      console.log("On Stopped Event", stream);
     },
     onStop() {
       this.$refs.webcam.stop();
@@ -662,31 +1029,31 @@ export default {
       this.$refs.webcam.start();
     },
     onError(error) {
-      console.log('On Error Event', error);
+      console.log("On Error Event", error);
     },
     onCameras(cameras) {
       this.devices = cameras;
-      console.log('On Cameras Event', cameras);
+      console.log("On Cameras Event", cameras);
     },
     onCameraChange(deviceId) {
       this.deviceId = deviceId;
       this.camera = deviceId;
-      console.log('On Camera Change Event', deviceId);
+      console.log("On Camera Change Event", deviceId);
     },
     // end webcam method path
   },
   //computed & watch added for camera work
   computed: {
-    device: function() {
+    device: function () {
       return this.devices.find((n) => n.deviceId === this.deviceId);
     },
   },
   //computed & watch added for camera work
   watch: {
-    camera: function(id) {
+    camera: function (id) {
       this.deviceId = id;
     },
-    devices: function() {
+    devices: function () {
       // Once camera we have a list select the first one
       const [first, ...tail] = this.devices;
       if (first) {
@@ -699,12 +1066,12 @@ export default {
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Prompt&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Prompt&display=swap");
 
 #app {
-  font-family: 'Prompt', sans-serif;
+  font-family: "Prompt", sans-serif;
   /* background-color: aquamarine; */
-  background: url('./assets/bg.png');
+  background: url("./assets/bg.png");
   background-size: contain;
   background-attachment: fixed;
   width: 1920px;
@@ -833,5 +1200,8 @@ export default {
 .dfa {
   background-color: rgba(0, 0, 0, 0.9);
   color: white;
+}
+h5 {
+  color: aliceblue;
 }
 </style>
