@@ -6,9 +6,9 @@
       src="https://firebasestorage.googleapis.com/v0/b/imgatm.appspot.com/o/BG.png?alt=media&token=6e884c2f-0c2f-49b3-bad6-5707db51dbe5"
     >
       <b-container fluid>
-        <b-row class="text-center pt-5">
+        <b-row class="text-center">
           <b-col sm="6" class="atm p-4">
-            <h1 style="color: white">ATM : Automatic Teller Machine</h1>
+            <h1 style="color: white">ATM : Automatic Teller Machine</h1><br>
             <b-row class="justify-content-md-center">
               <b-col cols="11" class="bodyATM">
                 <!--1st-->
@@ -30,12 +30,12 @@
                     <!-- <div class="mirror" id="mirrorLeft"> </div> //add comment old mirror for use webcam -->
                   </b-col>
 
-                  <!-- <b-col cols="1" align="center" align-self="center">
-                  <div class="camera" id="camera"></div>
-                  <b-tooltip target="camera" triggers="hover" variant="primary"
-                    >กล้องวงจรปิด</b-tooltip
-                  >
-                </b-col> -->
+                  <b-col cols="1" align="center" align-self="center">
+                    <div class="camera" id="camera"></div>
+                    <b-tooltip target="camera" triggers="hover" variant="primary"
+                      >กล้องวงจรปิด</b-tooltip
+                    >
+                  </b-col>
 
                   <!-- <select v-model="camera"> //Section for option to select Camera device
                   <option>-- Select Device --</option>
@@ -94,6 +94,18 @@
                         </b-form-input>
                       </b-col>
                     </b-row>
+
+                    <div class="text-right" 
+                      style="position: absolute; 
+                      right: 0; bottom: 0;
+                      color: whitesmoke;
+                      padding-right: 10px;"
+                      v-show="showMenuInMonitor"
+                    >
+                      <p>แก้ไข</p><br>
+                      <p>ยืนยัน</p><br>
+                      <p>ยกเลิก</p>
+                    </div>
                   </b-col>
 
                   <b-col cols="2" class="rightButton" align-self="end">
@@ -110,7 +122,7 @@
                       variant="success"
                       block
                       class="my-4"
-                      >ตกลง</b-button
+                      >ยืนยัน</b-button
                     >
                     <b-button
                       v-on:click="cancel"
@@ -169,14 +181,14 @@
                   <b-col cols="3" align="center">
                     <div class="cardSlot" id="cardSlot"></div>
                     <div
-                      class="atmCard pt-5 shadow-sm"
+                      class="atmCard pt-5 shadow-sm p-1"
                       id="card"
                       v-if="showCard"
                       v-on:click="card"
                     >
-                      <p>ธนาคารทรงวุฒิไทย</p>
-                      <p><small>5587 2221 8877 6685</small></p>
-                      <p>VISA</p>
+                      <p style="font-size: 12px; text-align: left;">ธนาคารทรงวุฒิไทย</p>
+                      <p style="font-size: 12px"><small>5587 2221 8877 6685</small></p>
+                      <p style="font-size: 18px; text-align: right">VISA</p>
                     </div>
                     <b-tooltip target="card" triggers="hover" variant="primary"
                       >บัตร ATM</b-tooltip
@@ -204,7 +216,7 @@
                     v-on:click="money"
                     class="money pt-5"
                     id="money"
-                    v-if="showMoney"
+                    v-if="!showMoney"
                   >
                     <h1>{{ withdrawn }} บาท</h1>
                     <b-tooltip target="money" triggers="hover" variant="primary"
@@ -229,14 +241,14 @@
           <b-col>
             <!-- ส่วนนป้าย -->
             <br /><br /><br /><br />
-            <v-card :loading="loading" max-width="800" img="https://firebasestorage.googleapis.com/v0/b/imgatm.appspot.com/o/bgDFA.png?alt=media&token=e662d835-43e4-460b-a656-4e9396e1708f" color="#B0BEC5">
+            <v-card max-width="800" img="https://firebasestorage.googleapis.com/v0/b/imgatm.appspot.com/o/bgDFA.png?alt=media&token=e662d835-43e4-460b-a656-4e9396e1708f" color="#808080">
               <v-img height="1600" >
                 <v-row>
                   <v-col>
                     <v-btn block color="#000000" height="90px">
                       <v-row>
                         <v-col>
-                          <h5>DFA : Deterministic Finite Automata</h5>
+                          <h5 class="headerDFA">DFA : Deterministic Finite Automata</h5>
                           <v-btn color="#FF3D00" height="30px"
                             ><h5>currentState = {{ this.state }}</h5>
                           </v-btn>
@@ -517,6 +529,7 @@ export default {
       devices: [],
       withdrawn: 0,
       showInput: false,
+      showMenuInMonitor: false,
       showMoney: false,
       showCard: true,
 
@@ -533,6 +546,7 @@ export default {
 
       this.withdrawn = 0;
       this.showInput = false;
+      this.showMenuInMonitor = false;
       this.showMoney = false;
       this.showCard = true;
 
@@ -547,6 +561,7 @@ export default {
         this.title = "กรุณาป้อนรหัสผ่าน";
         this.subTitle = "";
         this.showInput = true;
+        this.showMenuInMonitor = true;
         this.showCard = false;
         this.input = "";
       }
@@ -591,6 +606,7 @@ export default {
         this.subTitle = "ขอบคุณที่ใช้บริการ";
         this.withdrawn = this.input;
         this.showInput = false;
+        this.showMenuInMonitor = false;
         this.showCard = true;
         this.showMoney = true;
       }
@@ -621,11 +637,12 @@ export default {
       }
     },
     cancel: function () {
-      if (this.state >= 1 && this.state <= 9) {
-        this.state = 33;
+      if (this.state != 0) {
+        this.state = 34;
         this.title = "กรุณารับบัตรคืน";
         this.subTitle = "ขอบคุณที่ใช้บริการ";
         this.showInput = false;
+        this.showMenuInMonitor = false;
         this.input = "";
         this.showMoney = false;
         this.showCard = true;
@@ -639,8 +656,11 @@ export default {
         this.title = "กรุณาป้อนรหัสผ่าน";
         this.subTitle = "";
         this.showInput = true;
+        this.showMenuInMonitor = true;
         this.showCard = false;
-      } else if (this.state === 14 || this.state === 33) {
+      } 
+      
+      else if (this.state === 14 || this.state === 34) {
         this.reset();
       }
     },
@@ -1074,7 +1094,7 @@ export default {
   background: url("./assets/bg.png");
   background-size: contain;
   background-attachment: fixed;
-  width: 1920px;
+  width: 100%;
 }
 
 .atm {
@@ -1099,16 +1119,17 @@ export default {
     rgba(255, 255, 255, 1) 0%,
     rgba(167, 167, 167, 1) 100%
   );
-  width: 5vw;
-  height: 10vh;
+  width: 100px;
+  height: 100px;
 }
 
 .camera {
   border: 3px solid rgb(66, 66, 66);
   border-radius: 20px;
   background-color: grey;
-  width: 1vw;
-  height: 2vh;
+  width: 20px;
+  height: 20px;
+  z-index: 3;
 }
 
 .second {
@@ -1119,8 +1140,8 @@ export default {
   border: 10px solid #333;
   border-radius: 10px;
   background-color: royalblue;
-  width: 100vh;
-  height: 50vh;
+  width: 300px;
+  height: 500px;
 }
 
 .monitor h2,
@@ -1128,8 +1149,8 @@ export default {
   color: white;
 }
 
-.menu {
-  height: 22vh;
+.menuInmonitor {
+  text-align: right;
 }
 
 .third {
@@ -1147,7 +1168,7 @@ export default {
   background-color: black;
   border: 10px solid #333;
   width: 100%;
-  height: 4vh;
+  height: 40px;
 }
 
 .atmCard {
@@ -1155,7 +1176,7 @@ export default {
   border: 5px solid rgb(245, 245, 245);
   border-radius: 10px;
   width: 80%;
-  height: 22vh;
+  height: 220px;
   top: -20px;
   position: relative;
 }
@@ -1168,21 +1189,21 @@ export default {
 .fourth {
   background-color: grey;
   border-bottom: 1px solid black;
-  height: 28vh;
+  height: 150px;
 }
 
 .moneySlot {
   border: 10px solid #333;
   background-color: black;
   width: 70%;
-  height: 4vh;
+  height: 50px;
 }
 
 .money {
   background-color: white;
   border: 5px solid rgb(254, 254, 254);
   width: 60%;
-  height: 18vh;
+  height: 150px;
   top: -20px;
   position: relative;
 }
@@ -1193,7 +1214,7 @@ export default {
 }
 
 .fifth {
-  height: 60vh;
+  height: 500px;
   background-color: royalblue;
 }
 
@@ -1201,7 +1222,9 @@ export default {
   background-color: rgba(0, 0, 0, 0.9);
   color: white;
 }
-h5 {
-  color: aliceblue;
+
+.headerDFA {
+  color: white;
 }
+
 </style>

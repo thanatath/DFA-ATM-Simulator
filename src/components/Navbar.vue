@@ -22,7 +22,6 @@
             id="about"
             centered
             title="คำแนะนำการใช้งาน"
-            style="font-family: 'Prompt', sans-serif;"
           >
             <ol>
               <li>เสียบบัตรATM</li>
@@ -37,7 +36,6 @@
             id="member"
             centered
             title="สมาชิก"
-            style="font-family: 'Prompt', sans-serif;"
           >
             <ol>
               <li>นายชญานิน บัวสละ รหัสนักศึกษา 62015021</li>
@@ -80,7 +78,12 @@ export default {
   position: fixed;
   z-index: 10;
 }
+
 ol{
   padding-left: 15px;
+}
+
+.modal {
+   font-family: 'Prompt', sans-serif;
 }
 </style>
