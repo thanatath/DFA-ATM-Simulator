@@ -241,7 +241,7 @@
           <b-col>
             <!-- ส่วนนป้าย -->
             <br /><br /><br /><br />
-            <v-card max-width="800" img="https://firebasestorage.googleapis.com/v0/b/imgatm.appspot.com/o/bgDFA.png?alt=media&token=6876ef2b-46ce-4bea-a7ad-6fd1206c9a45" color="#E3F2FD">
+            <v-card max-width="800" img="https://firebasestorage.googleapis.com/v0/b/imgatm.appspot.com/o/bgDFA.png?alt=media&token=8086f386-e099-47fd-a0e9-6a609e9aacae" color="#E3F2FD">
               <v-img height="1600" >
                 <v-row>
                   <v-col>
