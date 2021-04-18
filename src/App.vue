@@ -241,7 +241,7 @@
           <b-col>
             <!-- ส่วนนป้าย -->
             <br /><br /><br /><br />
-            <v-card max-width="800" img="https://firebasestorage.googleapis.com/v0/b/imgatm.appspot.com/o/bgDFA.png?alt=media&token=e662d835-43e4-460b-a656-4e9396e1708f" color="#808080">
+            <v-card max-width="800" img="" color="#808080">
               <v-img height="1600" >
                 <v-row>
                   <v-col>
@@ -262,236 +262,312 @@
                 <v-row>
                   <v-col>
                     <!-- ลอง -->
-
-                    <v-row>
+                    <v-row alt="รอรับบัตร">
                       <v-col> </v-col>
-
                       <v-col>
-                        <br />
-                        <v-btn fab>
-                          <v-btn fab v-show="this.state == 1" color="#F44336">
-                          </v-btn
-                        ></v-btn>
-                        <br />
+                        <v-btn large fab  >
+                          <p v-show="this.state ==1 || this.state ==2 || this.state ==3|| this.state ==4|| this.state ==5|| this.state ==6|| this.state ==7|| this.state ==8|| this.state ==9|| this.state ==10|| this.state ==11|| this.state ==12|| this.state ==13|| this.state ==14|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29|| this.state ==30|| this.state ==31|| this.state ==32|| this.state ==33|| this.state ==34|| this.state ==35"> <br> รอรับ <br> บัตร</p>
+                        <!-- เเสดงการทำงาน -->
+                          <v-btn large fab v-show="this.state ==0" color="#E53935">
+                          <p> <br> รหัสตัว <br> ที่1</p>
+                        </v-btn>
+                        <!-- เเสดงการทำงาน -->
+                        </v-btn>
                       </v-col>
                       <v-col> </v-col>
                       <v-col> </v-col>
                     </v-row>
-
+                    <!-- row 1 -->
+                    <br /><br />
+                    <!-- row 2 -->
                     <v-row>
                       <v-col> </v-col>
                       <v-col>
-                        <br />
-                        <v-btn fab>
-                          <v-btn fab v-show="this.state == 2" color="#F44336">
-                          </v-btn
-                        ></v-btn>
-                        <br />
+                        
+                        <v-btn large fab>
+                          <p v-show="this.state ==0 || this.state ==2 || this.state ==3|| this.state ==4|| this.state ==5|| this.state ==6|| this.state ==7|| this.state ==8|| this.state ==9|| this.state ==10|| this.state ==11|| this.state ==12|| this.state ==13|| this.state ==14|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29|| this.state ==30|| this.state ==31|| this.state ==32|| this.state ==33|| this.state ==34|| this.state ==35"> <br> รหัสตัว <br> ที่1</p>
+                        <!-- เเสดงการทำงาน -->
+                          <v-btn large fab v-show="this.state ==1" color="#E53935">
+                          <p> <br> รหัสตัว <br> ที่1</p>
+                        </v-btn>
+                        <!-- เเสดงการทำงาน -->
+                        </v-btn>
                       </v-col>
-                      <v-col>
-                        <br />
-                        <v-btn fab>
-                          <v-btn
-                            fab
-                            v-show="this.state == 31"
-                            color="#F44336"
-                          ></v-btn
-                        ></v-btn>
+                      <v-col><v-btn large fab>
+                        <p v-show="this.state ==0 || this.state ==1 || this.state ==2|| this.state ==3|| this.state ==4|| this.state ==5|| this.state ==6|| this.state ==7|| this.state ==8|| this.state ==9|| this.state ==10| this.state ==11||this.state ==12|| this.state ==13|| this.state ==14|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29||  this.state ==30|| this.state ==32|| this.state ==32|| this.state ==34|| this.state ==35" ><br> ตัวตน <br> ไม่ถูกต้อง </p> 
+                        <!-- เเสดงการทำงาน -->
+                          <v-btn large fab v-show="this.state ==31" color="#E53935">
+                          <p> <br> ตัวตน <br> ไม่ถูกต้อง</p> 
+                        </v-btn>
+                        <!-- เเสดงการทำงาน -->
+                        
+                        </v-btn> 
                       </v-col>
                       <v-col> </v-col>
                     </v-row>
-
+                    <!-- row 2 -->
+                    <br /><br />
+                    <!-- row 3 -->
                     <v-row>
                       <v-col> </v-col>
                       <v-col>
-                        <br />
-                        <v-btn fab
-                          ><v-btn fab v-show="this.state == 3" color="#F44336">
-                          </v-btn
-                        ></v-btn>
-                        <br />
+                        <v-btn large fab>
+                          <p v-show="this.state ==0 || this.state ==1 || this.state ==3|| this.state ==4|| this.state ==5|| this.state ==6|| this.state ==7|| this.state ==8|| this.state ==9|| this.state ==10|| this.state ==11|| this.state ==12|| this.state ==13|| this.state ==14|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29|| this.state ==30|| this.state ==31|| this.state ==32|| this.state ==33|| this.state ==34|| this.state ==35" > <br> รหัสตัว <br> ที่2</p>
+                          <!-- เเสดงการทำงาน -->
+                          <v-btn large fab v-show="this.state ==2" color="#E53935">
+                          <p> <br> รหัสตัว <br> ที่2</p>
+                        </v-btn>
+                        <!-- เเสดงการทำงาน -->
+                        </v-btn>
                       </v-col>
-                      <v-col>
-                        <br />
-                        <v-btn fab
-                          ><v-btn fab v-show="this.state == 30" color="#F44336">
-                          </v-btn
-                        ></v-btn>
+                      <v-col><v-btn large fab>
+                        <p v-show="this.state ==0 || this.state ==1 || this.state ==2|| this.state ==3|| this.state ==4|| this.state ==5|| this.state ==6|| this.state ==7|| this.state ==8|| this.state ==9|| this.state ==10| this.state ==11||this.state ==12|| this.state ==13|| this.state ==14|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29||  this.state ==31|| this.state ==32|| this.state ==32|| this.state ==34|| this.state ==35" > <br> รหัสไม่ <br> ถูกต้อง</p> 
+                        <!-- เเสดงการทำงาน -->
+                          <v-btn large fab v-show="this.state ==30" color="#E53935">
+                          <p> <br> รหัสไม่ <br> ถูกต้อง</p>
+                        </v-btn>
+                        <!-- เเสดงการทำงาน -->
+                        
+                      </v-btn> 
                       </v-col>
-                      <v-col>
-                        <v-btn fab></v-btn>
+                      <v-col><v-btn large fab>
+
+                        <p v-show="this.state ==0 || this.state ==1 || this.state ==2|| this.state ==3|| this.state ==4|| this.state ==5|| this.state ==6|| this.state ==7|| this.state ==8|| this.state ==9|| this.state ==10| this.state ==11||this.state ==12|| this.state ==13|| this.state ==14|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29|| this.state ==30|| this.state ==31|| this.state ==32|| this.state ==32|| this.state ==34|| this.state ==35" > <br> คืนบัตร</p> 
+                        <!-- เเสดงการทำงาน -->
+                          <v-btn large fab v-show="this.state ==34" color="#E53935">
+                          <p> <br> คืนบัตร</p>
+                        </v-btn>
+                        <!-- เเสดงการทำงาน -->
+
+                        
+                        </v-btn> 
                       </v-col>
                     </v-row>
-
+                    <!-- row 3 -->
+                    <br /><br />
+                    <!-- row 4 -->
                     <v-row>
+                      <v-col><v-btn large fab>
+                        <p v-show="this.state ==0 || this.state ==1 || this.state ==2|| this.state ==3|| this.state ==4|| this.state ==5|| this.state ==6|| this.state ==7|| this.state ==8|| this.state ==9|| this.state ==10| this.state ==11||this.state ==12|| this.state ==13|| this.state ==14|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29|| this.state ==30|| this.state ==31|| this.state ==32|| this.state ==32|| this.state ==34|| this.state ==35" > <br> คืนบัตร</p> 
+                        <!-- เเสดงการทำงาน -->
+                          <v-btn large fab v-show="this.state ==34" color="#E53935">
+                          <p> <br> คืนบัตร</p>
+                        </v-btn>
+                        <!-- เเสดงการทำงาน -->
+                       </v-btn> 
+                       </v-col>
                       <v-col>
-                        <v-btn fab
-                          ><v-btn
-                            fab
-                            v-show="this.state == 33"
-                            color="#43A047"
-                          ></v-btn
-                        ></v-btn>
-                      </v-col>
-                      <v-col>
-                        <br />
-                        <v-btn fab
-                          ><v-btn fab v-show="this.state == 4" color="#F44336">
-                          </v-btn
-                        ></v-btn>
-                        <br />
+                        <v-btn large fab>
+                          <p  v-show="this.state ==0 || this.state ==1 || this.state ==2|| this.state ==4|| this.state ==5|| this.state ==6|| this.state ==7|| this.state ==8|| this.state ==9|| this.state ==10|| this.state ==11|| this.state ==12|| this.state ==13|| this.state ==14|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29|| this.state ==30|| this.state ==31|| this.state ==32|| this.state ==33|| this.state ==34|| this.state ==35" > <br> รหัสตัว <br> ที่3</p>
+                          <!-- เเสดงการทำงาน -->
+                          <v-btn large fab v-show="this.state ==3" color="#E53935">
+                          <p> <br> รหัสตัว <br> ที่3</p>
+                        </v-btn>
+                        <!-- เเสดงการทำงาน -->
+                        </v-btn>
                       </v-col>
                       <v-col> </v-col>
-                      <v-col> </v-col>
+                      <v-col></v-col>
                     </v-row>
-
-                    <v-row>
-                      <v-col> </v-col>
-                      <v-col>
-                        <br />
-                        <v-btn fab
-                          ><v-btn
-                            fab
-                            v-show="this.state == 5"
-                            color="#F44336"
-                          ></v-btn
-                        ></v-btn>
-                        <br />
-                      </v-col>
-                      <v-col> </v-col>
-                      <v-col> </v-col>
-                    </v-row>
-
-                    <v-row>
-                      <v-col> </v-col>
-                      <v-col>
-                        <br />
-                        <v-btn fab
-                          ><v-btn
-                            fab
-                            v-show="this.state == 6"
-                            color="#F44336"
-                          ></v-btn
-                        ></v-btn>
-                        <br />
-                      </v-col>
-                      <v-col>
-                        <br />
-                        <v-btn fab
-                          ><v-btn
-                            fab
-                            v-show="this.state == 19"
-                            color="#F44336"
-                          ></v-btn
-                        ></v-btn>
-                      </v-col>
-                      <v-col> </v-col>
-                    </v-row>
-
+                    <!-- row 4 -->
+                    <br /><br />
+                    <!-- row 5 -->
                     <v-row>
                       <v-col> </v-col>
                       <v-col>
-                        <br />
-                        <v-btn fab
-                          ><v-btn
-                            fab
-                            v-show="this.state == 7"
-                            color="#F44336"
-                          ></v-btn
-                        ></v-btn>
-                        <br />
+                        <v-btn large fab>
+                          <p v-show="this.state ==0 || this.state ==1 || this.state ==2|| this.state ==3|| this.state ==5|| this.state ==6|| this.state ==7|| this.state ==8|| this.state ==9|| this.state ==10|| this.state ==11|| this.state ==12|| this.state ==13|| this.state ==14|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29|| this.state ==30|| this.state ==31|| this.state ==32|| this.state ==33|| this.state ==34|| this.state ==35" > <br> รหัสผ่าน <br> ถูกต้อง</p> 
+                          <!-- เเสดงการทำงาน -->
+                          <v-btn large fab v-show="this.state ==4" color="#E53935">
+                          <p> <br> รหัสผ่าน <br> ถูกต้อง</p>
+                        </v-btn>
+                        <!-- เเสดงการทำงาน -->
+                        </v-btn>
                       </v-col>
                       <v-col> </v-col>
-                      <v-col>
-                        <v-btn fab></v-btn>
-                      </v-col>
+                      <v-col></v-col>
                     </v-row>
-
+                    <!-- row 5 -->
+                    <br /><br />
+                    <!-- row 6 -->
                     <v-row>
                       <v-col> </v-col>
                       <v-col>
-                        <br />
-                        <v-btn fab
-                          ><v-btn
-                            fab
-                            v-show="this.state == 8"
-                            color="#F44336"
-                          ></v-btn
-                        ></v-btn>
-                        <br />
+                        <v-btn large fab>
+                          <p v-show="this.state ==0 || this.state ==1 || this.state ==2|| this.state ==3|| this.state ==4|| this.state ==6|| this.state ==7|| this.state ==8|| this.state ==9|| this.state ==10|| this.state ==11|| this.state ==12|| this.state ==13|| this.state ==14|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29|| this.state ==30|| this.state ==31|| this.state ==32|| this.state ==33|| this.state ==34|| this.state ==35" > <br> ป้อน <br> จำนวณ <br> เงิน</p> 
+                          <!-- เเสดงการทำงาน -->
+                          <v-btn large fab v-show="this.state ==5" color="#E53935">
+                          <p><br> ป้อน <br> จำนวณ <br> เงิน</p>
+                        </v-btn>
+                        <!-- เเสดงการทำงาน -->
+                        </v-btn>
                       </v-col>
                       <v-col>
-                        <v-btn fab>
-                          <v-btn
-                            fab
-                            v-show="this.state == 16"
-                            color="#F44336"
-                          ></v-btn
-                        ></v-btn>
-                      </v-col>
-                      <v-col> </v-col>
+                         <v-btn large fab>
+                           <p v-show="this.state ==0 || this.state ==1 || this.state ==2|| this.state ==3|| this.state ==4|| this.state ==5|| this.state ==6|| this.state ==7|| this.state ==8|| this.state ==9|| this.state ==10| this.state ==11||this.state ==12|| this.state ==13|| this.state ==14|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29|| this.state ==30|| this.state ==31|| this.state ==32|| this.state ==32|| this.state ==34|| this.state ==35" > <br> ถอนเงิน  <br> ไม่สำเร็จ</p> 
+                           <!-- เเสดงการทำงาน -->
+                          <v-btn large fab v-show="this.state ==33" color="#E53935">
+                          <p> <br> ถอนเงิน  <br> ไม่สำเร็จ</p>
+                        </v-btn>
+                        <!-- เเสดงการทำงาน -->
+                        </v-btn>
+                        </v-col>
+                      <v-col></v-col>
                     </v-row>
-
-                    <v-row>
-                      <v-col>
-                        <v-btn fab></v-btn>
-                      </v-col>
-                      <v-col>
-                        <br />
-                        <v-btn fab>
-                          <v-btn
-                            fab
-                            v-show="this.state == 9"
-                            color="#F44336"
-                          ></v-btn
-                        ></v-btn>
-                        <br />
-                      </v-col>
-                      <v-col>
-                        <br>
-                        <v-btn fab
-                          ><v-btn fab v-show="this.state == 17" color="#F44336"
-                            ></v-btn
-                          ></v-btn
-                        >
-                      </v-col>
-                      <v-col> </v-col>
-                    </v-row>
-
+                    <!-- row 6 -->
+                    <br /><br />
+                    <!-- row 7 -->
                     <v-row>
                       <v-col> </v-col>
                       <v-col>
-                        <br />
-                        <v-btn fab
-                          ><v-btn
-                            fab
-                            v-show="this.state == 32"
-                            color="#F44336"
-                          ></v-btn
-                        ></v-btn>
+                        <v-btn large fab>
+                          <p  v-show="this.state ==0 || this.state ==1 || this.state ==2|| this.state ==3|| this.state ==4|| this.state ==5|| this.state ==7|| this.state ==8|| this.state ==9|| this.state ==10|| this.state ==11|| this.state ==12|| this.state ==13|| this.state ==14|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29|| this.state ==30|| this.state ==31|| this.state ==32|| this.state ==33|| this.state ==34|| this.state ==35"  > <br> ตัวที่ 1 <br> X</p> 
+                          <!-- เเสดงการทำงาน -->
+                          <v-btn large fab v-show="this.state ==6" color="#E53935">
+                          <p> <br> ตัวที่ 1 <br> X</p>
+                        </v-btn>
+                        <!-- เเสดงการทำงาน -->
+                        </v-btn>
                       </v-col>
                       <v-col> </v-col>
                       <v-col>
-                        <br />
-                        <v-btn fab>
-                          <v-btn
-                            fab
-                            v-show="this.state == 14"
-                            color="#43A047"
-                          ></v-btn
-                        ></v-btn>
+                        <v-btn large fab>
+                          <p v-show="this.state ==0 || this.state ==1 || this.state ==2|| this.state ==3|| this.state ==4|| this.state ==5|| this.state ==6|| this.state ==7|| this.state ==8|| this.state ==9|| this.state ==10| this.state ==11||this.state ==12|| this.state ==13|| this.state ==14|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29|| this.state ==30|| this.state ==31|| this.state ==32|| this.state ==32|| this.state ==34|| this.state ==35" > <br> คืนบัตร</p> 
+                        <!-- เเสดงการทำงาน -->
+                          <v-btn large fab v-show="this.state ==34" color="#E53935">
+                          <p> <br> คืนบัตร</p>
+                        </v-btn>
+                        <!-- เเสดงการทำงาน -->
+                        </v-btn>
                       </v-col>
                     </v-row>
-
+                    <!-- row 7 -->
+                    <br /><br />
+                    <!-- row 8 -->
                     <v-row>
                       <v-col> </v-col>
                       <v-col>
-                        <br>
-                        <v-btn fab></v-btn>
+                        <v-btn large fab>
+                          <p v-show="this.state ==0 || this.state ==1 || this.state ==2|| this.state ==3|| this.state ==4|| this.state ==5|| this.state ==6|| this.state ==8|| this.state ==9|| this.state ==10|| this.state ==11|| this.state ==12|| this.state ==13|| this.state ==14|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29|| this.state ==30|| this.state ==31|| this.state ==32|| this.state ==33|| this.state ==34|| this.state ==35" > <br> ตัวที่ 2 <br> XX</p> 
+                          <!-- เเสดงการทำงาน -->
+                          <v-btn large fab v-show="this.state ==7" color="#E53935">
+                          <p> <br> ตัวที่ 2 <br> XX</p>
+                        </v-btn>
+                        <!-- เเสดงการทำงาน -->
+                        </v-btn>
+                      </v-col>
+                      <v-col>
+                        <v-btn large fab>
+                          <p v-show="this.state ==0 || this.state ==1 || this.state ==2|| this.state ==3|| this.state ==4|| this.state ==5|| this.state ==6|| this.state ==7|| this.state ==8|| this.state ==9|| this.state ==11|| this.state ==12|| this.state ==13|| this.state ==14|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29|| this.state ==30|| this.state ==31|| this.state ==32|| this.state ==33|| this.state ==34|| this.state ==35"> <br> ตัวที่ 2 <br> XX</p> 
+                          <!-- เเสดงการทำงาน -->
+                          <v-btn large fab v-show="this.state ==10" color="#E53935">
+                          <p> <br> ตัวที่ 2 <br> XX</p>
+                        </v-btn>
+                        <!-- เเสดงการทำงาน -->
+                        </v-btn>
+                      </v-col>
+                      <v-col>
+                        <v-btn large fab>
+                          <p v-show="this.state ==0 || this.state ==1 || this.state ==2|| this.state ==3|| this.state ==4|| this.state ==5|| this.state ==6|| this.state ==7|| this.state ==8|| this.state ==9||this.state ==10||  this.state ==12|| this.state ==13|| this.state ==14|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29|| this.state ==30|| this.state ==31|| this.state ==32|| this.state ==33|| this.state ==34|| this.state ==35" > <br> ตัวที่ 3 <br> XX0</p> 
+                          <!-- เเสดงการทำงาน -->
+                          <v-btn large fab v-show="this.state ==11" color="#E53935">
+                          <p> <br> ตัวที่ 3 <br> XX0</p>
+                        </v-btn>
+                        <!-- เเสดงการทำงาน -->
+                        </v-btn>
+                      </v-col>
+                    </v-row>
+                    <!-- row 8 -->
+
+                    <br /><br />
+                    <!-- row 9 -->
+                    <v-row>
+                      <v-col>
+                        <v-btn large fab>
+                          <p v-show="this.state ==0 || this.state ==1 || this.state ==2|| this.state ==3|| this.state ==4|| this.state ==5|| this.state ==6|| this.state ==7|| this.state ==8|| this.state ==9|| this.state ==10| this.state ==11||this.state ==12|| this.state ==13|| this.state ==14|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29|| this.state ==30|| this.state ==31|| this.state ==32|| this.state ==32|| this.state ==34|| this.state ==35" > <br> คืนบัตร</p> 
+                        <!-- เเสดงการทำงาน -->
+                          <v-btn large fab v-show="this.state ==34" color="#E53935">
+                          <p> <br> คืนบัตร</p>
+                        </v-btn>
+                        <!-- เเสดงการทำงาน --> 
+                        </v-btn>
+                      </v-col>
+                      <v-col>
+                        <v-btn large fab>
+                          <p  v-show="this.state ==0 || this.state ==1 || this.state ==2|| this.state ==3|| this.state ==4|| this.state ==5|| this.state ==6|| this.state ==7|| this.state ==9|| this.state ==10|| this.state ==11|| this.state ==12|| this.state ==13|| this.state ==14|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29|| this.state ==30|| this.state ==31|| this.state ==32|| this.state ==33|| this.state ==34|| this.state ==35"  > <br> ตัวที่ 3 <br> XX0</p> 
+                          <!-- เเสดงการทำงาน -->
+                          <v-btn large fab v-show="this.state ==8" color="#E53935">
+                          <p> <br> ตัวที่ 3 <br> XX0</p>
+                        </v-btn>
+                        <!-- เเสดงการทำงาน -->
+                        </v-btn>
+                      </v-col>
+                      <v-col>
+                        <v-btn large fab>
+                          <p v-show="this.state ==0 || this.state ==1 || this.state ==2|| this.state ==3|| this.state ==4|| this.state ==5|| this.state ==6|| this.state ==7|| this.state ==8|| this.state ==10|| this.state ==11|| this.state ==9|| this.state ==13|| this.state ==12|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29|| this.state ==30|| this.state ==31|| this.state ==14|| this.state ==33|| this.state ==34|| this.state ==35"  > <br> จำนวนเงิน <br> ไม่ถูกต้อง</p> 
+                          <!-- เเสดงการทำงาน -->
+                          <v-btn large fab v-show="this.state ==32" color="#E53935">
+                          <p> <br> จำนวนเงิน <br> ไม่ถูกต้อง</p>
+                        </v-btn>
+                        <!-- เเสดงการทำงาน -->
+                        </v-btn>
                       </v-col>
                       <v-col> </v-col>
-                      <v-col> </v-col>
                     </v-row>
+                    <!-- row 9 -->
+                    <br /><br />
+                    <!-- row 9 -->
+                    <v-row>
+                      <v-col> </v-col>
+                      <v-col>
+                        <v-btn large fab>
+                          <p v-show="this.state ==0 || this.state ==1 || this.state ==2|| this.state ==3|| this.state ==4|| this.state ==5|| this.state ==6|| this.state ==7|| this.state ==8|| this.state ==10|| this.state ==11|| this.state ==12|| this.state ==13|| this.state ==14|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29|| this.state ==30|| this.state ==31|| this.state ==32|| this.state ==33|| this.state ==34|| this.state ==35" > <br> ตัวที่ 4 <br> X000</p> 
+                          <!-- เเสดงการทำงาน -->
+                          <v-btn large fab v-show="this.state ==9" color="#E53935">
+                          <p> <br> ตัวที่ 4 <br> X000</p>
+                        </v-btn>
+                        <!-- เเสดงการทำงาน -->
+                        </v-btn>
+                      </v-col>
+                      <v-col>
+                        
+                      </v-col>
+                      <v-col>
+                        <v-btn large fab>
+                          <p v-show="this.state ==0 || this.state ==1 || this.state ==2|| this.state ==3|| this.state ==4|| this.state ==5|| this.state ==6|| this.state ==7|| this.state ==8|| this.state ==10|| this.state ==11|| this.state ==9|| this.state ==13|| this.state ==14|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29|| this.state ==30|| this.state ==31|| this.state ==32|| this.state ==33|| this.state ==34|| this.state ==35" > <br> ตัวที่ 4 <br> X000</p> 
+                          <!-- เเสดงการทำงาน -->
+                          <v-btn large fab v-show="this.state ==12" color="#E53935">
+                          <p> <br> ตัวที่ 4 <br> X000</p>
+                        </v-btn>
+                        <!-- เเสดงการทำงาน -->
+                        </v-btn>
+                      </v-col>
+                    </v-row>
+                    <!-- row 9 -->
+                    <br /><br />
+                    <!-- row 9 -->
+                    <v-row>
+                      <v-col> </v-col>
+                      <v-col>
+                        
+                      </v-col>
+                      <v-col>
+                        <v-btn large fab>
+                          <p v-show="this.state ==0 || this.state ==1 || this.state ==2|| this.state ==3|| this.state ==4|| this.state ==5|| this.state ==6|| this.state ==7|| this.state ==8|| this.state ==10|| this.state ==11|| this.state ==9|| this.state ==13|| this.state ==12|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29|| this.state ==30|| this.state ==31|| this.state ==32|| this.state ==33|| this.state ==34|| this.state ==35"  > <br> เงินออก <br> คืนบัตร</p> 
+                          <!-- เเสดงการทำงาน -->
+                          <v-btn large fab v-show="this.state ==14" color="#43A047">
+                          <p> <br> เงินออก <br> คืนบัตร</p>
+                        </v-btn>
+                        <!-- เเสดงการทำงาน -->
+                        </v-btn>
+                      </v-col>
+                      <v-col>
+                        
+                      </v-col>
+                    </v-row>
+                    <!-- row 9 -->
+
+
                     <!-- ลอง -->
                   </v-col>
                 </v-row>
