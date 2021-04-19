@@ -1,14 +1,24 @@
 <template>
   <div id="app">
     <Navbar :reset="this.reset" />
+
     <v-parallax
       height="2000"
       src="https://firebasestorage.googleapis.com/v0/b/imgatm.appspot.com/o/BG.png?alt=media&token=6e884c2f-0c2f-49b3-bad6-5707db51dbe5"
     >
+      <audio autoplay loop ref="audio">
+        <source type="audio/ogg" :src="musicControle" />
+      </audio>
+         
+<div class="soundControl"> <b-button variant="success" type="submit" v-on:click="reset"
+          @click="musicControle_Action()">  {{musicControle_Status}}</b-button
+        ></div>
+
       <b-container fluid>
         <b-row class="text-center">
           <b-col sm="6" class="atm p-4">
-            <h1 style="color: white">ATM : Automatic Teller Machine</h1><br>
+            <h1 style="color: white">ATM : Automatic Teller Machine</h1>
+            <br />
             <b-row class="justify-content-md-center">
               <b-col cols="11" class="bodyATM">
                 <!--1st-->
@@ -32,7 +42,10 @@
 
                   <b-col cols="1" align="center" align-self="center">
                     <div class="camera" id="camera"></div>
-                    <b-tooltip target="camera" triggers="hover" variant="primary"
+                    <b-tooltip
+                      target="camera"
+                      triggers="hover"
+                      variant="primary"
                       >กล้องวงจรปิด</b-tooltip
                     >
                   </b-col>
@@ -95,15 +108,18 @@
                       </b-col>
                     </b-row>
 
-                    <div class="text-right" 
+                    <div
+                      class="text-right"
                       style="position: absolute; 
                       right: 0; bottom: 0;
                       color: whitesmoke;
                       padding-right: 10px;"
                       v-show="showMenuInMonitor"
                     >
-                      <p>แก้ไข</p><br>
-                      <p>ยืนยัน</p><br>
+                      <p>แก้ไข</p>
+                      <br />
+                      <p>ยืนยัน</p>
+                      <br />
                       <p>ยกเลิก</p>
                     </div>
                   </b-col>
@@ -187,7 +203,9 @@
                       v-on:click="card"
                     >
                       <p style="font-size: 12px; text-align: left;">ธนาคาร</p>
-                      <p style="font-size: 12px"><small>5587 2221 8877 6685</small></p>
+                      <p style="font-size: 12px">
+                        <small>5587 2221 8877 6685</small>
+                      </p>
                       <p style="font-size: 18px; text-align: right">VISA</p>
                     </div>
                     <b-tooltip target="card" triggers="hover" variant="primary"
@@ -241,14 +259,20 @@
           <b-col>
             <!-- ส่วนนป้าย -->
             <br /><br /><br /><br />
-            <v-card max-width="800" img="https://firebasestorage.googleapis.com/v0/b/imgatm.appspot.com/o/bgDFA.png?alt=media&token=bdcc4c52-bc69-4d96-8117-c980b4e0269b" color="#E3F2FD">
-              <v-img height="1600" >
+            <v-card
+              max-width="800"
+              img="https://firebasestorage.googleapis.com/v0/b/imgatm.appspot.com/o/bgDFA.png?alt=media&token=bdcc4c52-bc69-4d96-8117-c980b4e0269b"
+              color="#E3F2FD"
+            >
+              <v-img height="1600">
                 <v-row>
                   <v-col>
                     <v-btn block color="#000000" height="90px">
                       <v-row>
                         <v-col>
-                          <h5 class="headerDFA">DFA : Deterministic Finite Automata</h5>
+                          <h5 class="headerDFA">
+                            DFA : Deterministic Finite Automata
+                          </h5>
                           <v-btn color="#FF3D00" height="30px"
                             ><h5>currentState = {{ this.state }}</h5>
                           </v-btn>
@@ -265,13 +289,64 @@
                     <v-row alt="รอรับบัตร">
                       <v-col> </v-col>
                       <v-col>
-                        <v-btn large fab  >
-                          <p v-show="this.state ==1 || this.state ==2 || this.state ==3|| this.state ==4|| this.state ==5|| this.state ==6|| this.state ==7|| this.state ==8|| this.state ==9|| this.state ==10|| this.state ==11|| this.state ==12|| this.state ==13|| this.state ==14|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29|| this.state ==30|| this.state ==31|| this.state ==32|| this.state ==33|| this.state ==34|| this.state ==35"> <br> รอ <br> รับบัตร</p>
-                        <!-- เเสดงการทำงาน -->
-                          <v-btn large fab v-show="this.state ==0" color="#E53935">
-                          <p> <br> รอ <br> รับบัตร</p>
-                        </v-btn>
-                        <!-- เเสดงการทำงาน -->
+                        <v-btn large fab>
+                          <p
+                            v-show="
+                              this.state == 1 ||
+                                this.state == 2 ||
+                                this.state == 3 ||
+                                this.state == 4 ||
+                                this.state == 5 ||
+                                this.state == 6 ||
+                                this.state == 7 ||
+                                this.state == 8 ||
+                                this.state == 9 ||
+                                this.state == 10 ||
+                                this.state == 11 ||
+                                this.state == 12 ||
+                                this.state == 13 ||
+                                this.state == 14 ||
+                                this.state == 15 ||
+                                this.state == 16 ||
+                                this.state == 17 ||
+                                this.state == 18 ||
+                                this.state == 19 ||
+                                this.state == 20 ||
+                                this.state == 21 ||
+                                this.state == 22 ||
+                                this.state == 23 ||
+                                this.state == 24 ||
+                                this.state == 25 ||
+                                this.state == 26 ||
+                                this.state == 27 ||
+                                this.state == 28 ||
+                                this.state == 29 ||
+                                this.state == 30 ||
+                                this.state == 31 ||
+                                this.state == 32 ||
+                                this.state == 33 ||
+                                this.state == 34 ||
+                                this.state == 35
+                            "
+                          >
+                            <br />
+                            รอ <br />
+                            รับบัตร
+                          </p>
+                          <!-- เเสดงการทำงาน -->
+                          <v-btn
+                            large
+                            fab
+                            v-show="this.state == 0"
+                            color="#E53935"
+                          >
+                            <p>
+                              <br />
+                              รอ <br />
+                              รับบัตร
+                            </p>
+                          </v-btn>
+                          <!-- เเสดงการทำงาน -->
                         </v-btn>
                       </v-col>
                       <v-col> </v-col>
@@ -283,25 +358,126 @@
                     <v-row>
                       <v-col> </v-col>
                       <v-col>
-                        
                         <v-btn large fab>
-                          <p v-show="this.state ==0 || this.state ==2 || this.state ==3|| this.state ==4|| this.state ==5|| this.state ==6|| this.state ==7|| this.state ==8|| this.state ==9|| this.state ==10|| this.state ==11|| this.state ==12|| this.state ==13|| this.state ==14|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29|| this.state ==30|| this.state ==31|| this.state ==32|| this.state ==33|| this.state ==34|| this.state ==35"> <br> รหัสตัว <br> ที่1</p>
-                        <!-- เเสดงการทำงาน -->
-                          <v-btn large fab v-show="this.state ==1" color="#E53935">
-                          <p> <br> รหัสตัว <br> ที่1</p>
-                        </v-btn>
-                        <!-- เเสดงการทำงาน -->
+                          <p
+                            v-show="
+                              this.state == 0 ||
+                                this.state == 2 ||
+                                this.state == 3 ||
+                                this.state == 4 ||
+                                this.state == 5 ||
+                                this.state == 6 ||
+                                this.state == 7 ||
+                                this.state == 8 ||
+                                this.state == 9 ||
+                                this.state == 10 ||
+                                this.state == 11 ||
+                                this.state == 12 ||
+                                this.state == 13 ||
+                                this.state == 14 ||
+                                this.state == 15 ||
+                                this.state == 16 ||
+                                this.state == 17 ||
+                                this.state == 18 ||
+                                this.state == 19 ||
+                                this.state == 20 ||
+                                this.state == 21 ||
+                                this.state == 22 ||
+                                this.state == 23 ||
+                                this.state == 24 ||
+                                this.state == 25 ||
+                                this.state == 26 ||
+                                this.state == 27 ||
+                                this.state == 28 ||
+                                this.state == 29 ||
+                                this.state == 30 ||
+                                this.state == 31 ||
+                                this.state == 32 ||
+                                this.state == 33 ||
+                                this.state == 34 ||
+                                this.state == 35
+                            "
+                          >
+                            <br />
+                            รหัสตัว <br />
+                            ที่1
+                          </p>
+                          <!-- เเสดงการทำงาน -->
+                          <v-btn
+                            large
+                            fab
+                            v-show="this.state == 1"
+                            color="#E53935"
+                          >
+                            <p>
+                              <br />
+                              รหัสตัว <br />
+                              ที่1
+                            </p>
+                          </v-btn>
+                          <!-- เเสดงการทำงาน -->
                         </v-btn>
                       </v-col>
-                      <v-col><v-btn large fab>
-                        <p v-show="this.state ==0 || this.state ==1 || this.state ==2|| this.state ==3|| this.state ==4|| this.state ==5|| this.state ==6|| this.state ==7|| this.state ==8|| this.state ==9|| this.state ==10| this.state ==11||this.state ==12|| this.state ==13|| this.state ==14|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29||  this.state ==30|| this.state ==32|| this.state ==32|| this.state ==34|| this.state ==35 || this.state ==33" ><br> ตัวตน <br> ไม่ถูกต้อง </p> 
-                        <!-- เเสดงการทำงาน -->
-                          <v-btn large fab v-show="this.state ==31" color="#E53935">
-                          <p> <br> ตัวตน <br> ไม่ถูกต้อง</p> 
+                      <v-col
+                        ><v-btn large fab>
+                          <p
+                            v-show="
+                              this.state == 0 ||
+                                this.state == 1 ||
+                                this.state == 2 ||
+                                this.state == 3 ||
+                                this.state == 4 ||
+                                this.state == 5 ||
+                                this.state == 6 ||
+                                this.state == 7 ||
+                                this.state == 8 ||
+                                this.state == 9 ||
+                                (this.state == 10) | (this.state == 11) ||
+                                this.state == 12 ||
+                                this.state == 13 ||
+                                this.state == 14 ||
+                                this.state == 15 ||
+                                this.state == 16 ||
+                                this.state == 17 ||
+                                this.state == 18 ||
+                                this.state == 19 ||
+                                this.state == 20 ||
+                                this.state == 21 ||
+                                this.state == 22 ||
+                                this.state == 23 ||
+                                this.state == 24 ||
+                                this.state == 25 ||
+                                this.state == 26 ||
+                                this.state == 27 ||
+                                this.state == 28 ||
+                                this.state == 29 ||
+                                this.state == 30 ||
+                                this.state == 32 ||
+                                this.state == 32 ||
+                                this.state == 34 ||
+                                this.state == 35 ||
+                                this.state == 33
+                            "
+                          >
+                            <br />
+                            ตัวตน <br />
+                            ไม่ถูกต้อง
+                          </p>
+                          <!-- เเสดงการทำงาน -->
+                          <v-btn
+                            large
+                            fab
+                            v-show="this.state == 31"
+                            color="#E53935"
+                          >
+                            <p>
+                              <br />
+                              ตัวตน <br />
+                              ไม่ถูกต้อง
+                            </p>
+                          </v-btn>
+                          <!-- เเสดงการทำงาน -->
                         </v-btn>
-                        <!-- เเสดงการทำงาน -->
-                        
-                        </v-btn> 
                       </v-col>
                       <v-col> </v-col>
                     </v-row>
@@ -312,58 +488,308 @@
                       <v-col> </v-col>
                       <v-col>
                         <v-btn large fab>
-                          <p v-show="this.state ==0 || this.state ==1 || this.state ==3|| this.state ==4|| this.state ==5|| this.state ==6|| this.state ==7|| this.state ==8|| this.state ==9|| this.state ==10|| this.state ==11|| this.state ==12|| this.state ==13|| this.state ==14|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29|| this.state ==30|| this.state ==31|| this.state ==32|| this.state ==33|| this.state ==34|| this.state ==35" > <br> รหัสตัว <br> ที่2</p>
+                          <p
+                            v-show="
+                              this.state == 0 ||
+                                this.state == 1 ||
+                                this.state == 3 ||
+                                this.state == 4 ||
+                                this.state == 5 ||
+                                this.state == 6 ||
+                                this.state == 7 ||
+                                this.state == 8 ||
+                                this.state == 9 ||
+                                this.state == 10 ||
+                                this.state == 11 ||
+                                this.state == 12 ||
+                                this.state == 13 ||
+                                this.state == 14 ||
+                                this.state == 15 ||
+                                this.state == 16 ||
+                                this.state == 17 ||
+                                this.state == 18 ||
+                                this.state == 19 ||
+                                this.state == 20 ||
+                                this.state == 21 ||
+                                this.state == 22 ||
+                                this.state == 23 ||
+                                this.state == 24 ||
+                                this.state == 25 ||
+                                this.state == 26 ||
+                                this.state == 27 ||
+                                this.state == 28 ||
+                                this.state == 29 ||
+                                this.state == 30 ||
+                                this.state == 31 ||
+                                this.state == 32 ||
+                                this.state == 33 ||
+                                this.state == 34 ||
+                                this.state == 35
+                            "
+                          >
+                            <br />
+                            รหัสตัว <br />
+                            ที่2
+                          </p>
                           <!-- เเสดงการทำงาน -->
-                          <v-btn large fab v-show="this.state ==2" color="#E53935">
-                          <p> <br> รหัสตัว <br> ที่2</p>
-                        </v-btn>
-                        <!-- เเสดงการทำงาน -->
+                          <v-btn
+                            large
+                            fab
+                            v-show="this.state == 2"
+                            color="#E53935"
+                          >
+                            <p>
+                              <br />
+                              รหัสตัว <br />
+                              ที่2
+                            </p>
+                          </v-btn>
+                          <!-- เเสดงการทำงาน -->
                         </v-btn>
                       </v-col>
-                      <v-col><v-btn large fab>
-                        <p v-show="this.state ==0 || this.state ==33|| this.state ==1 || this.state ==2|| this.state ==3|| this.state ==4|| this.state ==5|| this.state ==6|| this.state ==7|| this.state ==8|| this.state ==9|| this.state ==10| this.state ==11||this.state ==12|| this.state ==13|| this.state ==14|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29||  this.state ==31|| this.state ==32|| this.state ==32|| this.state ==34|| this.state ==35" > <br> รหัสไม่ <br> ถูกต้อง</p> 
-                        <!-- เเสดงการทำงาน -->
-                          <v-btn large fab v-show="this.state ==30" color="#E53935">
-                          <p> <br> รหัสไม่ <br> ถูกต้อง</p>
+                      <v-col
+                        ><v-btn large fab>
+                          <p
+                            v-show="
+                              this.state == 0 ||
+                                this.state == 33 ||
+                                this.state == 1 ||
+                                this.state == 2 ||
+                                this.state == 3 ||
+                                this.state == 4 ||
+                                this.state == 5 ||
+                                this.state == 6 ||
+                                this.state == 7 ||
+                                this.state == 8 ||
+                                this.state == 9 ||
+                                (this.state == 10) | (this.state == 11) ||
+                                this.state == 12 ||
+                                this.state == 13 ||
+                                this.state == 14 ||
+                                this.state == 15 ||
+                                this.state == 16 ||
+                                this.state == 17 ||
+                                this.state == 18 ||
+                                this.state == 19 ||
+                                this.state == 20 ||
+                                this.state == 21 ||
+                                this.state == 22 ||
+                                this.state == 23 ||
+                                this.state == 24 ||
+                                this.state == 25 ||
+                                this.state == 26 ||
+                                this.state == 27 ||
+                                this.state == 28 ||
+                                this.state == 29 ||
+                                this.state == 31 ||
+                                this.state == 32 ||
+                                this.state == 32 ||
+                                this.state == 34 ||
+                                this.state == 35
+                            "
+                          >
+                            <br />
+                            รหัสไม่ <br />
+                            ถูกต้อง
+                          </p>
+                          <!-- เเสดงการทำงาน -->
+                          <v-btn
+                            large
+                            fab
+                            v-show="this.state == 30"
+                            color="#E53935"
+                          >
+                            <p>
+                              <br />
+                              รหัสไม่ <br />
+                              ถูกต้อง
+                            </p>
+                          </v-btn>
+                          <!-- เเสดงการทำงาน -->
                         </v-btn>
-                        <!-- เเสดงการทำงาน -->
-                        
-                      </v-btn> 
                       </v-col>
-                      <v-col><v-btn large fab>
-
-                        <p v-show="this.state ==33|| this.state ==0 || this.state ==1 || this.state ==2|| this.state ==3|| this.state ==4|| this.state ==5|| this.state ==6|| this.state ==7|| this.state ==8|| this.state ==9|| this.state ==10| this.state ==11||this.state ==12|| this.state ==13|| this.state ==14|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29|| this.state ==30|| this.state ==31|| this.state ==32|| this.state ==32|| this.state ==35" > <br> คืนบัตร</p> 
-                        <!-- เเสดงการทำงาน -->
-                          <v-btn large fab v-show="this.state ==34" color="#E53935">
-                          <p> <br> คืนบัตร</p>
+                      <v-col
+                        ><v-btn large fab>
+                          <p
+                            v-show="
+                              this.state == 33 ||
+                                this.state == 0 ||
+                                this.state == 1 ||
+                                this.state == 2 ||
+                                this.state == 3 ||
+                                this.state == 4 ||
+                                this.state == 5 ||
+                                this.state == 6 ||
+                                this.state == 7 ||
+                                this.state == 8 ||
+                                this.state == 9 ||
+                                (this.state == 10) | (this.state == 11) ||
+                                this.state == 12 ||
+                                this.state == 13 ||
+                                this.state == 14 ||
+                                this.state == 15 ||
+                                this.state == 16 ||
+                                this.state == 17 ||
+                                this.state == 18 ||
+                                this.state == 19 ||
+                                this.state == 20 ||
+                                this.state == 21 ||
+                                this.state == 22 ||
+                                this.state == 23 ||
+                                this.state == 24 ||
+                                this.state == 25 ||
+                                this.state == 26 ||
+                                this.state == 27 ||
+                                this.state == 28 ||
+                                this.state == 29 ||
+                                this.state == 30 ||
+                                this.state == 31 ||
+                                this.state == 32 ||
+                                this.state == 32 ||
+                                this.state == 35
+                            "
+                          >
+                            <br />
+                            คืนบัตร
+                          </p>
+                          <!-- เเสดงการทำงาน -->
+                          <v-btn
+                            large
+                            fab
+                            v-show="this.state == 34"
+                            color="#E53935"
+                          >
+                            <p>
+                              <br />
+                              คืนบัตร
+                            </p>
+                          </v-btn>
+                          <!-- เเสดงการทำงาน -->
                         </v-btn>
-                        <!-- เเสดงการทำงาน -->
-
-                        
-                        </v-btn> 
                       </v-col>
                     </v-row>
                     <!-- row 3 -->
                     <br /><br />
                     <!-- row 4 -->
                     <v-row>
-                      <v-col><v-btn large fab>
-                        <p v-show=" this.state ==33|| this.state ==0 || this.state ==1 || this.state ==2|| this.state ==3|| this.state ==4|| this.state ==5|| this.state ==6|| this.state ==7|| this.state ==8|| this.state ==9|| this.state ==10| this.state ==11||this.state ==12|| this.state ==13|| this.state ==14|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29|| this.state ==30|| this.state ==31|| this.state ==32|| this.state ==32||  this.state ==35" > <br> คืนบัตร</p> 
-                        <!-- เเสดงการทำงาน -->
-                          <v-btn large fab v-show="this.state ==34" color="#E53935">
-                          <p> <br> คืนบัตร</p>
+                      <v-col
+                        ><v-btn large fab>
+                          <p
+                            v-show="
+                              this.state == 33 ||
+                                this.state == 0 ||
+                                this.state == 1 ||
+                                this.state == 2 ||
+                                this.state == 3 ||
+                                this.state == 4 ||
+                                this.state == 5 ||
+                                this.state == 6 ||
+                                this.state == 7 ||
+                                this.state == 8 ||
+                                this.state == 9 ||
+                                (this.state == 10) | (this.state == 11) ||
+                                this.state == 12 ||
+                                this.state == 13 ||
+                                this.state == 14 ||
+                                this.state == 15 ||
+                                this.state == 16 ||
+                                this.state == 17 ||
+                                this.state == 18 ||
+                                this.state == 19 ||
+                                this.state == 20 ||
+                                this.state == 21 ||
+                                this.state == 22 ||
+                                this.state == 23 ||
+                                this.state == 24 ||
+                                this.state == 25 ||
+                                this.state == 26 ||
+                                this.state == 27 ||
+                                this.state == 28 ||
+                                this.state == 29 ||
+                                this.state == 30 ||
+                                this.state == 31 ||
+                                this.state == 32 ||
+                                this.state == 32 ||
+                                this.state == 35
+                            "
+                          >
+                            <br />
+                            คืนบัตร
+                          </p>
+                          <!-- เเสดงการทำงาน -->
+                          <v-btn
+                            large
+                            fab
+                            v-show="this.state == 34"
+                            color="#E53935"
+                          >
+                            <p>
+                              <br />
+                              คืนบัตร
+                            </p>
+                          </v-btn>
+                          <!-- เเสดงการทำงาน -->
                         </v-btn>
-                        <!-- เเสดงการทำงาน -->
-                       </v-btn> 
-                       </v-col>
+                      </v-col>
                       <v-col>
                         <v-btn large fab>
-                          <p  v-show="this.state ==0 || this.state ==1 || this.state ==2|| this.state ==4|| this.state ==5|| this.state ==6|| this.state ==7|| this.state ==8|| this.state ==9|| this.state ==10|| this.state ==11|| this.state ==12|| this.state ==13|| this.state ==14|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29|| this.state ==30|| this.state ==31|| this.state ==32|| this.state ==33|| this.state ==34|| this.state ==35" > <br> รหัสตัว <br> ที่3</p>
+                          <p
+                            v-show="
+                              this.state == 0 ||
+                                this.state == 1 ||
+                                this.state == 2 ||
+                                this.state == 4 ||
+                                this.state == 5 ||
+                                this.state == 6 ||
+                                this.state == 7 ||
+                                this.state == 8 ||
+                                this.state == 9 ||
+                                this.state == 10 ||
+                                this.state == 11 ||
+                                this.state == 12 ||
+                                this.state == 13 ||
+                                this.state == 14 ||
+                                this.state == 15 ||
+                                this.state == 16 ||
+                                this.state == 17 ||
+                                this.state == 18 ||
+                                this.state == 19 ||
+                                this.state == 20 ||
+                                this.state == 21 ||
+                                this.state == 22 ||
+                                this.state == 23 ||
+                                this.state == 24 ||
+                                this.state == 25 ||
+                                this.state == 26 ||
+                                this.state == 27 ||
+                                this.state == 28 ||
+                                this.state == 29 ||
+                                this.state == 30 ||
+                                this.state == 31 ||
+                                this.state == 32 ||
+                                this.state == 33 ||
+                                this.state == 34 ||
+                                this.state == 35
+                            "
+                          >
+                            <br />
+                            รหัสตัว <br />
+                            ที่3
+                          </p>
                           <!-- เเสดงการทำงาน -->
-                          <v-btn large fab v-show="this.state ==3" color="#E53935">
-                          <p> <br> รหัสตัว <br> ที่3</p>
-                        </v-btn>
-                        <!-- เเสดงการทำงาน -->
+                          <v-btn
+                            large
+                            fab
+                            v-show="this.state == 3"
+                            color="#E53935"
+                          >
+                            <p>
+                              <br />
+                              รหัสตัว <br />
+                              ที่3
+                            </p>
+                          </v-btn>
+                          <!-- เเสดงการทำงาน -->
                         </v-btn>
                       </v-col>
                       <v-col> </v-col>
@@ -376,12 +802,63 @@
                       <v-col> </v-col>
                       <v-col>
                         <v-btn large fab>
-                          <p v-show="this.state ==0 || this.state ==1 || this.state ==2|| this.state ==3|| this.state ==5|| this.state ==6|| this.state ==7|| this.state ==8|| this.state ==9|| this.state ==10|| this.state ==11|| this.state ==12|| this.state ==13|| this.state ==14|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29|| this.state ==30|| this.state ==31|| this.state ==32|| this.state ==33|| this.state ==34|| this.state ==35" > <br> รหัสผ่าน <br> ถูกต้อง</p> 
+                          <p
+                            v-show="
+                              this.state == 0 ||
+                                this.state == 1 ||
+                                this.state == 2 ||
+                                this.state == 3 ||
+                                this.state == 5 ||
+                                this.state == 6 ||
+                                this.state == 7 ||
+                                this.state == 8 ||
+                                this.state == 9 ||
+                                this.state == 10 ||
+                                this.state == 11 ||
+                                this.state == 12 ||
+                                this.state == 13 ||
+                                this.state == 14 ||
+                                this.state == 15 ||
+                                this.state == 16 ||
+                                this.state == 17 ||
+                                this.state == 18 ||
+                                this.state == 19 ||
+                                this.state == 20 ||
+                                this.state == 21 ||
+                                this.state == 22 ||
+                                this.state == 23 ||
+                                this.state == 24 ||
+                                this.state == 25 ||
+                                this.state == 26 ||
+                                this.state == 27 ||
+                                this.state == 28 ||
+                                this.state == 29 ||
+                                this.state == 30 ||
+                                this.state == 31 ||
+                                this.state == 32 ||
+                                this.state == 33 ||
+                                this.state == 34 ||
+                                this.state == 35
+                            "
+                          >
+                            <br />
+                            รหัสผ่าน <br />
+                            ถูกต้อง
+                          </p>
                           <!-- เเสดงการทำงาน -->
-                          <v-btn large fab v-show="this.state ==4" color="#E53935">
-                          <p> <br> รหัสผ่าน <br> ถูกต้อง</p>
-                        </v-btn>
-                        <!-- เเสดงการทำงาน -->
+                          <v-btn
+                            large
+                            fab
+                            v-show="this.state == 4"
+                            color="#E53935"
+                          >
+                            <p>
+                              <br />
+                              รหัสผ่าน <br />
+                              ถูกต้อง
+                            </p>
+                          </v-btn>
+                          <!-- เเสดงการทำงาน -->
                         </v-btn>
                       </v-col>
                       <v-col> </v-col>
@@ -394,24 +871,128 @@
                       <v-col> </v-col>
                       <v-col>
                         <v-btn large fab>
-                          <p v-show="this.state ==0 || this.state ==1 || this.state ==2|| this.state ==3|| this.state ==4|| this.state ==6|| this.state ==7|| this.state ==8|| this.state ==9|| this.state ==10|| this.state ==11|| this.state ==12|| this.state ==13|| this.state ==14|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29|| this.state ==30|| this.state ==31|| this.state ==32|| this.state ==33|| this.state ==34|| this.state ==35" > <br> ป้อน <br> จำนวณ <br> เงิน</p> 
+                          <p
+                            v-show="
+                              this.state == 0 ||
+                                this.state == 1 ||
+                                this.state == 2 ||
+                                this.state == 3 ||
+                                this.state == 4 ||
+                                this.state == 6 ||
+                                this.state == 7 ||
+                                this.state == 8 ||
+                                this.state == 9 ||
+                                this.state == 10 ||
+                                this.state == 11 ||
+                                this.state == 12 ||
+                                this.state == 13 ||
+                                this.state == 14 ||
+                                this.state == 15 ||
+                                this.state == 16 ||
+                                this.state == 17 ||
+                                this.state == 18 ||
+                                this.state == 19 ||
+                                this.state == 20 ||
+                                this.state == 21 ||
+                                this.state == 22 ||
+                                this.state == 23 ||
+                                this.state == 24 ||
+                                this.state == 25 ||
+                                this.state == 26 ||
+                                this.state == 27 ||
+                                this.state == 28 ||
+                                this.state == 29 ||
+                                this.state == 30 ||
+                                this.state == 31 ||
+                                this.state == 32 ||
+                                this.state == 33 ||
+                                this.state == 34 ||
+                                this.state == 35
+                            "
+                          >
+                            <br />
+                            ป้อน <br />
+                            จำนวณ <br />
+                            เงิน
+                          </p>
                           <!-- เเสดงการทำงาน -->
-                          <v-btn large fab v-show="this.state ==5" color="#E53935">
-                          <p><br> ป้อน <br> จำนวณ <br> เงิน</p>
-                        </v-btn>
-                        <!-- เเสดงการทำงาน -->
+                          <v-btn
+                            large
+                            fab
+                            v-show="this.state == 5"
+                            color="#E53935"
+                          >
+                            <p>
+                              <br />
+                              ป้อน <br />
+                              จำนวณ <br />
+                              เงิน
+                            </p>
+                          </v-btn>
+                          <!-- เเสดงการทำงาน -->
                         </v-btn>
                       </v-col>
                       <v-col>
-                         <v-btn large fab>
-                           <p v-show="this.state ==0 || this.state ==1 || this.state ==2|| this.state ==3|| this.state ==4|| this.state ==5|| this.state ==6|| this.state ==7|| this.state ==8|| this.state ==9|| this.state ==10| this.state ==11||this.state ==12|| this.state ==13|| this.state ==14|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29|| this.state ==30|| this.state ==31|| this.state ==32|| this.state ==32|| this.state ==34|| this.state ==35" > <br> ถอนเงิน  <br> ไม่สำเร็จ</p> 
-                           <!-- เเสดงการทำงาน -->
-                          <v-btn large fab v-show="this.state ==33" color="#E53935">
-                          <p> <br> ถอนเงิน  <br> ไม่สำเร็จ</p>
+                        <v-btn large fab>
+                          <p
+                            v-show="
+                              this.state == 0 ||
+                                this.state == 1 ||
+                                this.state == 2 ||
+                                this.state == 3 ||
+                                this.state == 4 ||
+                                this.state == 5 ||
+                                this.state == 6 ||
+                                this.state == 7 ||
+                                this.state == 8 ||
+                                this.state == 9 ||
+                                (this.state == 10) | (this.state == 11) ||
+                                this.state == 12 ||
+                                this.state == 13 ||
+                                this.state == 14 ||
+                                this.state == 15 ||
+                                this.state == 16 ||
+                                this.state == 17 ||
+                                this.state == 18 ||
+                                this.state == 19 ||
+                                this.state == 20 ||
+                                this.state == 21 ||
+                                this.state == 22 ||
+                                this.state == 23 ||
+                                this.state == 24 ||
+                                this.state == 25 ||
+                                this.state == 26 ||
+                                this.state == 27 ||
+                                this.state == 28 ||
+                                this.state == 29 ||
+                                this.state == 30 ||
+                                this.state == 31 ||
+                                this.state == 32 ||
+                                this.state == 32 ||
+                                this.state == 34 ||
+                                this.state == 35
+                            "
+                          >
+                            <br />
+                            ถอนเงิน <br />
+                            ไม่สำเร็จ
+                          </p>
+                          <!-- เเสดงการทำงาน -->
+                          <v-btn
+                            large
+                            fab
+                            v-show="this.state == 33"
+                            color="#E53935"
+                          >
+                            <p>
+                              <br />
+                              ถอนเงิน <br />
+                              ไม่สำเร็จ
+                            </p>
+                          </v-btn>
+                          <!-- เเสดงการทำงาน -->
                         </v-btn>
-                        <!-- เเสดงการทำงาน -->
-                        </v-btn>
-                        </v-col>
+                      </v-col>
                       <v-col></v-col>
                     </v-row>
                     <!-- row 6 -->
@@ -421,23 +1002,123 @@
                       <v-col> </v-col>
                       <v-col>
                         <v-btn large fab>
-                          <p  v-show="this.state ==0 || this.state ==1 || this.state ==2|| this.state ==3|| this.state ==4|| this.state ==5|| this.state ==7|| this.state ==8|| this.state ==9|| this.state ==10|| this.state ==11|| this.state ==12|| this.state ==13|| this.state ==14|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29|| this.state ==30|| this.state ==31|| this.state ==32|| this.state ==33|| this.state ==34|| this.state ==35"  > <br> ตัวที่ 1 <br> X</p> 
+                          <p
+                            v-show="
+                              this.state == 0 ||
+                                this.state == 1 ||
+                                this.state == 2 ||
+                                this.state == 3 ||
+                                this.state == 4 ||
+                                this.state == 5 ||
+                                this.state == 7 ||
+                                this.state == 8 ||
+                                this.state == 9 ||
+                                this.state == 10 ||
+                                this.state == 11 ||
+                                this.state == 12 ||
+                                this.state == 13 ||
+                                this.state == 14 ||
+                                this.state == 15 ||
+                                this.state == 16 ||
+                                this.state == 17 ||
+                                this.state == 18 ||
+                                this.state == 19 ||
+                                this.state == 20 ||
+                                this.state == 21 ||
+                                this.state == 22 ||
+                                this.state == 23 ||
+                                this.state == 24 ||
+                                this.state == 25 ||
+                                this.state == 26 ||
+                                this.state == 27 ||
+                                this.state == 28 ||
+                                this.state == 29 ||
+                                this.state == 30 ||
+                                this.state == 31 ||
+                                this.state == 32 ||
+                                this.state == 33 ||
+                                this.state == 34 ||
+                                this.state == 35
+                            "
+                          >
+                            <br />
+                            ตัวที่ 1 <br />
+                            X
+                          </p>
                           <!-- เเสดงการทำงาน -->
-                          <v-btn large fab v-show="this.state ==6" color="#E53935">
-                          <p> <br> ตัวที่ 1 <br> X</p>
-                        </v-btn>
-                        <!-- เเสดงการทำงาน -->
+                          <v-btn
+                            large
+                            fab
+                            v-show="this.state == 6"
+                            color="#E53935"
+                          >
+                            <p>
+                              <br />
+                              ตัวที่ 1 <br />
+                              X
+                            </p>
+                          </v-btn>
+                          <!-- เเสดงการทำงาน -->
                         </v-btn>
                       </v-col>
                       <v-col> </v-col>
                       <v-col>
                         <v-btn large fab>
-                          <p v-show="this.state ==33|| this.state ==0 || this.state ==1 || this.state ==2|| this.state ==3|| this.state ==4|| this.state ==5|| this.state ==6|| this.state ==7|| this.state ==8|| this.state ==9|| this.state ==10| this.state ==11||this.state ==12|| this.state ==13|| this.state ==14|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29|| this.state ==30|| this.state ==31|| this.state ==32|| this.state ==32||  this.state ==35" > <br> คืนบัตร</p> 
-                        <!-- เเสดงการทำงาน -->
-                          <v-btn large fab v-show="this.state ==34" color="#E53935">
-                          <p> <br> คืนบัตร</p>
-                        </v-btn>
-                        <!-- เเสดงการทำงาน -->
+                          <p
+                            v-show="
+                              this.state == 33 ||
+                                this.state == 0 ||
+                                this.state == 1 ||
+                                this.state == 2 ||
+                                this.state == 3 ||
+                                this.state == 4 ||
+                                this.state == 5 ||
+                                this.state == 6 ||
+                                this.state == 7 ||
+                                this.state == 8 ||
+                                this.state == 9 ||
+                                (this.state == 10) | (this.state == 11) ||
+                                this.state == 12 ||
+                                this.state == 13 ||
+                                this.state == 14 ||
+                                this.state == 15 ||
+                                this.state == 16 ||
+                                this.state == 17 ||
+                                this.state == 18 ||
+                                this.state == 19 ||
+                                this.state == 20 ||
+                                this.state == 21 ||
+                                this.state == 22 ||
+                                this.state == 23 ||
+                                this.state == 24 ||
+                                this.state == 25 ||
+                                this.state == 26 ||
+                                this.state == 27 ||
+                                this.state == 28 ||
+                                this.state == 29 ||
+                                this.state == 30 ||
+                                this.state == 31 ||
+                                this.state == 32 ||
+                                this.state == 32 ||
+                                this.state == 35
+                            "
+                          >
+                            <br />
+                            คืนบัตร
+                          </p>
+                          <!-- เเสดงการทำงาน -->
+                          <v-btn
+                            large
+                            fab
+                            v-show="this.state == 34"
+                            color="#E53935"
+                          >
+                            <p>
+                              <br />
+                              คืนบัตร
+                            </p>
+                          </v-btn>
+                          <!-- เเสดงการทำงาน -->
                         </v-btn>
                       </v-col>
                     </v-row>
@@ -448,32 +1129,185 @@
                       <v-col> </v-col>
                       <v-col>
                         <v-btn large fab>
-                          <p v-show="this.state ==0 || this.state ==1 || this.state ==2|| this.state ==3|| this.state ==4|| this.state ==5|| this.state ==6|| this.state ==8|| this.state ==9|| this.state ==10|| this.state ==11|| this.state ==12|| this.state ==13|| this.state ==14|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29|| this.state ==30|| this.state ==31|| this.state ==32|| this.state ==33|| this.state ==34|| this.state ==35" > <br> ตัวที่ 2 <br> XX</p> 
+                          <p
+                            v-show="
+                              this.state == 0 ||
+                                this.state == 1 ||
+                                this.state == 2 ||
+                                this.state == 3 ||
+                                this.state == 4 ||
+                                this.state == 5 ||
+                                this.state == 6 ||
+                                this.state == 8 ||
+                                this.state == 9 ||
+                                this.state == 10 ||
+                                this.state == 11 ||
+                                this.state == 12 ||
+                                this.state == 13 ||
+                                this.state == 14 ||
+                                this.state == 15 ||
+                                this.state == 16 ||
+                                this.state == 17 ||
+                                this.state == 18 ||
+                                this.state == 19 ||
+                                this.state == 20 ||
+                                this.state == 21 ||
+                                this.state == 22 ||
+                                this.state == 23 ||
+                                this.state == 24 ||
+                                this.state == 25 ||
+                                this.state == 26 ||
+                                this.state == 27 ||
+                                this.state == 28 ||
+                                this.state == 29 ||
+                                this.state == 30 ||
+                                this.state == 31 ||
+                                this.state == 32 ||
+                                this.state == 33 ||
+                                this.state == 34 ||
+                                this.state == 35
+                            "
+                          >
+                            <br />
+                            ตัวที่ 2 <br />
+                            XX
+                          </p>
                           <!-- เเสดงการทำงาน -->
-                          <v-btn large fab v-show="this.state ==7" color="#E53935">
-                          <p> <br> ตัวที่ 2 <br> XX</p>
-                        </v-btn>
-                        <!-- เเสดงการทำงาน -->
+                          <v-btn
+                            large
+                            fab
+                            v-show="this.state == 7"
+                            color="#E53935"
+                          >
+                            <p>
+                              <br />
+                              ตัวที่ 2 <br />
+                              XX
+                            </p>
+                          </v-btn>
+                          <!-- เเสดงการทำงาน -->
                         </v-btn>
                       </v-col>
                       <v-col>
                         <v-btn large fab>
-                          <p v-show="this.state ==0 || this.state ==1 || this.state ==2|| this.state ==3|| this.state ==4|| this.state ==5|| this.state ==6|| this.state ==7|| this.state ==8|| this.state ==9|| this.state ==11|| this.state ==12|| this.state ==13|| this.state ==14|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29|| this.state ==30|| this.state ==31|| this.state ==32|| this.state ==33|| this.state ==34|| this.state ==35"> <br> ตัวที่ 2 <br> XX</p> 
+                          <p
+                            v-show="
+                              this.state == 0 ||
+                                this.state == 1 ||
+                                this.state == 2 ||
+                                this.state == 3 ||
+                                this.state == 4 ||
+                                this.state == 5 ||
+                                this.state == 6 ||
+                                this.state == 7 ||
+                                this.state == 8 ||
+                                this.state == 9 ||
+                                this.state == 11 ||
+                                this.state == 12 ||
+                                this.state == 13 ||
+                                this.state == 14 ||
+                                this.state == 15 ||
+                                this.state == 16 ||
+                                this.state == 17 ||
+                                this.state == 18 ||
+                                this.state == 19 ||
+                                this.state == 20 ||
+                                this.state == 21 ||
+                                this.state == 22 ||
+                                this.state == 23 ||
+                                this.state == 24 ||
+                                this.state == 25 ||
+                                this.state == 26 ||
+                                this.state == 27 ||
+                                this.state == 28 ||
+                                this.state == 29 ||
+                                this.state == 30 ||
+                                this.state == 31 ||
+                                this.state == 32 ||
+                                this.state == 33 ||
+                                this.state == 34 ||
+                                this.state == 35
+                            "
+                          >
+                            <br />
+                            ตัวที่ 2 <br />
+                            XX
+                          </p>
                           <!-- เเสดงการทำงาน -->
-                          <v-btn large fab v-show="this.state ==10" color="#E53935">
-                          <p> <br> ตัวที่ 2 <br> XX</p>
-                        </v-btn>
-                        <!-- เเสดงการทำงาน -->
+                          <v-btn
+                            large
+                            fab
+                            v-show="this.state == 10"
+                            color="#E53935"
+                          >
+                            <p>
+                              <br />
+                              ตัวที่ 2 <br />
+                              XX
+                            </p>
+                          </v-btn>
+                          <!-- เเสดงการทำงาน -->
                         </v-btn>
                       </v-col>
                       <v-col>
                         <v-btn large fab>
-                          <p v-show="this.state ==0 || this.state ==1 || this.state ==2|| this.state ==3|| this.state ==4|| this.state ==5|| this.state ==6|| this.state ==7|| this.state ==8|| this.state ==9||this.state ==10||  this.state ==12|| this.state ==13|| this.state ==14|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29|| this.state ==30|| this.state ==31|| this.state ==32|| this.state ==33|| this.state ==34|| this.state ==35" > <br> ตัวที่ 3 <br> XX0</p> 
+                          <p
+                            v-show="
+                              this.state == 0 ||
+                                this.state == 1 ||
+                                this.state == 2 ||
+                                this.state == 3 ||
+                                this.state == 4 ||
+                                this.state == 5 ||
+                                this.state == 6 ||
+                                this.state == 7 ||
+                                this.state == 8 ||
+                                this.state == 9 ||
+                                this.state == 10 ||
+                                this.state == 12 ||
+                                this.state == 13 ||
+                                this.state == 14 ||
+                                this.state == 15 ||
+                                this.state == 16 ||
+                                this.state == 17 ||
+                                this.state == 18 ||
+                                this.state == 19 ||
+                                this.state == 20 ||
+                                this.state == 21 ||
+                                this.state == 22 ||
+                                this.state == 23 ||
+                                this.state == 24 ||
+                                this.state == 25 ||
+                                this.state == 26 ||
+                                this.state == 27 ||
+                                this.state == 28 ||
+                                this.state == 29 ||
+                                this.state == 30 ||
+                                this.state == 31 ||
+                                this.state == 32 ||
+                                this.state == 33 ||
+                                this.state == 34 ||
+                                this.state == 35
+                            "
+                          >
+                            <br />
+                            ตัวที่ 3 <br />
+                            XX0
+                          </p>
                           <!-- เเสดงการทำงาน -->
-                          <v-btn large fab v-show="this.state ==11" color="#E53935">
-                          <p> <br> ตัวที่ 3 <br> XX0</p>
-                        </v-btn>
-                        <!-- เเสดงการทำงาน -->
+                          <v-btn
+                            large
+                            fab
+                            v-show="this.state == 11"
+                            color="#E53935"
+                          >
+                            <p>
+                              <br />
+                              ตัวที่ 3 <br />
+                              XX0
+                            </p>
+                          </v-btn>
+                          <!-- เเสดงการทำงาน -->
                         </v-btn>
                       </v-col>
                     </v-row>
@@ -484,32 +1318,183 @@
                     <v-row>
                       <v-col>
                         <v-btn large fab>
-                          <p v-show="this.state ==33|| this.state ==0 || this.state ==1 || this.state ==2|| this.state ==3|| this.state ==4|| this.state ==5|| this.state ==6|| this.state ==7|| this.state ==8|| this.state ==9|| this.state ==10| this.state ==11||this.state ==12|| this.state ==13|| this.state ==14|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29|| this.state ==30|| this.state ==31|| this.state ==32|| this.state ==32|| this.state ==35" > <br> คืนบัตร</p> 
-                        <!-- เเสดงการทำงาน -->
-                          <v-btn large fab v-show="this.state ==34" color="#E53935">
-                          <p> <br> คืนบัตร</p>
-                        </v-btn>
-                        <!-- เเสดงการทำงาน --> 
+                          <p
+                            v-show="
+                              this.state == 33 ||
+                                this.state == 0 ||
+                                this.state == 1 ||
+                                this.state == 2 ||
+                                this.state == 3 ||
+                                this.state == 4 ||
+                                this.state == 5 ||
+                                this.state == 6 ||
+                                this.state == 7 ||
+                                this.state == 8 ||
+                                this.state == 9 ||
+                                (this.state == 10) | (this.state == 11) ||
+                                this.state == 12 ||
+                                this.state == 13 ||
+                                this.state == 14 ||
+                                this.state == 15 ||
+                                this.state == 16 ||
+                                this.state == 17 ||
+                                this.state == 18 ||
+                                this.state == 19 ||
+                                this.state == 20 ||
+                                this.state == 21 ||
+                                this.state == 22 ||
+                                this.state == 23 ||
+                                this.state == 24 ||
+                                this.state == 25 ||
+                                this.state == 26 ||
+                                this.state == 27 ||
+                                this.state == 28 ||
+                                this.state == 29 ||
+                                this.state == 30 ||
+                                this.state == 31 ||
+                                this.state == 32 ||
+                                this.state == 32 ||
+                                this.state == 35
+                            "
+                          >
+                            <br />
+                            คืนบัตร
+                          </p>
+                          <!-- เเสดงการทำงาน -->
+                          <v-btn
+                            large
+                            fab
+                            v-show="this.state == 34"
+                            color="#E53935"
+                          >
+                            <p>
+                              <br />
+                              คืนบัตร
+                            </p>
+                          </v-btn>
+                          <!-- เเสดงการทำงาน -->
                         </v-btn>
                       </v-col>
                       <v-col>
                         <v-btn large fab>
-                          <p  v-show="this.state ==0 || this.state ==1 || this.state ==2|| this.state ==3|| this.state ==4|| this.state ==5|| this.state ==6|| this.state ==7|| this.state ==9|| this.state ==10|| this.state ==11|| this.state ==12|| this.state ==13|| this.state ==14|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29|| this.state ==30|| this.state ==31|| this.state ==32|| this.state ==33|| this.state ==34|| this.state ==35"  > <br> ตัวที่ 3 <br> XX0</p> 
+                          <p
+                            v-show="
+                              this.state == 0 ||
+                                this.state == 1 ||
+                                this.state == 2 ||
+                                this.state == 3 ||
+                                this.state == 4 ||
+                                this.state == 5 ||
+                                this.state == 6 ||
+                                this.state == 7 ||
+                                this.state == 9 ||
+                                this.state == 10 ||
+                                this.state == 11 ||
+                                this.state == 12 ||
+                                this.state == 13 ||
+                                this.state == 14 ||
+                                this.state == 15 ||
+                                this.state == 16 ||
+                                this.state == 17 ||
+                                this.state == 18 ||
+                                this.state == 19 ||
+                                this.state == 20 ||
+                                this.state == 21 ||
+                                this.state == 22 ||
+                                this.state == 23 ||
+                                this.state == 24 ||
+                                this.state == 25 ||
+                                this.state == 26 ||
+                                this.state == 27 ||
+                                this.state == 28 ||
+                                this.state == 29 ||
+                                this.state == 30 ||
+                                this.state == 31 ||
+                                this.state == 32 ||
+                                this.state == 33 ||
+                                this.state == 34 ||
+                                this.state == 35
+                            "
+                          >
+                            <br />
+                            ตัวที่ 3 <br />
+                            XX0
+                          </p>
                           <!-- เเสดงการทำงาน -->
-                          <v-btn large fab v-show="this.state ==8" color="#E53935">
-                          <p> <br> ตัวที่ 3 <br> XX0</p>
-                        </v-btn>
-                        <!-- เเสดงการทำงาน -->
+                          <v-btn
+                            large
+                            fab
+                            v-show="this.state == 8"
+                            color="#E53935"
+                          >
+                            <p>
+                              <br />
+                              ตัวที่ 3 <br />
+                              XX0
+                            </p>
+                          </v-btn>
+                          <!-- เเสดงการทำงาน -->
                         </v-btn>
                       </v-col>
                       <v-col>
                         <v-btn large fab>
-                          <p v-show="this.state ==0 || this.state ==1 || this.state ==2|| this.state ==3|| this.state ==4|| this.state ==5|| this.state ==6|| this.state ==7|| this.state ==8|| this.state ==10|| this.state ==11|| this.state ==9|| this.state ==13|| this.state ==12|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29|| this.state ==30|| this.state ==31|| this.state ==14|| this.state ==33|| this.state ==34|| this.state ==35"  > <br> จำนวนเงิน <br> ไม่ถูกต้อง</p> 
+                          <p
+                            v-show="
+                              this.state == 0 ||
+                                this.state == 1 ||
+                                this.state == 2 ||
+                                this.state == 3 ||
+                                this.state == 4 ||
+                                this.state == 5 ||
+                                this.state == 6 ||
+                                this.state == 7 ||
+                                this.state == 8 ||
+                                this.state == 10 ||
+                                this.state == 11 ||
+                                this.state == 9 ||
+                                this.state == 13 ||
+                                this.state == 12 ||
+                                this.state == 15 ||
+                                this.state == 16 ||
+                                this.state == 17 ||
+                                this.state == 18 ||
+                                this.state == 19 ||
+                                this.state == 20 ||
+                                this.state == 21 ||
+                                this.state == 22 ||
+                                this.state == 23 ||
+                                this.state == 24 ||
+                                this.state == 25 ||
+                                this.state == 26 ||
+                                this.state == 27 ||
+                                this.state == 28 ||
+                                this.state == 29 ||
+                                this.state == 30 ||
+                                this.state == 31 ||
+                                this.state == 14 ||
+                                this.state == 33 ||
+                                this.state == 34 ||
+                                this.state == 35
+                            "
+                          >
+                            <br />
+                            จำนวนเงิน <br />
+                            ไม่ถูกต้อง
+                          </p>
                           <!-- เเสดงการทำงาน -->
-                          <v-btn large fab v-show="this.state ==32" color="#E53935">
-                          <p> <br> จำนวนเงิน <br> ไม่ถูกต้อง</p>
-                        </v-btn>
-                        <!-- เเสดงการทำงาน -->
+                          <v-btn
+                            large
+                            fab
+                            v-show="this.state == 32"
+                            color="#E53935"
+                          >
+                            <p>
+                              <br />
+                              จำนวนเงิน <br />
+                              ไม่ถูกต้อง
+                            </p>
+                          </v-btn>
+                          <!-- เเสดงการทำงาน -->
                         </v-btn>
                       </v-col>
                       <v-col> </v-col>
@@ -521,25 +1506,125 @@
                       <v-col> </v-col>
                       <v-col>
                         <v-btn large fab>
-                          <p v-show="this.state ==0 || this.state ==1 || this.state ==2|| this.state ==3|| this.state ==4|| this.state ==5|| this.state ==6|| this.state ==7|| this.state ==8|| this.state ==10|| this.state ==11|| this.state ==12|| this.state ==13|| this.state ==14|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29|| this.state ==30|| this.state ==31|| this.state ==32|| this.state ==33|| this.state ==34|| this.state ==35" > <br> ตัวที่ 4 <br> X000</p> 
+                          <p
+                            v-show="
+                              this.state == 0 ||
+                                this.state == 1 ||
+                                this.state == 2 ||
+                                this.state == 3 ||
+                                this.state == 4 ||
+                                this.state == 5 ||
+                                this.state == 6 ||
+                                this.state == 7 ||
+                                this.state == 8 ||
+                                this.state == 10 ||
+                                this.state == 11 ||
+                                this.state == 12 ||
+                                this.state == 13 ||
+                                this.state == 14 ||
+                                this.state == 15 ||
+                                this.state == 16 ||
+                                this.state == 17 ||
+                                this.state == 18 ||
+                                this.state == 19 ||
+                                this.state == 20 ||
+                                this.state == 21 ||
+                                this.state == 22 ||
+                                this.state == 23 ||
+                                this.state == 24 ||
+                                this.state == 25 ||
+                                this.state == 26 ||
+                                this.state == 27 ||
+                                this.state == 28 ||
+                                this.state == 29 ||
+                                this.state == 30 ||
+                                this.state == 31 ||
+                                this.state == 32 ||
+                                this.state == 33 ||
+                                this.state == 34 ||
+                                this.state == 35
+                            "
+                          >
+                            <br />
+                            ตัวที่ 4 <br />
+                            X000
+                          </p>
                           <!-- เเสดงการทำงาน -->
-                          <v-btn large fab v-show="this.state ==9" color="#E53935">
-                          <p> <br> ตัวที่ 4 <br> X000</p>
-                        </v-btn>
-                        <!-- เเสดงการทำงาน -->
+                          <v-btn
+                            large
+                            fab
+                            v-show="this.state == 9"
+                            color="#E53935"
+                          >
+                            <p>
+                              <br />
+                              ตัวที่ 4 <br />
+                              X000
+                            </p>
+                          </v-btn>
+                          <!-- เเสดงการทำงาน -->
                         </v-btn>
                       </v-col>
-                      <v-col>
-                        
-                      </v-col>
+                      <v-col> </v-col>
                       <v-col>
                         <v-btn large fab>
-                          <p v-show="this.state ==0 || this.state ==1 || this.state ==2|| this.state ==3|| this.state ==4|| this.state ==5|| this.state ==6|| this.state ==7|| this.state ==8|| this.state ==10|| this.state ==11|| this.state ==9|| this.state ==13|| this.state ==14|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29|| this.state ==30|| this.state ==31|| this.state ==32|| this.state ==33|| this.state ==34|| this.state ==35" > <br> ตัวที่ 4 <br> XX00</p> 
+                          <p
+                            v-show="
+                              this.state == 0 ||
+                                this.state == 1 ||
+                                this.state == 2 ||
+                                this.state == 3 ||
+                                this.state == 4 ||
+                                this.state == 5 ||
+                                this.state == 6 ||
+                                this.state == 7 ||
+                                this.state == 8 ||
+                                this.state == 10 ||
+                                this.state == 11 ||
+                                this.state == 9 ||
+                                this.state == 13 ||
+                                this.state == 14 ||
+                                this.state == 15 ||
+                                this.state == 16 ||
+                                this.state == 17 ||
+                                this.state == 18 ||
+                                this.state == 19 ||
+                                this.state == 20 ||
+                                this.state == 21 ||
+                                this.state == 22 ||
+                                this.state == 23 ||
+                                this.state == 24 ||
+                                this.state == 25 ||
+                                this.state == 26 ||
+                                this.state == 27 ||
+                                this.state == 28 ||
+                                this.state == 29 ||
+                                this.state == 30 ||
+                                this.state == 31 ||
+                                this.state == 32 ||
+                                this.state == 33 ||
+                                this.state == 34 ||
+                                this.state == 35
+                            "
+                          >
+                            <br />
+                            ตัวที่ 4 <br />
+                            XX00
+                          </p>
                           <!-- เเสดงการทำงาน -->
-                          <v-btn large fab v-show="this.state ==12" color="#E53935">
-                          <p> <br> ตัวที่ 4 <br> XX00</p>
-                        </v-btn>
-                        <!-- เเสดงการทำงาน -->
+                          <v-btn
+                            large
+                            fab
+                            v-show="this.state == 12"
+                            color="#E53935"
+                          >
+                            <p>
+                              <br />
+                              ตัวที่ 4 <br />
+                              XX00
+                            </p>
+                          </v-btn>
+                          <!-- เเสดงการทำงาน -->
                         </v-btn>
                       </v-col>
                     </v-row>
@@ -548,25 +1633,71 @@
                     <!-- row 9 -->
                     <v-row>
                       <v-col> </v-col>
-                      <v-col>
-                        
-                      </v-col>
+                      <v-col> </v-col>
                       <v-col>
                         <v-btn large fab>
-                          <p v-show="this.state ==0 || this.state ==1 || this.state ==2|| this.state ==3|| this.state ==4|| this.state ==5|| this.state ==6|| this.state ==7|| this.state ==8|| this.state ==10|| this.state ==11|| this.state ==9|| this.state ==13|| this.state ==12|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29|| this.state ==30|| this.state ==31|| this.state ==32|| this.state ==33|| this.state ==34|| this.state ==35"  > <br> เงินออก <br> คืนบัตร</p> 
+                          <p
+                            v-show="
+                              this.state == 0 ||
+                                this.state == 1 ||
+                                this.state == 2 ||
+                                this.state == 3 ||
+                                this.state == 4 ||
+                                this.state == 5 ||
+                                this.state == 6 ||
+                                this.state == 7 ||
+                                this.state == 8 ||
+                                this.state == 10 ||
+                                this.state == 11 ||
+                                this.state == 9 ||
+                                this.state == 13 ||
+                                this.state == 12 ||
+                                this.state == 15 ||
+                                this.state == 16 ||
+                                this.state == 17 ||
+                                this.state == 18 ||
+                                this.state == 19 ||
+                                this.state == 20 ||
+                                this.state == 21 ||
+                                this.state == 22 ||
+                                this.state == 23 ||
+                                this.state == 24 ||
+                                this.state == 25 ||
+                                this.state == 26 ||
+                                this.state == 27 ||
+                                this.state == 28 ||
+                                this.state == 29 ||
+                                this.state == 30 ||
+                                this.state == 31 ||
+                                this.state == 32 ||
+                                this.state == 33 ||
+                                this.state == 34 ||
+                                this.state == 35
+                            "
+                          >
+                            <br />
+                            เงินออก <br />
+                            คืนบัตร
+                          </p>
                           <!-- เเสดงการทำงาน -->
-                          <v-btn large fab v-show="this.state ==14" color="#43A047">
-                          <p> <br> เงินออก <br> คืนบัตร</p>
-                        </v-btn>
-                        <!-- เเสดงการทำงาน -->
+                          <v-btn
+                            large
+                            fab
+                            v-show="this.state == 14"
+                            color="#43A047"
+                          >
+                            <p>
+                              <br />
+                              เงินออก <br />
+                              คืนบัตร
+                            </p>
+                          </v-btn>
+                          <!-- เเสดงการทำงาน -->
                         </v-btn>
                       </v-col>
-                      <v-col>
-                        
-                      </v-col>
+                      <v-col> </v-col>
                     </v-row>
                     <!-- row 9 -->
-
 
                     <!-- ลอง -->
                   </v-col>
@@ -582,22 +1713,22 @@
 </template>
 
 <script>
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import { WebCam } from "vue-web-cam";
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import { WebCam } from 'vue-web-cam';
 
 export default {
-  name: "Home",
+  name: 'Home',
   components: {
     Navbar,
     Footer,
-    "vue-web-cam": WebCam,
+    'vue-web-cam': WebCam,
   },
   data() {
     return {
-      title: "ยินดีต้อนรับ",
-      subTitle: "กรุณาใส่บัตรเพื่อเริ่มทำรายการ",
-      input: "",
+      title: 'ยินดีต้อนรับ',
+      subTitle: 'กรุณาใส่บัตรเพื่อเริ่มทำรายการ',
+      input: '',
       state: 0,
       img: null,
       camera: null,
@@ -608,16 +1739,26 @@ export default {
       showMenuInMonitor: false,
       showMoney: false,
       showCard: true,
-
-      currentState: "",
+      currentState: '',
+      musicControle: 'Plain.ogg',
+      musicControle_Status:'ปิดเพลง',
     };
   },
   methods: {
+    musicControle_Action: function() {
+      if (this.$refs.audio.paused == true) {
+        this.$refs.audio.play();
+this.musicControle_Status = 'ปิดเพลง'
+      } else {
+        this.$refs.audio.pause();
+        this.musicControle_Status = 'เปิดเพลง'
+      }
+    },
     //Reset
-    reset: function () {
-      this.title = "ยินดีต้อนรับ";
-      this.subTitle = "กรุณาใส่บัตรเพื่อเริ่มทำรายการ";
-      this.input = "";
+    reset: function() {
+      this.title = 'ยินดีต้อนรับ';
+      this.subTitle = 'กรุณาใส่บัตรเพื่อเริ่มทำรายการ';
+      this.input = '';
       this.state = 0;
 
       this.withdrawn = 0;
@@ -626,51 +1767,51 @@ export default {
       this.showMoney = false;
       this.showCard = true;
 
-      this.currentState = "";
+      this.currentState = '';
     },
 
     //Menu
-    edit: function () {
+    edit: function() {
       //แก้ไขรหัสผ่าน
       if ((this.state >= 1 && this.state <= 4) || this.state === 30) {
         this.state = 1;
-        this.title = "กรุณาป้อนรหัสผ่าน";
-        this.subTitle = "";
+        this.title = 'กรุณาป้อนรหัสผ่าน';
+        this.subTitle = '';
         this.showInput = true;
         this.showMenuInMonitor = true;
         this.showCard = false;
-        this.input = "";
+        this.input = '';
       }
 
       //แก้ไขจำนวนเงิน
       else if ((this.state >= 5 && this.state <= 12) || this.state === 32) {
         this.state = 5;
-        this.input = "";
-        this.title = "กรุณาป้อนจำนวนเงินที่ต้องการถอน";
+        this.input = '';
+        this.title = 'กรุณาป้อนจำนวนเงินที่ต้องการถอน';
       }
     },
-    accept: function () {
+    accept: function() {
       //ใส่รหัส 123 ถูกต้อง
-      if (this.state === 4 && this.input === "123") {
+      if (this.state === 4 && this.input === '123') {
         this.state = 5;
-        this.input = "";
-        this.title = "กรุณาป้อนจำนวนเงินที่ต้องการถอน";
+        this.input = '';
+        this.title = 'กรุณาป้อนจำนวนเงินที่ต้องการถอน';
       }
 
       //ใส่รหัสไม่ถูกต้อง
       else if (this.state === 2 || this.state === 3 || this.state === 30) {
         this.state = 31;
-        this.input = "";
+        this.input = '';
         this.showInput = false;
-        this.title = "รหัสผ่านไม่ถูกต้อง";
-        this.subTitle = "กดยืนยันเพื่อป้อนรหัสใหม่";
+        this.title = 'รหัสผ่านไม่ถูกต้อง';
+        this.subTitle = 'กดยืนยันเพื่อป้อนรหัสใหม่';
       }
 
       //รหัสผ่านไม่ถูกต้อง ป้อนรหัสผ่านใหม่
       else if (this.state === 31) {
         this.state = 1;
-        this.title = "กรุณาป้อนรหัสผ่าน";
-        this.subTitle = "";
+        this.title = 'กรุณาป้อนรหัสผ่าน';
+        this.subTitle = '';
         this.showInput = true;
         this.showCard = false;
       }
@@ -678,8 +1819,8 @@ export default {
       //ถอนเงินสำเร็จ
       else if (this.state === 8 || this.state === 9 || this.state === 12) {
         this.state = 14;
-        this.title = "ถอนเงินสำเร็จกรุณารับบัตรคืน";
-        this.subTitle = "ขอบคุณที่ใช้บริการ";
+        this.title = 'ถอนเงินสำเร็จกรุณารับบัตรคืน';
+        this.subTitle = 'ขอบคุณที่ใช้บริการ';
         this.withdrawn = this.input;
         this.showInput = false;
         this.showMenuInMonitor = false;
@@ -697,61 +1838,58 @@ export default {
         this.state === 32
       ) {
         this.state = 33;
-        this.title = "จำนวนเงินไม่ถูกต้อง";
-        this.subTitle = "กดยืนยันเพื่อป้อนจำนวนเงินใหม่";
+        this.title = 'จำนวนเงินไม่ถูกต้อง';
+        this.subTitle = 'กดยืนยันเพื่อป้อนจำนวนเงินใหม่';
         this.showInput = false;
-        this.input = "";
+        this.input = '';
       }
 
       //จำนวนเงินไม่ถูกต้อง ป้อนจำนวนเงินใหม่
       else if (this.state === 33) {
         this.state = 5;
-        this.input = "";
-        this.title = "กรุณาป้อนจำนวนเงินที่ต้องการถอน";
-        this.subTitle = "";
+        this.input = '';
+        this.title = 'กรุณาป้อนจำนวนเงินที่ต้องการถอน';
+        this.subTitle = '';
         this.showInput = true;
       }
     },
-    cancel: function () {
+    cancel: function() {
       if (this.state != 0) {
         this.state = 34;
-        this.title = "กรุณารับบัตรคืน";
-        this.subTitle = "ขอบคุณที่ใช้บริการ";
+        this.title = 'กรุณารับบัตรคืน';
+        this.subTitle = 'ขอบคุณที่ใช้บริการ';
         this.showInput = false;
         this.showMenuInMonitor = false;
-        this.input = "";
+        this.input = '';
         this.showMoney = false;
         this.showCard = true;
       }
     },
-
     //Card & Money
-    card: function () {
+    card: function() {
       if (this.state === 0) {
         this.state = 1;
-        this.title = "กรุณาป้อนรหัสผ่าน";
-        this.subTitle = "";
+        this.title = 'กรุณาป้อนรหัสผ่าน';
+        this.subTitle = '';
         this.showInput = true;
         this.showMenuInMonitor = true;
         this.showCard = false;
-      } 
-      
-      else if (this.state === 14 || this.state === 34) {
+      } else if (this.state === 14 || this.state === 34) {
         this.reset();
       }
     },
-    money: function () {
+    money: function() {
       if (this.state === 14) {
         this.showMoney = false;
       }
     },
 
     //Numpad
-    num1: function () {
+    num1: function() {
       //รหัสผ่านถูก (ตัวที่ 1)
       if (this.state === 1) {
         this.state = 2;
-        this.input = this.input.concat("1");
+        this.input = this.input.concat('1');
       }
 
       //รหัสผ่านผิด
@@ -762,19 +1900,19 @@ export default {
         this.state === 4
       ) {
         this.state = 30;
-        this.input = this.input.concat("1");
+        this.input = this.input.concat('1');
       }
 
       //ถอนเงิน
       else if (this.state === 5) {
         this.state = 6;
-        this.input = this.input.concat("1");
+        this.input = this.input.concat('1');
       }
 
       //ตัวที่ 2 xx
       else if (this.state === 6) {
         this.state = 10;
-        this.input = this.input.concat("1");
+        this.input = this.input.concat('1');
       }
 
       //จำนวนเงินไม่ถูกต้อง
@@ -788,10 +1926,10 @@ export default {
         this.state === 32
       ) {
         this.state = 32;
-        this.input = this.input.concat("1");
+        this.input = this.input.concat('1');
       }
     },
-    num2: function () {
+    num2: function() {
       //รหัสผ่านผิด
       if (
         this.state === 30 ||
@@ -800,25 +1938,25 @@ export default {
         this.state === 4
       ) {
         this.state = 30;
-        this.input = this.input.concat("2");
+        this.input = this.input.concat('2');
       }
 
       //รหัสผ่านถูก (ตัวที่ 2)
       else if (this.state === 2) {
         this.state = 3;
-        this.input = this.input.concat("2");
+        this.input = this.input.concat('2');
       }
 
       //ถอนเงิน
       else if (this.state === 5) {
         this.state = 6;
-        this.input = this.input.concat("2");
+        this.input = this.input.concat('2');
       }
 
       //ตัวที่ 2 xx
       else if (this.state === 6) {
         this.state = 10;
-        this.input = this.input.concat("2");
+        this.input = this.input.concat('2');
       }
 
       //จำนวนเงินไม่ถูกต้อง
@@ -831,10 +1969,10 @@ export default {
         this.state === 32
       ) {
         this.state = 32;
-        this.input = this.input.concat("2");
+        this.input = this.input.concat('2');
       }
     },
-    num3: function () {
+    num3: function() {
       //รหัสผ่านผิด
       if (
         this.state === 30 ||
@@ -843,25 +1981,25 @@ export default {
         this.state === 4
       ) {
         this.state = 30;
-        this.input = this.input.concat("3");
+        this.input = this.input.concat('3');
       }
 
       //รหัสผ่านถูก (ตัวที่ 3)
       else if (this.state === 3) {
         this.state = 4;
-        this.input = this.input.concat("3");
+        this.input = this.input.concat('3');
       }
 
       //ถอนเงิน
       else if (this.state === 5) {
         this.state = 6;
-        this.input = this.input.concat("3");
+        this.input = this.input.concat('3');
       }
 
       //ตัวที่ 2 xx
       else if (this.state === 6) {
         this.state = 10;
-        this.input = this.input.concat("3");
+        this.input = this.input.concat('3');
       }
 
       //จำนวนเงินไม่ถูกต้อง
@@ -875,26 +2013,26 @@ export default {
         this.state === 32
       ) {
         this.state = 32;
-        this.input = this.input.concat("3");
+        this.input = this.input.concat('3');
       }
     },
-    num4: function () {
+    num4: function() {
       //รหัสผ่านผิด
       if (this.state === 30 || (this.state >= 1 && this.state <= 4)) {
         this.state = 30;
-        this.input = this.input.concat("4");
+        this.input = this.input.concat('4');
       }
 
       //ถอนเงิน
       else if (this.state === 5) {
         this.state = 6;
-        this.input = this.input.concat("4");
+        this.input = this.input.concat('4');
       }
 
       //ตัวที่ 2 xx
       else if (this.state === 6) {
         this.state = 10;
-        this.input = this.input.concat("4");
+        this.input = this.input.concat('4');
       }
 
       //จำนวนเงินไม่ถูกต้อง
@@ -908,26 +2046,26 @@ export default {
         this.state === 32
       ) {
         this.state = 32;
-        this.input = this.input.concat("4");
+        this.input = this.input.concat('4');
       }
     },
-    num5: function () {
+    num5: function() {
       //รหัสผ่านผิด
       if (this.state === 30 || (this.state >= 1 && this.state <= 4)) {
         this.state = 30;
-        this.input = this.input.concat("5");
+        this.input = this.input.concat('5');
       }
 
       //ถอนเงิน
       else if (this.state === 5) {
         this.state = 6;
-        this.input = this.input.concat("5");
+        this.input = this.input.concat('5');
       }
 
       //ตัวที่ 2 xx
       else if (this.state === 6) {
         this.state = 10;
-        this.input = this.input.concat("5");
+        this.input = this.input.concat('5');
       }
 
       //จำนวนเงินไม่ถูกต้อง
@@ -941,26 +2079,26 @@ export default {
         this.state === 32
       ) {
         this.state = 32;
-        this.input = this.input.concat("5");
+        this.input = this.input.concat('5');
       }
     },
-    num6: function () {
+    num6: function() {
       //รหัสผ่านผิด
       if (this.state === 30 || (this.state >= 1 && this.state <= 4)) {
         this.state = 30;
-        this.input = this.input.concat("6");
+        this.input = this.input.concat('6');
       }
 
       //ถอนเงิน
       else if (this.state === 5) {
         this.state = 6;
-        this.input = this.input.concat("6");
+        this.input = this.input.concat('6');
       }
 
       //ตัวที่ 2 xx
       else if (this.state === 6) {
         this.state = 10;
-        this.input = this.input.concat("6");
+        this.input = this.input.concat('6');
       }
 
       //จำนวนเงินไม่ถูกต้อง
@@ -974,26 +2112,26 @@ export default {
         this.state === 32
       ) {
         this.state = 32;
-        this.input = this.input.concat("6");
+        this.input = this.input.concat('6');
       }
     },
-    num7: function () {
+    num7: function() {
       //รหัสผ่านผิด
       if (this.state === 30 || (this.state >= 1 && this.state <= 4)) {
         this.state = 30;
-        this.input = this.input.concat("7");
+        this.input = this.input.concat('7');
       }
 
       //ถอนเงิน
       else if (this.state === 5) {
         this.state = 6;
-        this.input = this.input.concat("7");
+        this.input = this.input.concat('7');
       }
 
       //ตัวที่ 2 xx
       else if (this.state === 6) {
         this.state = 10;
-        this.input = this.input.concat("7");
+        this.input = this.input.concat('7');
       }
 
       //จำนวนเงินไม่ถูกต้อง
@@ -1007,26 +2145,26 @@ export default {
         this.state === 32
       ) {
         this.state = 32;
-        this.input = this.input.concat("7");
+        this.input = this.input.concat('7');
       }
     },
-    num8: function () {
+    num8: function() {
       //รหัสผ่านผิด
       if (this.state === 30 || (this.state >= 1 && this.state <= 4)) {
         this.state = 30;
-        this.input = this.input.concat("8");
+        this.input = this.input.concat('8');
       }
 
       //ถอนเงิน
       else if (this.state === 5) {
         this.state = 6;
-        this.input = this.input.concat("8");
+        this.input = this.input.concat('8');
       }
 
       //ตัวที่ 2 xx
       else if (this.state === 6) {
         this.state = 10;
-        this.input = this.input.concat("8");
+        this.input = this.input.concat('8');
       }
 
       //จำนวนเงินไม่ถูกต้อง
@@ -1040,26 +2178,26 @@ export default {
         this.state === 32
       ) {
         this.state = 32;
-        this.input = this.input.concat("8");
+        this.input = this.input.concat('8');
       }
     },
-    num9: function () {
+    num9: function() {
       //รหัสผ่านผิด
       if (this.state === 30 || (this.state >= 1 && this.state <= 4)) {
         this.state = 30;
-        this.input = this.input.concat("9");
+        this.input = this.input.concat('9');
       }
 
       //ถอนเงิน
       else if (this.state === 5) {
         this.state = 6;
-        this.input = this.input.concat("9");
+        this.input = this.input.concat('9');
       }
 
       //ตัวที่ 2 xx
       else if (this.state === 6) {
         this.state = 10;
-        this.input = this.input.concat("9");
+        this.input = this.input.concat('9');
       }
 
       //จำนวนเงินไม่ถูกต้อง
@@ -1073,38 +2211,38 @@ export default {
         this.state === 32
       ) {
         this.state = 32;
-        this.input = this.input.concat("9");
+        this.input = this.input.concat('9');
       }
     },
-    num0: function () {
+    num0: function() {
       //รหัสผ่านผิด
       if (this.state === 30 || (this.state >= 1 && this.state <= 4)) {
         this.state = 30;
-        this.input = this.input.concat("0");
+        this.input = this.input.concat('0');
       }
 
       //ถอนเงิน
       else if (this.state >= 6 && this.state < 9) {
         this.state += 1;
-        this.input = this.input.concat("0");
+        this.input = this.input.concat('0');
       }
 
       //จำนวนเงินไม่ถูกต้อง
       else if (this.state === 9 || this.state === 12 || this.state === 32) {
         this.state = 32;
-        this.input = this.input.concat("0");
+        this.input = this.input.concat('0');
       }
 
       //ตัวที่ 3 xx0
       else if (this.state === 10) {
         this.state = 11;
-        this.input = this.input.concat("0");
+        this.input = this.input.concat('0');
       }
 
       //ตัวที่ 4 xx00
       else if (this.state === 11) {
         this.state = 12;
-        this.input = this.input.concat("0");
+        this.input = this.input.concat('0');
       }
     },
 
@@ -1113,10 +2251,10 @@ export default {
       this.img = this.$refs.webcam.capture();
     },
     onStarted(stream) {
-      console.log("On Started Event", stream);
+      console.log('On Started Event', stream);
     },
     onStopped(stream) {
-      console.log("On Stopped Event", stream);
+      console.log('On Stopped Event', stream);
     },
     onStop() {
       this.$refs.webcam.stop();
@@ -1125,31 +2263,31 @@ export default {
       this.$refs.webcam.start();
     },
     onError(error) {
-      console.log("On Error Event", error);
+      console.log('On Error Event', error);
     },
     onCameras(cameras) {
       this.devices = cameras;
-      console.log("On Cameras Event", cameras);
+      console.log('On Cameras Event', cameras);
     },
     onCameraChange(deviceId) {
       this.deviceId = deviceId;
       this.camera = deviceId;
-      console.log("On Camera Change Event", deviceId);
+      console.log('On Camera Change Event', deviceId);
     },
     // end webcam method path
   },
   //computed & watch added for camera work
   computed: {
-    device: function () {
+    device: function() {
       return this.devices.find((n) => n.deviceId === this.deviceId);
     },
   },
   //computed & watch added for camera work
   watch: {
-    camera: function (id) {
+    camera: function(id) {
       this.deviceId = id;
     },
-    devices: function () {
+    devices: function() {
       // Once camera we have a list select the first one
       const [first, ...tail] = this.devices;
       if (first) {
@@ -1162,12 +2300,12 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Prompt&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Prompt&display=swap');
 
 #app {
-  font-family: "Prompt", sans-serif;
+  font-family: 'Prompt', sans-serif;
   /* background-color: aquamarine; */
-  background: url("./assets/bg.png");
+  background: url('./assets/bg.png');
   background-size: contain;
   background-attachment: fixed;
   width: 100%;
@@ -1249,7 +2387,7 @@ export default {
 
 .atmCard {
   background-color: white;
-  border: 5px solid rgba(245, 245, 245, 0.0);
+  border: 5px solid rgba(245, 245, 245, 0);
   border-radius: 10px;
   width: 80%;
   height: 220px;
@@ -1302,5 +2440,10 @@ export default {
 .headerDFA {
   color: white;
 }
-
+.soundControl{
+  position: fixed;
+  right: 85px;
+  top: 85px;
+  z-index: 3;
+}
 </style>
