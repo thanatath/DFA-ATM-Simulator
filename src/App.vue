@@ -77,7 +77,7 @@
 
                   <!--Monitor-->
                   <b-col cols="8" class="monitor text-left">
-                    <p class="p-1">ธนาคารทรงวุฒิไทย</p>
+                    <p class="p-1">ธนาคาร</p>
                     <h2 class="text-center pt-5">{{ title }}</h2>
                     <h5 class="text-center pb-3">{{ subTitle }}</h5>
 
@@ -186,7 +186,7 @@
                       v-if="showCard"
                       v-on:click="card"
                     >
-                      <p style="font-size: 12px; text-align: left;">ธนาคารทรงวุฒิไทย</p>
+                      <p style="font-size: 12px; text-align: left;">ธนาคาร</p>
                       <p style="font-size: 12px"><small>5587 2221 8877 6685</small></p>
                       <p style="font-size: 18px; text-align: right">VISA</p>
                     </div>
@@ -216,7 +216,7 @@
                     v-on:click="money"
                     class="money pt-5"
                     id="money"
-                    v-if="!showMoney"
+                    v-if="showMoney"
                   >
                     <h1>{{ withdrawn }} บาท</h1>
                     <b-tooltip target="money" triggers="hover" variant="primary"
@@ -227,7 +227,7 @@
 
                 <!--5th-->
                 <b-row class="fifth pr-3" align-v="end" align-h="end">
-                  <h1>ธนาคารทรงวุฒิไทย</h1>
+                  <h1>ธนาคาร</h1>
                 </b-row>
               </b-col>
             </b-row>
@@ -266,10 +266,10 @@
                       <v-col> </v-col>
                       <v-col>
                         <v-btn large fab  >
-                          <p v-show="this.state ==1 || this.state ==2 || this.state ==3|| this.state ==4|| this.state ==5|| this.state ==6|| this.state ==7|| this.state ==8|| this.state ==9|| this.state ==10|| this.state ==11|| this.state ==12|| this.state ==13|| this.state ==14|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29|| this.state ==30|| this.state ==31|| this.state ==32|| this.state ==33|| this.state ==34|| this.state ==35"> <br> รอรับ <br> บัตร</p>
+                          <p v-show="this.state ==1 || this.state ==2 || this.state ==3|| this.state ==4|| this.state ==5|| this.state ==6|| this.state ==7|| this.state ==8|| this.state ==9|| this.state ==10|| this.state ==11|| this.state ==12|| this.state ==13|| this.state ==14|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29|| this.state ==30|| this.state ==31|| this.state ==32|| this.state ==33|| this.state ==34|| this.state ==35"> <br> รอ <br> รับบัตร</p>
                         <!-- เเสดงการทำงาน -->
                           <v-btn large fab v-show="this.state ==0" color="#E53935">
-                          <p> <br> รหัสตัว <br> ที่1</p>
+                          <p> <br> รอ <br> รับบัตร</p>
                         </v-btn>
                         <!-- เเสดงการทำงาน -->
                         </v-btn>
@@ -534,10 +534,10 @@
                       </v-col>
                       <v-col>
                         <v-btn large fab>
-                          <p v-show="this.state ==0 || this.state ==1 || this.state ==2|| this.state ==3|| this.state ==4|| this.state ==5|| this.state ==6|| this.state ==7|| this.state ==8|| this.state ==10|| this.state ==11|| this.state ==9|| this.state ==13|| this.state ==14|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29|| this.state ==30|| this.state ==31|| this.state ==32|| this.state ==33|| this.state ==34|| this.state ==35" > <br> ตัวที่ 4 <br> X000</p> 
+                          <p v-show="this.state ==0 || this.state ==1 || this.state ==2|| this.state ==3|| this.state ==4|| this.state ==5|| this.state ==6|| this.state ==7|| this.state ==8|| this.state ==10|| this.state ==11|| this.state ==9|| this.state ==13|| this.state ==14|| this.state ==15|| this.state ==16|| this.state ==17|| this.state ==18|| this.state ==19|| this.state ==20|| this.state ==21|| this.state ==22|| this.state ==23|| this.state ==24|| this.state ==25|| this.state ==26|| this.state ==27|| this.state ==28|| this.state ==29|| this.state ==30|| this.state ==31|| this.state ==32|| this.state ==33|| this.state ==34|| this.state ==35" > <br> ตัวที่ 4 <br> XX00</p> 
                           <!-- เเสดงการทำงาน -->
                           <v-btn large fab v-show="this.state ==12" color="#E53935">
-                          <p> <br> ตัวที่ 4 <br> X000</p>
+                          <p> <br> ตัวที่ 4 <br> XX00</p>
                         </v-btn>
                         <!-- เเสดงการทำงาน -->
                         </v-btn>
@@ -1249,7 +1249,7 @@ export default {
 
 .atmCard {
   background-color: white;
-  border: 5px solid rgb(245, 245, 245);
+  border: 5px solid rgba(245, 245, 245, 0.0);
   border-radius: 10px;
   width: 80%;
   height: 220px;
