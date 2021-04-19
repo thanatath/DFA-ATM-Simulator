@@ -77,7 +77,7 @@
 
                   <!--Monitor-->
                   <b-col cols="8" class="monitor text-left">
-                    <p class="p-1">ธนาคารทรงวุฒิไทย</p>
+                    <p class="p-1">ธนาคาร</p>
                     <h2 class="text-center pt-5">{{ title }}</h2>
                     <h5 class="text-center pb-3">{{ subTitle }}</h5>
 
@@ -186,7 +186,7 @@
                       v-if="showCard"
                       v-on:click="card"
                     >
-                      <p style="font-size: 12px; text-align: left;">ธนาคารทรงวุฒิไทย</p>
+                      <p style="font-size: 12px; text-align: left;">ธนาคาร</p>
                       <p style="font-size: 12px"><small>5587 2221 8877 6685</small></p>
                       <p style="font-size: 18px; text-align: right">VISA</p>
                     </div>
@@ -216,7 +216,7 @@
                     v-on:click="money"
                     class="money pt-5"
                     id="money"
-                    v-if="!showMoney"
+                    v-if="showMoney"
                   >
                     <h1>{{ withdrawn }} บาท</h1>
                     <b-tooltip target="money" triggers="hover" variant="primary"
@@ -227,7 +227,7 @@
 
                 <!--5th-->
                 <b-row class="fifth pr-3" align-v="end" align-h="end">
-                  <h1>ธนาคารทรงวุฒิไทย</h1>
+                  <h1>ธนาคาร</h1>
                 </b-row>
               </b-col>
             </b-row>
