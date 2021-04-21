@@ -63,7 +63,19 @@
       </b-collapse>
 
       <b-navbar-nav class="ml-auto">
-        <b-button variant="danger" size="sm" type="submit" v-on:click="reset"
+        <b-button
+          variant="success"
+          size="sm"
+          type="submit"
+          v-on:click="reset"
+          @click="musicControle_Action()"
+        >
+          {{ musicControle_Status }}</b-button
+        >
+      </b-navbar-nav>
+
+      <b-navbar-nav class="ml-auto" >
+        <b-button variant="danger" style="margin-left: 15px;" size="sm" type="submit" v-on:click="reset"
           >RESET</b-button
         >
       </b-navbar-nav>
@@ -76,6 +88,12 @@ export default {
   name: 'Navbar',
   props: {
     reset: {
+      type: Function,
+    },
+    musicControle_Status: {
+      type: String,
+    },
+    musicControle_Action: {
       type: Function,
     },
   },
