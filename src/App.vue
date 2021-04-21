@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" style="width:1920px;height:1080px;">
     <Navbar :reset="this.reset" :musicControle_Status="this.musicControle_Status" :musicControle_Action="this.musicControle_Action"/>
 
     <v-parallax
@@ -2284,7 +2284,7 @@ this.musicControle_Status = 'ปิดเพลง'
     if(screen.width != 1920 && screen.height !=1080){
       this.$alert("คำเตือน ชิ้นงานถูกออกแบบมาให้เหมาะสมกับขนาดหน้าจอ 1920x1080 การเปิดบนอุปกรณ์ที่มีขนาดจอต่างออกไป อาจทำให้การแสดงผลผิดพลาดได้");
     }
-    
+    //window.resizeTo(1920,1080);
   },
   //computed & watch added for camera work
   watch: {
