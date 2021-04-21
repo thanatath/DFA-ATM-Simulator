@@ -2275,8 +2275,16 @@ this.musicControle_Status = 'ปิดเพลง'
   //computed & watch added for camera work
   computed: {
     device: function() {
+      
       return this.devices.find((n) => n.deviceId === this.deviceId);
     },
+  },
+  mounted() {
+    //detect resolution and alert
+    if(screen.width != 1920 && screen.height !=1080){
+      this.$alert("คำเตือน ชิ้นงานถูกออกแบบมาให้เหมาะสมกับขนาดหน้าจอ 1920x1080 การเปิดบนอุปกรณ์ที่มีขนาดจอต่างออกไป อาจทำให้การแสดงผลผิดพลาดได้");
+    }
+    
   },
   //computed & watch added for camera work
   watch: {
