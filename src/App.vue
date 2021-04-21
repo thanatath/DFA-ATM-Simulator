@@ -1795,7 +1795,7 @@ this.musicControle_Status = 'ปิดเพลง'
       }
 
       //ใส่รหัสไม่ถูกต้อง
-      else if (this.state === 2 || this.state === 3 || this.state === 30) {
+      else if (this.state >= 1 && this.state <= 3 || this.state === 30) {
         this.state = 31;
         this.input = '';
         this.showInput = false;
