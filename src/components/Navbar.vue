@@ -52,6 +52,11 @@
             </ol>
           </b-modal>
 
+          <b-nav-item v-b-modal.atmdfa>รูปDFA</b-nav-item>
+          <b-modal id="atmdfa" size="lg" centered title="รูปDFA">
+            <v-img :src="atmdfa"></v-img>
+          </b-modal>
+
           <b-nav-item v-b-modal.member>สมาชิก</b-nav-item>
           <b-modal id="member" centered title="สมาชิก">
             <ol>
@@ -89,6 +94,11 @@
 <script>
 export default {
   name: 'Navbar',
+  data() {
+    return {
+      atmdfa: require('/src/assets/atmdfa.png'),
+    }
+  },
   props: {
     reset: {
       type: Function,
