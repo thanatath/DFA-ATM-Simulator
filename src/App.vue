@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Navbar :reset="this.reset" />
+    <Navbar :reset="this.reset" :musicControle_Status="this.musicControle_Status" :musicControle_Action="this.musicControle_Action"/>
 
     <v-parallax
       height="2000"
@@ -9,10 +9,6 @@
       <audio autoplay loop ref="audio">
         <source type="audio/ogg" :src="musicControle" />
       </audio>
-         
-<div class="soundControl"> <b-button variant="success" type="submit" v-on:click="reset"
-          @click="musicControle_Action()">  {{musicControle_Status}}</b-button
-        ></div>
 
       <b-container fluid>
         <b-row class="text-center">
