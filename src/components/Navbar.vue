@@ -67,7 +67,6 @@
           variant="success"
           size="sm"
           type="submit"
-          v-on:click="reset"
           @click="musicControle_Action()"
         >
           {{ musicControle_Status }}</b-button
