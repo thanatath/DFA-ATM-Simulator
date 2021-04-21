@@ -5,7 +5,8 @@ import store from './store'
 import { WebCam } from "vue-web-cam";
 Vue.use(WebCam);
 import {BootstrapVue, IconsPlugin} from 'bootstrap-vue'
-
+import VueSimpleAlert from "vue-simple-alert";
+Vue.use(VueSimpleAlert);
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import vuetify from './plugins/vuetify';
