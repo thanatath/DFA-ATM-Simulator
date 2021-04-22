@@ -1850,7 +1850,7 @@ this.musicControle_Status = 'ปิดเพลง'
       }
     },
     cancel: function() {
-      if (this.state != 0) {
+      if (this.state != 0 && this.state != 14) {
         this.state = 34;
         this.title = 'กรุณารับบัตรคืน';
         this.subTitle = 'ขอบคุณที่ใช้บริการ';
@@ -1961,6 +1961,7 @@ this.musicControle_Status = 'ปิดเพลง'
         this.state === 8 ||
         this.state === 9 ||
         this.state === 10 ||
+        this.state === 11 ||
         this.state === 12 ||
         this.state === 32
       ) {
