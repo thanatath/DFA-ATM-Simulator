@@ -269,9 +269,9 @@
                           <h5 class="headerDFA">
                             DFA : Deterministic Finite Automata
                           </h5>
-                          <v-btn color="#FF3D00" height="30px"
-                            ><h5>currentState = {{ this.state }}</h5>
-                          </v-btn>
+                          <!--<v-btn color="#FF3D00" height="30px"
+                            > <h5>currentState = {{ this.state }}</h5>
+                          </v-btn>-->
                         </v-col>
                       </v-row>
                     </v-btn>
