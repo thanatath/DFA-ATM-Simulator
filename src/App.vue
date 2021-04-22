@@ -232,7 +232,7 @@
                     id="money"
                     v-if="showMoney"
                   >
-                    <h1>{{ withdrawn }} บาท</h1>
+                    <h1 id="moneyOut">{{ withdrawn }} บาท</h1>
                     <b-tooltip target="money" triggers="hover" variant="primary"
                       >คลิกเพื่อรับเงิน</b-tooltip
                     >
@@ -269,9 +269,9 @@
                           <h5 class="headerDFA">
                             DFA : Deterministic Finite Automata
                           </h5>
-                          <v-btn color="#FF3D00" height="30px"
-                            ><h5>currentState = {{ this.state }}</h5>
-                          </v-btn>
+                          <!--<v-btn color="#FF3D00" height="30px"
+                            > <h5>currentState = {{ this.state }}</h5>
+                          </v-btn>-->
                         </v-col>
                       </v-row>
                     </v-btn>
@@ -2391,13 +2391,14 @@ this.musicControle_Status = 'ปิดเพลง'
 }
 
 .atmCard {
-  background-color: white;
+  background-color: rgb(67, 111, 177);
   border: 5px solid rgba(245, 245, 245, 0);
   border-radius: 10px;
   width: 80%;
   height: 220px;
   top: -20px;
   position: relative;
+  color: white;
 }
 
 .atmCard:hover {
@@ -2419,17 +2420,22 @@ this.musicControle_Status = 'ปิดเพลง'
 }
 
 .money {
-  background-color: white;
-  border: 5px solid rgb(254, 254, 254);
+  background-color: rgb(123, 173, 108);
+  border: 5px solid rgb(64, 100, 52);
   width: 60%;
   height: 150px;
   top: -20px;
   position: relative;
+  color: rgb(48, 78, 38);
 }
 
 .money:hover {
   border: 5px solid red;
   cursor: pointer;
+}
+
+#moneyOut {
+  font-weight: 900;
 }
 
 .fifth {
