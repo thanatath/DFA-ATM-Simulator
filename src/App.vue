@@ -257,7 +257,7 @@
             <br /><br /><br /><br />
             <v-card
               max-width="800"
-              img="https://firebasestorage.googleapis.com/v0/b/imgatm.appspot.com/o/bgDFA.png?alt=media&token=79a99f86-6558-4faf-ba43-345960388ab6"
+              img="https://firebasestorage.googleapis.com/v0/b/imgatm.appspot.com/o/bgDFA.png?alt=media&token=a9a32b46-37cb-495d-beac-100178ce8a79"
               color="#E3F2FD"
             >
               <v-img height="1600">
