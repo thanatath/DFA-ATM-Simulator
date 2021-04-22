@@ -1961,6 +1961,7 @@ this.musicControle_Status = 'ปิดเพลง'
         this.state === 8 ||
         this.state === 9 ||
         this.state === 10 ||
+        this.state === 11 ||
         this.state === 12 ||
         this.state === 32
       ) {
