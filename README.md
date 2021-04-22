@@ -20,7 +20,9 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 webcam feature will work when it's HTTPS or locally !!!!
 
-Site Dev : http://devatm.shibasan.net
+Site Dev : https://devatm.shibasan.net
+Site production : https://masteratm.shibasan.net
+Site Production 2 : https://dfa-atm.web.app/
 
 
 ![enter image description here](https://raw.githubusercontent.com/thanatath/DFA-ATM-Simulator/master/Screenshot.png)
